@@ -128,22 +128,33 @@
 						<p>fique a vontade, e escolha o profissional que melhor se identificar! abaixo, tem uma lista de profissionais da area de psicologia cadastrados em nosso site.</p>
 					</div>
 				</div>
-				<div class="row mb-5">
-					<div class="col-lg-6 m-auto">
+				<div class="row">
+					<div class="col-lg-12 m-auto">
 						<div class="accordion custom-accordion-style-1" id="accordion">
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title m-0">
 										<a class="accordion-toggle text-color-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
-											Lorem ipsum dolor sit amet, consectetur adipisicing ?
+											VINICIUS HENRIQUE DE ALMEIDA
 										</a>
 									</h4>
 								</div>
 								<div id="collapse1One" class="collapse show">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
+									<div class="card">
+										<div class="card-horizontal">
+											<div class="img-square-wrapper">
+												<img class="" src="img/demos/app-landing/product/psicologo.png" alt="Card image cap">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">NOME DO PROFISSIONAL</h4>
+												<p class="card-text">CRP: 20292029</p>
+												<p class="card-text">LOCALIZAÇÃO: VOLTA REDONDA</p>
+												<p class="card-text">ESPECIALIDADES: TRANSTORNOS, TRAUMAS, ETC</p>
+											</div>
+											<div class="img-square-wrapper">
+												<img class="" src="img/demos/app-landing/product/TESTE2.png" alt="Card image cap">
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -213,90 +224,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 m-auto">
-						<div class="accordion custom-accordion-style-1" id="accordion2">
-							<div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title m-0">
-										<a class="accordion-toggle text-color-dark" data-toggle="collapse" data-parent="#accordion2" href="#collapse12One">
-											Lorem ipsum dolor sit amet, consectetur adipisicing ?
-										</a>
-									</h4>
-								</div>
-								<div id="collapse12One" class="collapse show">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title m-0">
-										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse12Two">
-											Lorem ipsum dolor sit amet, consectetur adipisicing ?
-										</a>
-									</h4>
-								</div>
-								<div id="collapse12Two" class="collapse">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title m-0">
-										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse12Three">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit ?
-										</a>
-									</h4>
-								</div>
-								<div id="collapse12Three" class="collapse">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title m-0">
-										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse12Four">
-											Lorem ipsum dolor sit amet, consectetur ?
-										</a>
-									</h4>
-								</div>
-								<div id="collapse12Four" class="collapse">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title m-0">
-										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse12Five">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum ?
-										</a>
-									</h4>
-								</div>
-								<div id="collapse12Five" class="collapse">
-									<div class="card-body">
-										<img src="img/demos/app-landing/product/psicologo.png" alt class="img-fluid" style="width: 30%;"/>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										<a href="#" class="btn btn-primary">Visitar</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div class="row text-center">
 					<div class="col">
@@ -308,80 +235,80 @@
 			</div>
 		</section>
 
-			<div class="footer-copyright bg-color-light pb-5">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 text-center text-md-left">
-							<span class="copyright-text">
-								© Copyright 2019. All Rights Reserved.
-								<ul class="social-icons custom-social-icons-style-1 _colored">
-									<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
-									<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a></li>
-									<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-								</ul>
-							</span>
-						</div>
-						<div class="col-lg-6">
-							<nav>
-								<ul class="nav nav-pills float-right" id="footerNav">
-									<li class="nav-item">
-										<a class="nav-link text-color-dark" href="#overview" data-hash>
-											OVERVIEW
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-color-dark" href="#" target="_blank" title="Go to Community">
-											COMMUNITY
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-color-dark" href="mailto:you@domain.com" title="Contact Us">
-											CONTACT US
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</div>
+		<div class="footer-copyright bg-color-light pb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 text-center text-md-left">
+						<span class="copyright-text">
+							© Copyright 2019. All Rights Reserved.
+							<ul class="social-icons custom-social-icons-style-1 _colored">
+								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
+								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a></li>
+								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+							</ul>
+						</span>
+					</div>
+					<div class="col-lg-6">
+						<nav>
+							<ul class="nav nav-pills float-right" id="footerNav">
+								<li class="nav-item">
+									<a class="nav-link text-color-dark" href="#overview" data-hash>
+										OVERVIEW
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-color-dark" href="#" target="_blank" title="Go to Community">
+										COMMUNITY
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-color-dark" href="mailto:you@domain.com" title="Contact Us">
+										CONTACT US
+									</a>
+								</li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
-		</footer>
-	</div>
+		</div>
+	</footer>
+</div>
 
-	<!-- Vendor -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
-	<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
-	<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
-	<script src="vendor/popper/umd/popper.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/common/common.min.js"></script>
-	<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
-	<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
-	<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-	<script src="vendor/isotope/jquery.isotope.min.js"></script>
-	<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script src="vendor/vide/jquery.vide.min.js"></script>
-	<script src="vendor/vivus/vivus.min.js"></script>
+<!-- Vendor -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="vendor/popper/umd/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/common/common.min.js"></script>
+<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+<script src="vendor/isotope/jquery.isotope.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="vendor/vide/jquery.vide.min.js"></script>
+<script src="vendor/vivus/vivus.min.js"></script>
 
-	<!-- Theme Base, Components and Settings -->
-	<script src="js/theme.js"></script>
+<!-- Theme Base, Components and Settings -->
+<script src="js/theme.js"></script>
 
-	<!-- Current Page Vendor and Views -->
-	<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-	<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<!-- Current Page Vendor and Views -->
+<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 
-	<!-- Current Page Vendor and Views -->
-	<script src="js/views/view.contact.js"></script>
+<!-- Current Page Vendor and Views -->
+<script src="js/views/view.contact.js"></script>
 
 
-	<!-- Theme Custom -->
-	<script src="js/custom.js"></script>
+<!-- Theme Custom -->
+<script src="js/custom.js"></script>
 
-	<!-- Theme Initialization Files -->
-	<script src="js/theme.init.js"></script>
+<!-- Theme Initialization Files -->
+<script src="js/theme.init.js"></script>
 
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
