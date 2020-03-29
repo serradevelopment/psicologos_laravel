@@ -14,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+	return view('index');
 });
 
 Route::get('2', function () {
-    return view('psicologos');
+	return view('psicologos');
+});
+
+Auth::routes();
+
+Route::namespace('Admin')->prefix('admin')->group(function(){
+	Route::get('/','HomeController@index')->name('home');
+	\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
 });
 
 

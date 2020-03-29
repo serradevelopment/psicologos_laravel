@@ -151,8 +151,8 @@
 												<p class="card-text">LOCALIZAÇÃO: VOLTA REDONDA</p>
 												<p class="card-text">ESPECIALIDADES: TRANSTORNOS, TRAUMAS, ETC</p>
 											</div>
-											<div class="img-square-wrapper">
-												<img class="" src="img/demos/app-landing/product/TESTE2.png" alt="Card image cap">
+											<div class="img-square-wrapper" id="app">
+												<calendario></calendario>
 											</div>
 										</div>
 									</div>
@@ -309,6 +309,7 @@
 
 <!-- Theme Initialization Files -->
 <script src="js/theme.init.js"></script>
+<script src="js/app.js"></script>
 
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.

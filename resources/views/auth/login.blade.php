@@ -56,6 +56,9 @@
                 {{ Form::open(['url' => route('users.first-user'), 'id' => 'first-user-form']) }}
 
                 {{ Form::bsText('name', 'Nome') }}
+                {{ Form::bsText('crp', 'CRP') }}
+                {{ Form::bsText('whatsapp', 'Whatsapp',['class'=>'tel-ddd-mask']) }}
+                {{ Form::bsText('specialty', 'Especialidade') }}
 
                 {{ Form::bsEmail('email', 'E-mail') }}
                 <div class="position-relative">
@@ -92,6 +95,7 @@
                 'email': true
             },
             'password': 'required',
+            'crp': 'required',
             'confirm_password': {
                 'required': true,
                 'equalTo': '#password'

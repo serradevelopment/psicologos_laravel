@@ -54,187 +54,6 @@
 	<!-- Head Libs -->
 	<script src="vendor/modernizr/modernizr.min.js"></script>
 
-	<style type="text/css">
-		.elegant-calencar {
-			width: 25em;
-			border: 1px solid #c9c9c9;
-			-webkit-box-shadow: 0 0 5px #c9c9c9;
-			box-shadow: 0 0 5px #c9c9c9;
-			text-align: center;
-			position: relative;
-			margin: auto; 
-		}
-
-		#header-calendar {
-			font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-			height: 14em;
-			background-color: #2a3246;
-			display: -ms-flexbox;
-			display: flex;
-			-ms-flex-wrap: wrap;
-		}
-
-		.pre-button, .next-button {
-			margin-top: 2em;
-			font-size: 3em;
-			-webkit-transition: -webkit-transform 0.5s;
-			transition: transform 0.5s;
-			cursor: pointer;
-			width: 1em;
-			height: 1em;
-			line-height: 1em;
-			color: #e66b6b;
-			border-radius: 50%;
-		}
-
-		.pre-button:hover, .next-button:hover {
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
-			transform: rotate(360deg);
-		}
-
-		.pre-button:active,.next-button:active{
-			-webkit-transform: scale(0.7);
-			-ms-transform: scale(0.7);
-			transform: scale(0.7);
-		}
-
-		.pre-button {
-			margin: auto;
-		}
-
-		.next-button {
-			margin: auto;
-		}
-
-		/*.head-info {
-			float: left;
-			width: 264px;
-			}*/
-
-			.head-day {
-				margin-top: 30px;
-				font-size: 8em;
-				line-height: 1;
-				color: #fff;
-			}
-
-			.head-month {
-				margin-top: 20px;
-				font-size: 2em;
-				line-height: 1;
-				color: #fff;
-			}
-
-			#calendar {
-				height: 100%;
-				width: 100%;
-				margin: 0 auto;
-				background-color: white;
-			}
-
-			#calendar tr {
-				height: 2em;
-				line-height: 2em;
-			}
-
-			thead tr {
-				color: #e66b6b;
-				font-weight: 700;
-				text-transform: uppercase;
-			}
-
-			tbody tr {
-				color: #252a25;
-			}
-
-			tbody td{
-				width: 14%;
-				border-radius: 50%;
-				cursor: pointer;
-				-webkit-transition:all 0.2s ease-in;
-				transition:all 0.2s ease-in;
-			}
-
-			tbody td:hover, .selected {
-				color: #fff;
-				background-color: #2a3246;
-				border: none;
-			}
-
-			tbody td:active {
-				-webkit-transform: scale(0.7);
-				-ms-transform: scale(0.7);
-				transform: scale(0.7);
-			}
-
-			#today {
-				background-color: #e66b6b;
-				color: #fff;
-				font-family: serif;
-				border-radius: 50%;
-			}
-
-			#disabled {
-				cursor: default;
-				background: #fff0;
-			}
-
-			#disabled:hover {
-				background: #fff0;
-				color: #c9c9c9;
-			}
-
-			#reset {
-				display: block;
-				position: absolute;
-				right: 0.5em;
-				top: 0.5em;
-				transition: all 0.3s ease;
-			}
-
-			#reset:hover {
-				color: #e66b6b;
-				border-color: #e66b6b;
-			}
-
-			#reset:active{
-				-webkit-transform: scale(0.8);
-				-ms-transform: scale(0.8);
-				transform: scale(0.8);     
-			}
-
-			ol, ul {
-				list-style: none;
-			}
-			blockquote, q {
-				quotes: none;
-			}
-			blockquote:before, blockquote:after,
-			q:before, q:after {
-				content: '';
-				content: none;
-			}
-			table {
-				border-spacing: 2px;
-			}
-			.clearfix:before,
-			.clearfix:after {
-				content: " "; /* 1 */
-				display: table; /* 2 */
-			}
-
-			.clearfix:after {
-				clear: both;
-			}
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
- .clearfix {
- 	*zoom: 1;
- }
-</style>
 
 </head>
 <body>
@@ -355,7 +174,7 @@
 			<br>
 			<br>
 
-			<section id="how-it-work" class="section bg-color-light m-0">
+			<section id="how-it-work" class="section bg-color-light m-0" >
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-md-8 col-lg-5">
@@ -400,7 +219,7 @@
 									<div class="custom-box-icon">
 										<div class="wrap-dashed-lines">
 											<svg version="1.1" id="connect-people" x="0px" y="0px" width="65px" height="65px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-												<path class="icon appear-animation" data-appear-animation="icons-anim" data-appear-animation-duration="3500ms" data-appear-animation-delay="700" fill="#F1645B" d="M25,0C11.215,0,0,11.215,0,25s11.215,25,25,25s25-11.215,25-25S38.785,0,25,0z M25,1.9
+												<path class="icon appear-animation" data-appear-animation="icons-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="1200" fill="#F1645B" d="M25,0C11.215,0,0,11.215,0,25s11.215,25,25,25s25-11.215,25-25S38.785,0,25,0z M25,1.9
 												c12.737,0,23.1,10.363,23.1,23.1c0,2.692-0.467,5.276-1.317,7.682c-1.166-0.639-3.022-1.385-6.269-2.545
 												c-0.639-0.229-0.767-0.346-0.772-0.346c-0.026-0.068-0.033-0.286-0.035-0.47c2.533-0.387,4.554-2.089,4.649-2.17
 												c0.293-0.251,0.416-0.647,0.316-1.021c-0.093-0.343-0.359-0.61-0.699-0.704c-0.397-0.193-1.385-1.569-1.385-5.731
@@ -441,32 +260,32 @@
 												c0,2.27,1.239,2.886,3.129,3.568c5.4,1.948,8.123,3.242,9.104,4.324c0.581,0.642,1.038,1.678,1.349,2.982
 												C37.38,45.396,31.502,48.1,25,48.1z"/>
 											</svg>
-											<span class="appear-animation" data-appear-animation="fadeInDown" data-appear-animation-delay="3700">Conecte com o Psicologo</span>
+											<span class="appear-animation" data-appear-animation="fadeInDown" data-appear-animation-delay="2000">Conecte com o Psicologo</span>
 											<svg version="1.1" id="dashed-line-1" class="dashed-line _left" x="0px" y="0px" width="98.5px" height="26.5px" viewBox="0 0 98.5 26.5" enable-background="new 0 0 98.5 26.5" xml:space="preserve">
-												<path class="line" data-appear-animation="line-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="2000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,16.93c0,0,40.589-36.872,83.192,1.084"/>
+												<path class="line" data-appear-animation="line-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="1000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,16.93c0,0,40.589-36.872,83.192,1.084"/>
 												<path class="line-mask" fill="none" stroke="#FFF" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,16.93c0,0,40.589-36.872,83.192,1.084"/>
-												<circle class="circle appear-animation" data-appear-animation="line-circle-anim" data-appear-animation-duration="700ms" data-appear-animation-delay="2700" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="21.014" r="4.627"/>
+												<circle class="circle appear-animation" data-appear-animation="line-circle-anim" data-appear-animation-duration="700ms" data-appear-animation-delay="1000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="21.014" r="4.627"/>
 												<circle class="circle-mask" fill="none" stroke="#FFF" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="21.014" r="4.627"/>
 											</svg>
 											<svg version="1.1" id="dashed-line-2" class="dashed-line _right" x="0px" y="0px" width="98.5px" height="26.5px" viewBox="0 0 98.5 26.5" enable-background="new 0 0 98.5 26.5" xml:space="preserve">
-												<path class="line" data-appear-animation="line-anim" data-appear-animation-duration="1s" data-appear-animation-delay="4000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,9.57c0,0,40.589,36.871,83.192-1.084"/>
+												<path class="line" data-appear-animation="line-anim" data-appear-animation-duration="1s" data-appear-animation-delay="2000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,9.57c0,0,40.589,36.871,83.192-1.084"/>
 												<path class="line-mask" fill="none" stroke="#FFF" stroke-miterlimit="10" stroke-dasharray="3,3" d="M4,9.57c0,0,40.589,36.871,83.192-1.084"/>
-												<circle class="circle appear-animation" data-appear-animation="line-circle-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="4700" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="5.486" r="4.627"/>
+												<circle class="circle appear-animation" data-appear-animation="line-circle-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="2000" fill="none" stroke="#010101" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="5.486" r="4.627"/>
 												<circle class="circle-mask" fill="none" stroke="#FFF" stroke-miterlimit="10" stroke-dasharray="3,3" cx="91.01" cy="5.486" r="4.627"/>
 											</svg>
 										</div>
 									</div>
 									<div class="custom-box-icon">
 										<svg version="1.1" id="share" x="0px" y="0px" width="65px" height="65px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-											<path class="icon appear-animation" data-appear-animation="icons-anim" data-appear-animation-duration="3000ms" data-appear-animation-delay="3500" fill="#F1645B" d="M32,27c-1.923,0-3.577,1.104-4.413,2.699l-4.625-1.321C22.972,28.251,23,28.129,23,28
+											<path class="icon appear-animation" data-appear-animation="icons-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="3000" fill="#F1645B" d="M32,27c-1.923,0-3.577,1.104-4.413,2.699l-4.625-1.321C22.972,28.251,23,28.129,23,28
 											c0-0.854-0.235-1.647-0.615-2.352l4.512-3.76C27.752,22.573,28.822,23,30,23c2.757,0,5-2.243,5-5s-2.243-5-5-5s-5,2.243-5,5
 											c0,0.855,0.235,1.648,0.615,2.353l-4.511,3.759C20.249,23.427,19.179,23,18,23c-2.757,0-5,2.243-5,5s2.243,5,5,5
 											c1.923,0,3.576-1.104,4.412-2.699l4.626,1.322C27.028,31.749,27,31.871,27,32c0,2.757,2.243,5,5,5s5-2.243,5-5S34.757,27,32,27z
 											M30,15c1.654,0,3,1.346,3,3s-1.346,3-3,3s-3-1.346-3-3S28.346,15,30,15z M18,31c-1.654,0-3-1.346-3-3s1.346-3,3-3s3,1.346,3,3
 											S19.654,31,18,31z M32,35c-1.654,0-3-1.346-3-3s1.346-3,3-3s3,1.346,3,3S33.654,35,32,35z"/>
-											<circle class="icons-circle appear-animation" data-appear-animation="icons-circle-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="5300" fill="none" stroke="#F1645B" stroke-width="2" stroke-miterlimit="50" cx="25.027" cy="25.092" r="24.062"/>
+											<circle class="icons-circle appear-animation" data-appear-animation="icons-circle-anim" data-appear-animation-duration="1000ms" data-appear-animation-delay="3000" fill="none" stroke="#F1645B" stroke-width="2" stroke-miterlimit="50" cx="25.027" cy="25.092" r="24.062"/>
 										</svg>
-										<span class="appear-animation" data-appear-animation="fadeInDown" data-appear-animation-delay="5800">Saia Renovado</span>
+										<span class="appear-animation" data-appear-animation="fadeInDown" data-appear-animation-delay="3000">Saia Renovado</span>
 									</div>
 								</div>
 							</div>
@@ -480,431 +299,189 @@
 			<br>
 			<br>
 
-			<div class="p-relative">
-				<section id="downloads" class="section section-parallax m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/app-landing/parallax/downloads-parallax.png" style="background-color: #781e20;">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<h2 class=" text-color-black">AGENDE SUA CONSULTA</h2>
-								<p class="text-color-light custom-font-secondary text-4 mb-0">Escolha um dia <strong>Ideal</strong></p>
-								<p class="text-2 text-color-light custom-font-secondary mb-4 pb-3">Para você agendar uma consulta com um psicologo</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<!-- CALENDÁRIO -->
-								<div class="elegant-calencar">
-									<button class="btn btn-primary" id="reset">Limpar</button>
-									<div id="header-calendar">
-
-										<div class="col-md-2 pre-button">
-											<i class="fas fa-angle-left"></i>
-										</div>
-
-										<div class="col-md-8">
-											<div class="head-day"></div>
-											<div class="head-month"></div>
-										</div>
-
-										<div class="col-md-2 next-button">
-											<i class="fas fa-angle-right"></i>
-										</div>
-									</div>
-									<table id="calendar">
-										<thead>
-											<tr>
-												<th>Dom</th>
-												<th>Seg</th>
-												<th>Ter</th>
-												<th>Qua</th>
-												<th>Qui</th>
-												<th>Sex</th>
-												<th>Sáb</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<!-- FIM CALENDÁRIO -->
-							</div>
-						</div>
+			<div class="p-relative " id="app">
+				<div class="row ">
+					<div class="col-md-6 text-right"  data-appear-animation="fadeInLeft" data-appear-animation-delay="3000" data-plugin-options="{'accY': 200}" >
+						<section id="downloads" class="section section-parallax m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/app-landing/parallax/downloads-parallax.png" style="background-color: #fff;">
+							<h2 style="color: #781e20!important; "  class=" text-color-white" >AGENDE SUA CONSULTA</h2>
+							<p style="color: gray!important; " class="text-color-light custom-font-secondary text-4 mb-0">Escolha um dia <strong>Ideal</strong></p>
+							<p style="color: gray!important; " class="text-2 text-color-light custom-font-secondary mb-4 pb-3">Para você agendar uma consulta com um psicologo</p>
+							<p style="color: gray!important; ">Fique a vontade, e escolha o profissional que melhor se identificar! abaixo, tem uma lista de profissionais da area de psicologia cadastrados em nosso site.fique a vontade, e escolha o profissional que melhor se identificar! abaixo, tem uma lista de profissionais da area de psicologia cadastrados em nosso site.fique a vontade, e escolha o profissional que melhor se identificar! abaixo, tem uma lista de profissionais da area de psicologia cadastrados em nosso site.fique a vontade, e escolha o profissional que melhor se identificar! abaixo, tem uma lista de profissionais da area de psicologia cadastrados em nosso site.</p>
+						</section>
 					</div>
-					
-				</section>
-
+					<div class="col-md-6" style="    background-color: #781e20;"  data-appear-animation="fadeInRight" data-appear-animation-delay="3000" data-plugin-options="{'accY': 200}">
+						<calendario></calendario>
+					</div>
+				</div>
 			</div>
 
-			<section id="faq" class="section bg-color-light m-0">
-				<div class="container">
-					<div class="row text-center mb-3">
-						<div class="col-lg-8 m-auto">
-							<h2 class="custom-bar _center text-color-dark">FAQ'S</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur repudiandae et saepe, veniam aliquam molestias quod, quasi minus sequi, doloremque dolorum eaque similique eligendi omnis ea!</p>
-						</div>
+			
+
+		</div>
+
+		<section id="faq" class="section bg-color-light m-0">
+			<div class="container">
+				<div class="row text-center mb-3">
+					<div class="col-lg-8 m-auto">
+						<h2 class="custom-bar _center text-color-dark">FAQ'S</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur repudiandae et saepe, veniam aliquam molestias quod, quasi minus sequi, doloremque dolorum eaque similique eligendi omnis ea!</p>
 					</div>
-					<div class="row mb-5">
-						<div class="col-lg-10 m-auto">
-							<div class="accordion custom-accordion-style-1" id="accordion">
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
-												Lorem ipsum dolor sit amet, consectetur adipisicing ?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1One" class="collapse show">
-										<div class="card-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										</div>
-									</div>
+				</div>
+				<div class="row mb-5">
+					<div class="col-lg-10 m-auto">
+						<div class="accordion custom-accordion-style-1" id="accordion">
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title m-0">
+										<a class="accordion-toggle text-color-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+											Lorem ipsum dolor sit amet, consectetur adipisicing ?
+										</a>
+									</h4>
 								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
-												Lorem ipsum dolor sit amet, consectetur adipisicing ?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Two" class="collapse">
-										<div class="card-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										</div>
-									</div>
-								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit ?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Three" class="collapse">
-										<div class="card-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										</div>
-									</div>
-								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
-												Lorem ipsum dolor sit amet, consectetur ?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Four" class="collapse">
-										<div class="card-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										</div>
-									</div>
-								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Five">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum ?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Five" class="collapse">
-										<div class="card-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
-										</div>
+								<div id="collapse1One" class="collapse show">
+									<div class="card-body">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row text-center">
-						<div class="col">
-							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Marque uma consulta</strong></p>
-							<br>
-							<a href="#consulta" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDE SUA CONSULTA</a>
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title m-0">
+										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+											Lorem ipsum dolor sit amet, consectetur adipisicing ?
+										</a>
+									</h4>
+								</div>
+								<div id="collapse1Two" class="collapse">
+									<div class="card-body">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
+									</div>
+								</div>
+							</div>
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title m-0">
+										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit ?
+										</a>
+									</h4>
+								</div>
+								<div id="collapse1Three" class="collapse">
+									<div class="card-body">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
+									</div>
+								</div>
+							</div>
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title m-0">
+										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
+											Lorem ipsum dolor sit amet, consectetur ?
+										</a>
+									</h4>
+								</div>
+								<div id="collapse1Four" class="collapse">
+									<div class="card-body">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
+									</div>
+								</div>
+							</div>
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title m-0">
+										<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Five">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum ?
+										</a>
+									</h4>
+								</div>
+								<div id="collapse1Five" class="collapse">
+									<div class="card-body">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque eos laborum non molestiae dignissimos accusamus architecto amet beatae eveniet omnis. Animi eos dolore totam dolorum magni impedit optio alias qui nobis dicta deserunt ipsum porro veritatis incidunt ullam ducimus, velit non voluptate a. Rem aut vel necessitatibus officiis, sit quo, at fugit labore minima obcaecati reprehenderit ipsum.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+				<div class="row text-center">
+					<div class="col">
+						<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Marque uma consulta</strong></p>
+						<br>
+						<a href="#consulta" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDE SUA CONSULTA</a>
+					</div>
+				</div>
+			</div>
+		</section>
 
 
-			<footer id="footer" class="bg-color-light">
-				<div class="container">
-					<div class="footer-copyright bg-color-light pb-5">
-						<div class="container">
-							<div class="row">
-								<div class="col-lg-6 text-center text-md-left">
-									<span class="copyright-text">
-										© Copyright 2019. All Rights Reserved.
-										<ul class="social-icons custom-social-icons-style-1 _colored">
-											<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
-											<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a></li>
-											<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-										</ul>
-									</span>
-								</div>
-								<div class="col-lg-6">
-									<nav>
-										<ul class="nav nav-pills float-right" id="footerNav">
-											<li class="nav-item">
-												<a class="nav-link text-color-dark" href="#comofunciona" data-hash>
-													COMO TRABALHAMOS
-												</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
+		<footer id="footer" class="bg-color-light">
+			<div class="container">
+				<div class="footer-copyright bg-color-light pb-5">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 text-center text-md-left">
+								<span class="copyright-text">
+									© Copyright 2019. All Rights Reserved.
+									<ul class="social-icons custom-social-icons-style-1 _colored">
+										<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a></li>
+										<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a></li>
+										<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+									</ul>
+								</span>
+							</div>
+							<div class="col-lg-6">
+								<nav>
+									<ul class="nav nav-pills float-right" id="footerNav">
+										<li class="nav-item">
+											<a class="nav-link text-color-dark" href="#comofunciona" data-hash>
+												COMO TRABALHAMOS
+											</a>
+										</li>
+									</ul>
+								</nav>
 							</div>
 						</div>
 					</div>
-				</footer>
-			</div>
+				</div>
+			</footer>
+		</div>
 
-			<!-- Vendor -->
-			<script src="vendor/jquery/jquery.min.js"></script>
-			<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
-			<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
-			<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
-			<script src="vendor/popper/umd/popper.min.js"></script>
-			<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-			<script src="vendor/common/common.min.js"></script>
-			<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
-			<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-			<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
-			<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-			<script src="vendor/isotope/jquery.isotope.min.js"></script>
-			<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-			<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-			<script src="vendor/vide/jquery.vide.min.js"></script>
-			<script src="vendor/vivus/vivus.min.js"></script>
+		<!-- Vendor -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+		<script src="vendor/popper/umd/popper.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="vendor/common/common.min.js"></script>
+		<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
+		<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+		<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+		<script src="vendor/isotope/jquery.isotope.min.js"></script>
+		<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script src="vendor/vide/jquery.vide.min.js"></script>
+		<script src="vendor/vivus/vivus.min.js"></script>
 
-			<!-- Theme Base, Components and Settings -->
-			<script src="js/theme.js"></script>
+		<!-- Theme Base, Components and Settings -->
+		<script src="js/theme.js"></script>
 
-			<!-- Current Page Vendor and Views -->
-			<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-			<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+		<!-- Current Page Vendor and Views -->
+		<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 
-			<!-- Current Page Vendor and Views -->
-			<script src="js/views/view.contact.js"></script>
-
-
-			<!-- Theme Custom -->
-			<script src="js/custom.js"></script>
-
-			<!-- Theme Initialization Files -->
-			<script src="js/theme.init.js"></script>
-
-			<script type="text/javascript">
-				document.addEventListener('DOMContentLoaded', function(){
-					var today = new Date(),
-					year = today.getFullYear(),
-					month = today.getMonth(),
-					monthTag =["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
-					day = today.getDate(),
-					days = document.getElementsByTagName('td'),
-					selectedDay,
-					setDate,
-					daysLen = days.length;
-
-					function Calendar(selector, options) {
-						this.options = options;
-						this.draw();
-					}
-
-					Calendar.prototype.draw  = function() {
-						this.getCookie('selected_day');
-						this.getOptions();
-						this.drawDays();
-						var that = this,
-						reset = document.getElementById('reset'),
-						pre = document.getElementsByClassName('pre-button'),
-						next = document.getElementsByClassName('next-button');
-
-						pre[0].addEventListener('click', function(){that.preMonth(); });
-						next[0].addEventListener('click', function(){that.nextMonth(); });
-						reset.addEventListener('click', function(){that.reset(); });
-						while(daysLen--) {
-							days[daysLen].addEventListener('click', function(){that.clickDay(this); });
-						}
-					};
-
-					Calendar.prototype.drawHeader = function(e) {
-						var headDay = document.getElementsByClassName('head-day'),
-						headMonth = document.getElementsByClassName('head-month');
-
-						e?headDay[0].innerHTML = e : headDay[0].innerHTML = day;
-						headMonth[0].innerHTML = monthTag[month] +" - " + year;        
-					};
-
-					Calendar.prototype.drawDays = function() {
-						var startDay = new Date(year, month, 1).getDay(),  
-						nDays = new Date(year, month + 1, 0).getDate(),
-
-						n = startDay; 
-						for(var k = 0; k <35; k++) {
-							days[k].innerHTML = '';
-							days[k].id = '';
-							days[k].className = '';
-						}
-
-						for(var i  = 1; i <= nDays ; i++) {
-							days[n].innerHTML = i; 
-							n++;
-						}
-
-						for(var j = 0; j < 35; j++) {
-							if(days[j].innerHTML === ""){
-
-								days[j].id = "disabled";
-
-							}else if(j === day + startDay - 1){
-								if((this.options && (month === setDate.getMonth()) && (year === setDate.getFullYear())) || (!this.options && (month === today.getMonth())&&(year===today.getFullYear()))){
-									this.drawHeader(day);
-									days[j].id = "today";
-								}
-							}
-							if(selectedDay){
-								if((j === selectedDay.getDate() + startDay - 1)&&(month === selectedDay.getMonth())&&(year === selectedDay.getFullYear())){
-									days[j].className = "selected";
-									this.drawHeader(selectedDay.getDate());
-								}
-							}
-						}
-					};
-
-					Calendar.prototype.clickDay = function(o) {
-						var selected = document.getElementsByClassName("selected"),
-						len = selected.length;
-						if(len !== 0){
-							selected[0].className = "";
-						}
-						o.className = "selected";
-						selectedDay = new Date(year, month, o.innerHTML);
-						this.drawHeader(o.innerHTML);
-						this.setCookie('selected_day', 1);
-
-					};
-
-					Calendar.prototype.preMonth = function() {
-						if(month < 1){ 
-							month = 11;
-							year = year - 1; 
-						}else{
-							month = month - 1;
-						}
-						this.drawHeader(1);
-						this.drawDays();
-					};
-
-					Calendar.prototype.nextMonth = function() {
-						if(month >= 11){
-							month = 0;
-							year =  year + 1; 
-						}else{
-							month = month + 1;
-						}
-						this.drawHeader(1);
-						this.drawDays();
-					};
-
-					Calendar.prototype.getOptions = function() {
-						if(this.options){
-							var sets = this.options.split('-');
-							setDate = new Date(sets[0], sets[1]-1, sets[2]);
-							day = setDate.getDate();
-							year = setDate.getFullYear();
-							month = setDate.getMonth();
-						}
-					};
-
-					Calendar.prototype.reset = function() {
-						month = today.getMonth();
-						year = today.getFullYear();
-						day = today.getDate();
-						this.options = undefined;
-						this.drawDays();
-					};
-
-					Calendar.prototype.setCookie = function(name, expiredays){
-						if(expiredays) {
-							var date = new Date();
-							date.setTime(date.getTime() + (expiredays*24*60*60*1000));
-							var expires = "; expires=" +date.toGMTString();
-						}else{
-							var expires = "";
-						}
-						document.cookie = name + "=" + selectedDay + expires + "; path=/";
-					};
-
-					Calendar.prototype.getCookie = function(name) {
-						if(document.cookie.length){
-							var arrCookie  = document.cookie.split(';'),
-							nameEQ = name + "=";
-							for(var i = 0, cLen = arrCookie.length; i < cLen; i++) {
-								var c = arrCookie[i];
-								while (c.charAt(0)==' ') {
-									c = c.substring(1,c.length);
-
-								}
-								if (c.indexOf(nameEQ) === 0) {
-									selectedDay =  new Date(c.substring(nameEQ.length, c.length));
-								}
-							}
-						}
-					};
-					var calendar = new Calendar();
+		<!-- Current Page Vendor and Views -->
+		<script src="js/views/view.contact.js"></script>
 
 
-				}, false);
-			</script>
+		<!-- Theme Custom -->
+		<script src="js/custom.js"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="js/theme.init.js"></script>
+		<script src="js/app.js"></script>
+
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
