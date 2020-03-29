@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('1', function () {
+Route::get('/', function () {
     return view('index');
 });
 
 Route::get('2', function () {
     return view('psicologos');
 });
+
+
+\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
