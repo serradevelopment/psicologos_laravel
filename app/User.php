@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function getRoleStringAttribute() {
         return self::roles()[$this->role];
     }
+
+    public function schedules()
+    {
+        return $this->belongsToMany('App\Schedule','schedules_has_users','users_id','schedules_id');
+    }
 }

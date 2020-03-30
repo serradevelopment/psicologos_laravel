@@ -2039,16 +2039,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      day: null
+      day: null,
+      month: null,
+      year: null,
+      schedule: null,
+      disponibility: true,
+      schedules: null
     };
   },
   methods: {
-    resetDay: function resetDay() {
+    resetToDay: function resetToDay() {
       this.day = null;
+      this.month = null;
+      this.year = null;
+      this.schedule = null;
+      this.schedules = null;
+    },
+    resetToSchedule: function resetToSchedule() {
+      this.schedule = null;
+    },
+    setSchedule: function setSchedule(s) {
+      this.schedule = s;
+    },
+    getSchedules: function getSchedules() {
+      var date = this.day + '/' + this.month + '/' + this.year;
+      var vue = this;
+      axios.post("/admin/schedules/all", {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        date: date
+      }).then(function (response) {
+        vue.schedules = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    confirmScheduling: function confirmScheduling() {
+      var day = this.day;
+      var month = this.month;
+      var year = this.year;
+      var schedule = this.schedule;
+      var vue = this;
+      $.post("/admin/schedules", {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        date: day + '/' + month + '/' + year,
+        schedule: schedule
+      }, function (data, status) {
+        vue.resetToDay();
+      });
     }
   },
   mounted: function mounted() {},
@@ -2107,7 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
             nDays = new Date(year, month + 1, 0).getDate(),
             n = startDay;
 
-        for (var k = 0; k < 31; k++) {
+        for (var k = 0; k < 42; k++) {
           days[k].innerHTML = '';
           days[k].id = '';
           days[k].className = '';
@@ -2118,7 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
           n++;
         }
 
-        for (var j = 0; j < 31; j++) {
+        for (var j = 0; j < 42; j++) {
           if (days[j].innerHTML === "") {
             days[j].id = "disabled";
           } else if (j === day + startDay - 1) {
@@ -2149,9 +2189,13 @@ __webpack_require__.r(__webpack_exports__);
         selectedDay = new Date(year, month, o.innerHTML);
         this.drawHeader(o.innerHTML);
         this.setCookie('selected_day', 1);
-        console.log(vue.day);
-        vue.day = o.innerHTML;
-        console.log(vue.day);
+
+        if (o.innerHTML != '') {
+          vue.day = o.innerHTML;
+          vue.month = month + 1;
+          vue.year = year;
+          vue.getSchedules();
+        }
       };
 
       Calendar.prototype.preMonth = function () {
@@ -22996,7 +23040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.elegant-calencar {\n        width: 25em;\n        border: 1px solid #c9c9c9;\n        box-shadow: 0 0 5px #c9c9c9;\n        text-align: center;\n        position: relative;\n        margin: auto;\n}\n#header-calendar {\n        font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n        height: 14em;\n        background-color: #2a3246;\n        display: flex;\n        -ms-flex-wrap: wrap;\n}\n.pre-button, .next-button {\n        margin-top: 2em;\n        font-size: 3em;\n        transition: transform 0.5s;\n        cursor: pointer;\n        width: 1em;\n        height: 1em;\n        line-height: 1em;\n        color: #e66b6b;\n        border-radius: 50%;\n}\n.pre-button:hover, .next-button:hover {\n        transform: rotate(360deg);\n}\n.pre-button:active,.next-button:active{\n        transform: scale(0.7);\n}\n.pre-button {\n        margin: auto;\n}\n.next-button {\n        margin: auto;\n}\n\n        /*.head-info {\n            float: left;\n            width: 264px;\n            }*/\n.head-day {\n                margin-top: 30px;\n                font-size: 8em;\n                line-height: 1;\n                color: #fff;\n}\n.head-month {\n                margin-top: 20px;\n                font-size: 2em;\n                line-height: 1;\n                color: #fff;\n}\n#calendar {\n                height: 100%;\n                width: 100%;\n                margin: 0 auto;\n                background-color: white;\n}\n#calendar tr {\n                height: 2em;\n                line-height: 2em;\n}\nthead tr {\n                color: #e66b6b;\n                font-weight: 700;\n                text-transform: uppercase;\n}\ntbody tr {\n                color: #252a25;\n}\ntbody td{\n                cursor: default;\n                color: #2b2b2b;\n                height: 10px;\n                width: 26px;\n                font-size: 15px;\n                padding: 10px;\n                line-height: 26px;\n                text-align: center;\n                border-radius: 50%;\n                border: 2px solid transparent;\n                transition: all 250ms;\n}\n.selected {\n                color: #fff;\n                border-radius: 50%;\n                background-color: #a52a2af2;\n}\ntbody td:hover{\n                border-radius: 50%;\n                box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);\n}\ntbody td:active {\n                transform: scale(0.7);\n}\n#today {\n                background-color: #2A3246;\n                color: #fff;\n                font-family: serif;\n                border-radius: 50%;\n}\n#disabled {\n                cursor: default;\n                background: #fff0;\n}\n#disabled:hover {\n                background: #fff0;\n                color: #c9c9c9;\n}\n#reset {\n                display: block;\n                position: absolute;\n                right: 0.5em;\n                top: 0.5em;\n                transition: all 0.3s ease;\n}\n#reset:hover {\n                color: #e66b6b;\n                border-color: #e66b6b;\n}\n#reset:active{\n                transform: scale(0.8);\n}\nol, ul {\n                list-style: none;\n}\nblockquote, q {\n                quotes: none;\n}\nblockquote:before, blockquote:after,\n            q:before, q:after {\n                content: '';\n                content: none;\n}\ntable {\n                border-spacing: 2px;\n}\n.clearfix:before,\n            .clearfix:after {\n                content: \" \"; /* 1 */\n                display: table; /* 2 */\n}\n.clearfix:after {\n                clear: both;\n}\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n    *zoom: 1;\n}\n", ""]);
+exports.push([module.i, "\n.elegant-calencar {\n    width: 25em;\n    border: 1px solid #c9c9c9;\n    box-shadow: 0 0 5px #c9c9c9;\n    text-align: center;\n    position: relative;\n    margin: auto;\n}\n#header-calendar {\n    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    height: 14em;\n    background-color: #2a3246;\n    display: flex;\n    -ms-flex-wrap: wrap;\n}\n.pre-button, .next-button {\n    margin-top: 2em;\n    font-size: 3em;\n    transition: transform 0.5s;\n    cursor: pointer;\n    width: 1em;\n    height: 1em;\n    line-height: 1em;\n    color: #e66b6b;\n    border-radius: 50%;\n}\n.pre-button:hover, .next-button:hover {\n    transform: rotate(360deg);\n}\n.pre-button:active,.next-button:active{\n    transform: scale(0.7);\n}\n.pre-button {\n    margin: auto;\n}\n.next-button {\n    margin: auto;\n}\n.head-day {\n    margin-top: 30px;\n    font-size: 8em;\n    line-height: 1;\n    color: #fff;\n}\n.head-month {\n    margin-top: 20px;\n    font-size: 2em;\n    line-height: 1;\n    color: #fff;\n}\n#calendar {\n    height: 100%;\n    width: 100%;\n    margin: 0 auto;\n    background-color: white;\n}\n#calendar tr {\n    height: 2em;\n    line-height: 2em;\n}\nthead tr {\n    color: #e66b6b;\n    font-weight: 700;\n    text-transform: uppercase;\n}\ntbody tr {\n    color: #252a25;\n}\ntbody td{\n    cursor: default;\n    color: #2b2b2b;\n    height: 10px;\n    width: 26px;\n    font-size: 15px;\n    padding: 10px;\n    line-height: 26px;\n    text-align: center;\n    border-radius: 50%;\n    border: 2px solid transparent;\n    transition: all 250ms;\n}\ntbody td:hover{\n    border-radius: 50%;\n    box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);\n}\ntbody td:active {\n    transform: scale(0.7);\n}\n#today {\n    background-color: #2A3246;\n    color: #fff;\n    font-family: serif;\n    border-radius: 50%;\n}\n#disabled {\n    cursor: default;\n    background: #fff0;\n}\n#disabled:hover {\n    background: #fff0;\n    color: #c9c9c9;\n}\n#reset {\n    display: block;\n    position: absolute;\n    right: 0.5em;\n    top: 0.5em;\n    transition: all 0.3s ease;\n}\nol, ul {\n    list-style: none;\n}\nblockquote, q {\n    quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n    content: '';\n    content: none;\n}\ntable {\n    border-spacing: 2px;\n}\n.clearfix:before,\n.clearfix:after {\n    content: \" \"; /* 1 */\n    display: table; /* 2 */\n}\n.clearfix:after {\n    clear: both;\n}\n.clearfix {\n    *zoom: 1;\n}\n", ""]);
 
 // exports
 
@@ -121865,7 +121909,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", {}, [
     _c(
       "div",
       {
@@ -121893,7 +121937,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm.day != null
+    _vm.day != null && _vm.schedule == null
       ? _c("div", { staticClass: "elegant-calencar" }, [
           _c(
             "button",
@@ -121902,7 +121946,7 @@ var render = function() {
               attrs: { id: "reset" },
               on: {
                 click: function($event) {
-                  return _vm.resetDay()
+                  return _vm.resetToDay()
                 }
               }
             },
@@ -121910,8 +121954,87 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { attrs: { id: "header-calendar" } }, [
-            _c("h3", [_vm._v("Dia selecionado: ")]),
-            _vm._v(_vm._s(_vm.day) + "\n            \n        ")
+            _c("h3", { staticStyle: { margin: "auto", color: "white" } }, [
+              _vm._v("Dia selecionado: " + _vm._s(_vm.day))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("table", { attrs: { id: "calendar" } }, [
+            _c(
+              "tbody",
+              _vm._l(_vm.schedules, function(s) {
+                return _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    staticStyle: { margin: "10px" },
+                    on: {
+                      click: function($event) {
+                        return _vm.setSchedule(s)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(s.hour_start) + " | " + _vm._s(s.hour_end))]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.day != null && _vm.schedule != null
+      ? _c("div", { staticClass: "elegant-calencar" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "reset" },
+              on: {
+                click: function($event) {
+                  return _vm.resetToSchedule()
+                }
+              }
+            },
+            [_vm._v("Voltar")]
+          ),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "header-calendar" } }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-12", staticStyle: { margin: "auto" } },
+                [
+                  _c("h3", { staticStyle: { color: "white" } }, [
+                    _vm._v("Dia selecionado: " + _vm._s(_vm.day))
+                  ]),
+                  _vm._v(" "),
+                  _c("h3", { staticStyle: { color: "white" } }, [
+                    _vm._v(
+                      "Horário selecionado: " +
+                        _vm._s(_vm.schedule.hour_start) +
+                        " às " +
+                        _vm._s(_vm.schedule.hour_end)
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: {
+                      click: function($event) {
+                        return _vm.confirmScheduling()
+                      }
+                    }
+                  },
+                  [_vm._v("Confirmar")]
+                )
+              ])
+            ])
           ]),
           _vm._v(" "),
           _vm._m(2)
@@ -122028,7 +122151,37 @@ var staticRenderFns = [
           _c("td")
         ]),
         _vm._v(" "),
-        _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ])
       ])
     ])
   },
@@ -122036,75 +122189,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { attrs: { id: "calendar" } }, [
-      _c("tbody", [
-        _c("tr", [
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td")
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td")
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td")
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td")
-        ]),
-        _vm._v(" "),
-        _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])
-      ])
-    ])
+    return _c("table", { attrs: { id: "calendar" } }, [_c("tbody")])
   }
 ]
 render._withStripped = true
@@ -134310,6 +134395,8 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -134319,6 +134406,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
 
 Vue.component('calendario', __webpack_require__(/*! ./components/Calendario.vue */ "./resources/js/components/Calendario.vue")["default"]);
 /**

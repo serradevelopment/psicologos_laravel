@@ -6,7 +6,7 @@
 
 @section('body')
 <div class="wrapper">
-    <div class="main-header" data-background-color="blue">
+    <div class="main-header" style="background-color:#781e20">
         <!-- Logo Header -->
         <div class="logo-header">
 

@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div class="">
         <!-- CALENDÁRIO -->
         <div class="elegant-calencar"  v-show="day == null" style=" margin: auto">
             <button class="btn btn-primary" id="reset">Limpar</button>
@@ -71,62 +71,61 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="elegant-calencar" v-if="day != null">
-            <button class="btn btn-primary" @click="resetDay()" id="reset">Voltar</button>
+        <div class="elegant-calencar" v-if="day != null && schedule == null">
+            <button class="btn btn-primary" @click="resetToDay()" id="reset">Voltar</button>
             <div id="header-calendar">
-                <h3>Dia selecionado: </h3>{{day}}
-                
+                <h3 style="margin: auto; color: white;">Dia selecionado: {{day}}</h3>
+
             </div>
             <table id="calendar">
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <button v-for="s in schedules"  @click="setSchedule(s)" class="btn btn-secondary" style="margin: 10px">{{s.hour_start}} | {{s.hour_end}}</button>
                 </tbody>
             </table>
         </div>
+
+        <div class="elegant-calencar" v-if="day != null && schedule != null">
+            <button class="btn btn-primary" @click="resetToSchedule()" id="reset">Voltar</button>
+            <div id="header-calendar">
+                <div class="row">
+                    <div class="col-md-12" style="margin: auto">
+                        <h3 style=" color: white;">Dia selecionado: {{day}}</h3>
+                        <h3 style=" color: white;">Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</h3>
+
+                    </div>
+
+                    <div class="col-md-12">
+
+                        <button class="btn btn-success" @click="confirmScheduling()">Confirmar</button>
+
+                    </div>
+                </div>
+
+            </div>
+            <table id="calendar">
+                <tbody>
+                    <!-- <button v-for="s in schedules" class="btn btn-secondary" style="margin: 10px">{{s.hour_start}} | {{s.hour_end}}</button> -->
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </template>
 
@@ -134,12 +133,58 @@
     export default {
         data:function(){
             return {
-                day: null
+                day: null,
+                month: null,
+                year:null,
+                schedule: null,
+                disponibility: true,
+                schedules: null
             }
         },
         methods:{
-            resetDay(){
+            resetToDay(){
                 this.day = null;
+                this.month = null;
+                this.year = null;
+                this.schedule = null;
+                this.schedules = null;
+            },
+            resetToSchedule(){
+                this.schedule = null;
+            },
+            setSchedule(s){
+                this.schedule = s;
+            },
+            getSchedules(){
+                var date = this.day+'/'+this.month+'/'+this.year;
+                var vue = this;
+                axios.post("/admin/schedules/all", {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    date: date,
+                })
+                .then(function (response) {
+                    vue.schedules = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            },
+            confirmScheduling(){
+                var day = this.day;
+                var month = this.month;
+                var year = this.year;
+                var schedule = this.schedule;
+                var vue = this;
+                $.post("/admin/schedules",
+                {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    date: day+'/'+month+'/'+year,
+                    schedule: schedule
+                },
+                function(data, status){
+                    vue.resetToDay();
+                });
             }
         },
         mounted(){
@@ -194,7 +239,7 @@
                     nDays = new Date(year, month + 1, 0).getDate(),
 
                     n = startDay; 
-                    for(var k = 0; k <31; k++) {
+                    for(var k = 0; k <42; k++) {
                         days[k].innerHTML = '';
                         days[k].id = '';
                         days[k].className = '';
@@ -205,7 +250,7 @@
                         n++;
                     }
 
-                    for(var j = 0; j < 31; j++) {
+                    for(var j = 0; j < 42; j++) {
                         if(days[j].innerHTML === ""){
 
                             days[j].id = "disabled";
@@ -235,10 +280,13 @@
                     selectedDay = new Date(year, month, o.innerHTML);
                     this.drawHeader(o.innerHTML);
                     this.setCookie('selected_day', 1);
-                    console.log(vue.day)
-
-                    vue.day = o.innerHTML;
-                    console.log(vue.day)
+                    if(o.innerHTML != ''){
+                        vue.day = o.innerHTML;
+                        vue.month = month+1;
+                        vue.year = year;
+                        vue.getSchedules();
+                    }
+                    
                 };
 
                 Calendar.prototype.preMonth = function() {
@@ -370,142 +418,121 @@
         margin: auto;
     }
 
-        /*.head-info {
-            float: left;
-            width: 264px;
-            }*/
 
-            .head-day {
-                margin-top: 30px;
-                font-size: 8em;
-                line-height: 1;
-                color: #fff;
-            }
+    .head-day {
+        margin-top: 30px;
+        font-size: 8em;
+        line-height: 1;
+        color: #fff;
+    }
 
-            .head-month {
-                margin-top: 20px;
-                font-size: 2em;
-                line-height: 1;
-                color: #fff;
-            }
+    .head-month {
+        margin-top: 20px;
+        font-size: 2em;
+        line-height: 1;
+        color: #fff;
+    }
 
-            #calendar {
-                height: 100%;
-                width: 100%;
-                margin: 0 auto;
-                background-color: white;
-            }
+    #calendar {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+    }
 
-            #calendar tr {
-                height: 2em;
-                line-height: 2em;
-            }
+    #calendar tr {
+        height: 2em;
+        line-height: 2em;
+    }
 
-            thead tr {
-                color: #e66b6b;
-                font-weight: 700;
-                text-transform: uppercase;
-            }
+    thead tr {
+        color: #e66b6b;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
 
-            tbody tr {
-                color: #252a25;
-            }
+    tbody tr {
+        color: #252a25;
+    }
 
-            tbody td{
-                cursor: default;
-                color: #2b2b2b;
-                height: 10px;
-                width: 26px;
-                font-size: 15px;
-                padding: 10px;
-                line-height: 26px;
-                text-align: center;
-                border-radius: 50%;
-                border: 2px solid transparent;
-                transition: all 250ms;
-            }
+    tbody td{
+        cursor: default;
+        color: #2b2b2b;
+        height: 10px;
+        width: 26px;
+        font-size: 15px;
+        padding: 10px;
+        line-height: 26px;
+        text-align: center;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        transition: all 250ms;
+    }
 
-            .selected {
-                color: #fff;
-                border-radius: 50%;
-                background-color: #a52a2af2;
-            }
 
-            tbody td:hover{
-                border-radius: 50%;
-                box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);
-            }
 
-            tbody td:active {
-                -webkit-transform: scale(0.7);
-                -ms-transform: scale(0.7);
-                transform: scale(0.7);
-            }
+    tbody td:hover{
+        border-radius: 50%;
+        box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);
+    }
 
-            #today {
-                background-color: #2A3246;
-                color: #fff;
-                font-family: serif;
-                border-radius: 50%;
-            }
+    tbody td:active {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        transform: scale(0.7);
+    }
 
-            #disabled {
-                cursor: default;
-                background: #fff0;
-            }
+    #today {
+        background-color: #2A3246;
+        color: #fff;
+        font-family: serif;
+        border-radius: 50%;
+    }
 
-            #disabled:hover {
-                background: #fff0;
-                color: #c9c9c9;
-            }
+    #disabled {
+        cursor: default;
+        background: #fff0;
+    }
 
-            #reset {
-                display: block;
-                position: absolute;
-                right: 0.5em;
-                top: 0.5em;
-                transition: all 0.3s ease;
-            }
+    #disabled:hover {
+        background: #fff0;
+        color: #c9c9c9;
+    }
 
-            #reset:hover {
-                color: #e66b6b;
-                border-color: #e66b6b;
-            }
+    #reset {
+        display: block;
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+        transition: all 0.3s ease;
+    }
 
-            #reset:active{
-                -webkit-transform: scale(0.8);
-                -ms-transform: scale(0.8);
-                transform: scale(0.8);     
-            }
 
-            ol, ul {
-                list-style: none;
-            }
-            blockquote, q {
-                quotes: none;
-            }
-            blockquote:before, blockquote:after,
-            q:before, q:after {
-                content: '';
-                content: none;
-            }
-            table {
-                border-spacing: 2px;
-            }
-            .clearfix:before,
-            .clearfix:after {
-                content: " "; /* 1 */
-                display: table; /* 2 */
-            }
 
-            .clearfix:after {
-                clear: both;
-            }
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
- .clearfix {
-    *zoom: 1;
-}
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+    table {
+        border-spacing: 2px;
+    }
+    .clearfix:before,
+    .clearfix:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1;
+    }
 </style>

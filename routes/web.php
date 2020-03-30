@@ -26,6 +26,13 @@ Auth::routes();
 Route::namespace('Admin')->prefix('admin')->group(function(){
 	Route::get('/','HomeController@index')->name('home');
 	\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
+
+
+	// schedules
+	Route::post('/schedules/all','SchedulesController@allAvailable');
+
+	Route::resource('/schedules','SchedulesController');
+	// Route::post('/schedules/all','SchedulesController@all');
 });
 
 

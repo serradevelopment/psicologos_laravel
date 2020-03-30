@@ -17,6 +17,7 @@ class CreateSchedulesHasUsersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('schedules_id');
+            $table->string('date');
 
             $table->foreign('users_id')
             ->references('id')->on('users')
