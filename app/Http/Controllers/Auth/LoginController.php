@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Arr;
 class LoginController extends Controller
 {
     /*
@@ -41,7 +42,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $credentials = $request->only($this->username(), 'password');
-        return array_add($credentials, 'locked', false);
+        return Arr::add($credentials, 'locked', false);
     }
 
     public function logout(Request $request)

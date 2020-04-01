@@ -38,6 +38,3 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 	Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
 	// Route::post('/schedules/all','SchedulesController@all');
 });
-
-
-\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
