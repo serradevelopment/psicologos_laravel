@@ -2067,10 +2067,422 @@ __webpack_require__.r(__webpack_exports__);
     getSchedules: function getSchedules() {
       var date = this.day + '/' + this.month + '/' + this.year;
       var vue = this;
-      axios.post("/admin/schedules/all", {
+      axios.post("/admin/schedules/allAvailable", {
         _token: $('meta[name="csrf-token"]').attr('content'),
         date: date
       }).then(function (response) {
+        vue.schedules = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    confirmScheduling: function confirmScheduling() {
+      var day = this.day;
+      var month = this.month;
+      var year = this.year;
+      var schedule = this.schedule;
+      var vue = this;
+      $.post("/admin/schedules", {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        date: day + '/' + month + '/' + year,
+        schedule: schedule
+      }, function (data, status) {
+        vue.resetToDay();
+      });
+    }
+  },
+  mounted: function mounted() {},
+  created: function created() {
+    var vue = this;
+    document.addEventListener('DOMContentLoaded', function () {
+      var today = new Date(),
+          year = today.getFullYear(),
+          month = today.getMonth(),
+          monthTag = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+          day = today.getDate(),
+          days = document.getElementsByTagName('td'),
+          selectedDay,
+          setDate,
+          daysLen = days.length;
+
+      function Calendar(selector, options) {
+        this.options = options;
+        this.draw();
+      }
+
+      Calendar.prototype.draw = function () {
+        this.getCookie('selected_day');
+        this.getOptions();
+        this.drawDays();
+        var that = this,
+            reset = document.getElementById('reset'),
+            pre = document.getElementsByClassName('pre-button'),
+            next = document.getElementsByClassName('next-button');
+        pre[0].addEventListener('click', function () {
+          that.preMonth();
+        });
+        next[0].addEventListener('click', function () {
+          that.nextMonth();
+        });
+        reset.addEventListener('click', function () {
+          that.reset();
+        });
+
+        while (daysLen--) {
+          days[daysLen].addEventListener('click', function () {
+            that.clickDay(this);
+          });
+        }
+      };
+
+      Calendar.prototype.drawHeader = function (e) {
+        var headDay = document.getElementsByClassName('head-day'),
+            headMonth = document.getElementsByClassName('head-month');
+        e ? headDay[0].innerHTML = e : headDay[0].innerHTML = day;
+        headMonth[0].innerHTML = monthTag[month] + " - " + year;
+      };
+
+      Calendar.prototype.drawDays = function () {
+        var startDay = new Date(year, month, 1).getDay(),
+            nDays = new Date(year, month + 1, 0).getDate(),
+            n = startDay;
+
+        for (var k = 0; k < 42; k++) {
+          days[k].innerHTML = '';
+          days[k].id = '';
+          days[k].className = '';
+        }
+
+        for (var i = 1; i <= nDays; i++) {
+          days[n].innerHTML = i;
+          n++;
+        }
+
+        for (var j = 0; j < 42; j++) {
+          if (days[j].innerHTML === "") {
+            days[j].id = "disabled";
+          } else if (j === day + startDay - 1) {
+            if (this.options && month === setDate.getMonth() && year === setDate.getFullYear() || !this.options && month === today.getMonth() && year === today.getFullYear()) {
+              this.drawHeader(day);
+              days[j].id = "today";
+            }
+          }
+
+          if (selectedDay) {
+            if (j === selectedDay.getDate() + startDay - 1 && month === selectedDay.getMonth() && year === selectedDay.getFullYear()) {
+              days[j].className = "selected";
+              this.drawHeader(selectedDay.getDate());
+            }
+          }
+        }
+      };
+
+      Calendar.prototype.clickDay = function (o) {
+        var selected = document.getElementsByClassName("selected"),
+            len = selected.length;
+
+        if (len !== 0) {
+          selected[0].className = "";
+        }
+
+        o.className = "selected";
+        selectedDay = new Date(year, month, o.innerHTML);
+        this.drawHeader(o.innerHTML);
+        this.setCookie('selected_day', 1);
+
+        if (o.innerHTML != '') {
+          vue.day = o.innerHTML;
+          vue.month = month + 1;
+          vue.year = year;
+          vue.getSchedules();
+        }
+      };
+
+      Calendar.prototype.preMonth = function () {
+        if (month < 1) {
+          month = 11;
+          year = year - 1;
+        } else {
+          month = month - 1;
+        }
+
+        this.drawHeader(1);
+        this.drawDays();
+      };
+
+      Calendar.prototype.nextMonth = function () {
+        if (month >= 11) {
+          month = 0;
+          year = year + 1;
+        } else {
+          month = month + 1;
+        }
+
+        this.drawHeader(1);
+        this.drawDays();
+      };
+
+      Calendar.prototype.getOptions = function () {
+        if (this.options) {
+          var sets = this.options.split('-');
+          setDate = new Date(sets[0], sets[1] - 1, sets[2]);
+          day = setDate.getDate();
+          year = setDate.getFullYear();
+          month = setDate.getMonth();
+        }
+      };
+
+      Calendar.prototype.reset = function () {
+        month = today.getMonth();
+        year = today.getFullYear();
+        day = today.getDate();
+        this.options = undefined;
+        this.drawDays();
+      };
+
+      Calendar.prototype.setCookie = function (name, expiredays) {
+        if (expiredays) {
+          var date = new Date();
+          date.setTime(date.getTime() + expiredays * 24 * 60 * 60 * 1000);
+          var expires = "; expires=" + date.toGMTString();
+        } else {
+          var expires = "";
+        }
+
+        document.cookie = name + "=" + selectedDay + expires + "; path=/";
+      };
+
+      Calendar.prototype.getCookie = function (name) {
+        if (document.cookie.length) {
+          var arrCookie = document.cookie.split(';'),
+              nameEQ = name + "=";
+
+          for (var i = 0, cLen = arrCookie.length; i < cLen; i++) {
+            var c = arrCookie[i];
+
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1, c.length);
+            }
+
+            if (c.indexOf(nameEQ) === 0) {
+              selectedDay = new Date(c.substring(nameEQ.length, c.length));
+            }
+          }
+        }
+      };
+
+      var calendar = new Calendar();
+    }, false);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      day: null,
+      month: null,
+      year: null,
+      schedule: null,
+      users: [],
+      schedules: null
+    };
+  },
+  methods: {
+    resetToDay: function resetToDay() {
+      this.day = null;
+      this.month = null;
+      this.year = null;
+      this.schedule = null;
+      this.schedules = null;
+    },
+    resetToSchedule: function resetToSchedule() {
+      this.schedule = null;
+    },
+    setSchedule: function setSchedule(s) {
+      this.schedule = s;
+      var date = this.day + '/' + this.month + '/' + this.year;
+      var vue = this;
+      axios.post("/admin/schedules_users/all_in_date_selected", {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        date: date,
+        schedule: s
+      }).then(function (response) {
+        vue.users = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getSchedules: function getSchedules() {
+      var date = this.day + '/' + this.month + '/' + this.year;
+      var vue = this;
+      axios.get("/admin/schedules/all").then(function (response) {
         vue.schedules = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -23040,7 +23452,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.elegant-calencar {\n    width: 25em;\n    border: 1px solid #c9c9c9;\n    box-shadow: 0 0 5px #c9c9c9;\n    text-align: center;\n    position: relative;\n    margin: auto;\n}\n#header-calendar {\n    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    height: 14em;\n    background-color: #2a3246;\n    display: flex;\n    -ms-flex-wrap: wrap;\n}\n.pre-button, .next-button {\n    margin-top: 2em;\n    font-size: 3em;\n    transition: transform 0.5s;\n    cursor: pointer;\n    width: 1em;\n    height: 1em;\n    line-height: 1em;\n    color: #e66b6b;\n    border-radius: 50%;\n}\n.pre-button:hover, .next-button:hover {\n    transform: rotate(360deg);\n}\n.pre-button:active,.next-button:active{\n    transform: scale(0.7);\n}\n.pre-button {\n    margin: auto;\n}\n.next-button {\n    margin: auto;\n}\n.head-day {\n    margin-top: 30px;\n    font-size: 8em;\n    line-height: 1;\n    color: #fff;\n}\n.head-month {\n    margin-top: 20px;\n    font-size: 2em;\n    line-height: 1;\n    color: #fff;\n}\n#calendar {\n    height: 100%;\n    width: 100%;\n    margin: 0 auto;\n    background-color: white;\n}\n#calendar tr {\n    height: 2em;\n    line-height: 2em;\n}\nthead tr {\n    color: #e66b6b;\n    font-weight: 700;\n    text-transform: uppercase;\n}\ntbody tr {\n    color: #252a25;\n}\ntbody td{\n    cursor: default;\n    color: #2b2b2b;\n    height: 10px;\n    width: 26px;\n    font-size: 15px;\n    padding: 10px;\n    line-height: 26px;\n    text-align: center;\n    border-radius: 50%;\n    border: 2px solid transparent;\n    transition: all 250ms;\n}\ntbody td:hover{\n    border-radius: 50%;\n    box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);\n}\ntbody td:active {\n    transform: scale(0.7);\n}\n#today {\n    background-color: #2A3246;\n    color: #fff;\n    font-family: serif;\n    border-radius: 50%;\n}\n#disabled {\n    cursor: default;\n    background: #fff0;\n}\n#disabled:hover {\n    background: #fff0;\n    color: #c9c9c9;\n}\n#reset {\n    display: block;\n    position: absolute;\n    right: 0.5em;\n    top: 0.5em;\n    transition: all 0.3s ease;\n}\nol, ul {\n    list-style: none;\n}\nblockquote, q {\n    quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n    content: '';\n    content: none;\n}\ntable {\n    border-spacing: 2px;\n}\n.clearfix:before,\n.clearfix:after {\n    content: \" \"; /* 1 */\n    display: table; /* 2 */\n}\n.clearfix:after {\n    clear: both;\n}\n.clearfix {\n    *zoom: 1;\n}\n", ""]);
+exports.push([module.i, "\n.elegant-calencar {\n    width: 25em;\n    border: 1px solid #c9c9c9;\n    box-shadow: 0 0 5px #c9c9c9;\n    text-align: center;\n    position: relative;\n    margin: auto;\n}\n#header-calendar {\n    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    height: 14em;\n    background-color: #2a3246;\n    display: flex;\n    -ms-flex-wrap: wrap;\n}\n.pre-button, .next-button {\n    margin-top: 2em;\n    font-size: 3em;\n    transition: transform 0.5s;\n    cursor: pointer;\n    width: 1em;\n    height: 1em;\n    line-height: 1em;\n    color: #e66b6b;\n    border-radius: 50%;\n}\n.pre-button:hover, .next-button:hover {\n    transform: rotate(360deg);\n}\n.pre-button:active,.next-button:active{\n    transform: scale(0.7);\n}\n.pre-button {\n    margin: auto;\n}\n.next-button {\n    margin: auto;\n}\n.head-day {\n    margin-top: 30px;\n    font-size: 8em;\n    line-height: 1;\n    color: #fff;\n}\n.head-month {\n    margin-top: 20px;\n    font-size: 2em;\n    line-height: 1;\n    color: #fff;\n}\n#calendar {\n    height: 100%;\n    width: 100%;\n    margin: 0 auto;\n    background-color: white;\n}\n#calendar tr {\n    height: 2em;\n    line-height: 2em;\n}\n#calendar thead tr {\n    color: #e66b6b;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n#calendar tbody tr {\n    color: #252a25;\n}\n#calendar tbody tr td{\n    cursor: default;\n    color: #2b2b2b;\n    height: 10px;\n    width: 26px;\n    font-size: 15px;\n    padding: 10px;\n    line-height: 26px;\n    text-align: center;\n    border-radius: 50%;\n    border: 2px solid transparent;\n    transition: all 250ms;\n}\n#calendar tbody td:hover{\n    border-radius: 50%;\n    box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);\n}\n#calendar tbody td:active {\n    transform: scale(0.7);\n}\n#today {\n    background-color: #2A3246;\n    color: #fff;\n    font-family: serif;\n    border-radius: 50%;\n}\n#disabled {\n    cursor: default;\n    background: #fff0;\n}\n#disabled:hover {\n    background: #fff0;\n    color: #c9c9c9;\n}\n#reset {\n    display: block;\n    position: absolute;\n    right: 0.5em;\n    top: 0.5em;\n    transition: all 0.3s ease;\n}\nol, ul {\n    list-style: none;\n}\nblockquote, q {\n    quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n    content: '';\n    content: none;\n}\ntable {\n    border-spacing: 2px;\n}\n.clearfix:before,\n.clearfix:after {\n    content: \" \"; /* 1 */\n    display: table; /* 2 */\n}\n.clearfix:after {\n    clear: both;\n}\n.clearfix {\n    *zoom: 1;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.elegant-calencar {\n    width: 25em;\n    border: 1px solid #c9c9c9;\n    box-shadow: 0 0 5px #c9c9c9;\n    text-align: center;\n    position: relative;\n    margin: auto;\n}\n#header-calendar {\n    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    height: 14em;\n    background-color: #2a3246;\n    display: flex;\n    -ms-flex-wrap: wrap;\n}\n.pre-button, .next-button {\n    margin-top: 2em;\n    font-size: 3em;\n    transition: transform 0.5s;\n    cursor: pointer;\n    width: 1em;\n    height: 1em;\n    line-height: 1em;\n    color: #e66b6b;\n    border-radius: 50%;\n}\n.pre-button:hover, .next-button:hover {\n    transform: rotate(360deg);\n}\n.pre-button:active,.next-button:active{\n    transform: scale(0.7);\n}\n.pre-button {\n    margin: auto;\n}\n.next-button {\n    margin: auto;\n}\n.head-day {\n    margin-top: 30px;\n    font-size: 8em;\n    line-height: 1;\n    color: #fff;\n}\n.head-month {\n    margin-top: 20px;\n    font-size: 2em;\n    line-height: 1;\n    color: #fff;\n}\n#calendar {\n    height: 100%;\n    width: 100%;\n    margin: 0 auto;\n    background-color: white;\n}\n#calendar tr {\n    height: 2em;\n    line-height: 2em;\n}\n#calendar thead tr {\n    color: #e66b6b;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n#calendar tbody tr {\n    color: #252a25;\n}\n#calendar tbody tr td{\n    cursor: default;\n    color: #2b2b2b;\n    height: 10px;\n    width: 26px;\n    font-size: 15px;\n    padding: 10px;\n    line-height: 26px;\n    text-align: center;\n    border-radius: 50%;\n    border: 2px solid transparent;\n    transition: all 250ms;\n}\n#calendar tbody td:hover{\n    border-radius: 50%;\n    box-shadow: 0 2px 10px RGBA(255, 50, 120, .9);\n}\n#calendar tbody td:active {\n    transform: scale(0.7);\n}\n#today {\n    background-color: #2A3246;\n    color: #fff;\n    font-family: serif;\n    border-radius: 50%;\n}\n#disabled {\n    cursor: default;\n    background: #fff0;\n}\n#disabled:hover {\n    background: #fff0;\n    color: #c9c9c9;\n}\n#reset {\n    display: block;\n    position: absolute;\n    right: 0.5em;\n    top: 0.5em;\n    transition: all 0.3s ease;\n}\nol, ul {\n    list-style: none;\n}\nblockquote, q {\n    quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n    content: '';\n    content: none;\n}\ntable {\n    border-spacing: 2px;\n}\n.clearfix:before,\n.clearfix:after {\n    content: \" \"; /* 1 */\n    display: table; /* 2 */\n}\n.clearfix:after {\n    clear: both;\n}\n.clearfix {\n    *zoom: 1;\n}\n", ""]);
 
 // exports
 
@@ -100753,6 +101184,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarioPaciente.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -122198,6 +122659,359 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.day == null && _vm.users.length == 0,
+            expression: "day == null  && users.length == 0"
+          }
+        ],
+        staticClass: "elegant-calencar",
+        staticStyle: { margin: "auto" }
+      },
+      [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { id: "reset" } },
+          [_vm._v("Limpar")]
+        ),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    ),
+    _vm._v(" "),
+    _vm.day != null && _vm.schedule == null && _vm.users.length == 0
+      ? _c("div", { staticClass: "elegant-calencar" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "reset" },
+              on: {
+                click: function($event) {
+                  return _vm.resetToDay()
+                }
+              }
+            },
+            [_vm._v("Voltar")]
+          ),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "header-calendar" } }, [
+            _c("h3", { staticStyle: { margin: "auto", color: "white" } }, [
+              _vm._v("Dia selecionado: " + _vm._s(_vm.day))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("table", { attrs: { id: "calendar" } }, [
+            _c(
+              "tbody",
+              _vm._l(_vm.schedules, function(s) {
+                return _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    staticStyle: { margin: "10px" },
+                    on: {
+                      click: function($event) {
+                        return _vm.setSchedule(s)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(s.hour_start) + " | " + _vm._s(s.hour_end))]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.day != null && _vm.schedule != null
+      ? _c("div", { staticClass: "elegant-calencar" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "reset" },
+              on: {
+                click: function($event) {
+                  return _vm.resetToSchedule()
+                }
+              }
+            },
+            [_vm._v("Voltar")]
+          ),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "header-calendar" } }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-12", staticStyle: { margin: "auto" } },
+                [
+                  _c("h3", { staticStyle: { color: "white" } }, [
+                    _vm._v("Dia selecionado: " + _vm._s(_vm.day))
+                  ]),
+                  _vm._v(" "),
+                  _c("h3", { staticStyle: { color: "white" } }, [
+                    _vm._v(
+                      "Horário selecionado: " +
+                        _vm._s(_vm.schedule.hour_start) +
+                        " às " +
+                        _vm._s(_vm.schedule.hour_end)
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("table", { attrs: { id: "calendar" } }, [
+            _vm.users.length != 0
+              ? _c(
+                  "tbody",
+                  _vm._l(_vm.users, function(u) {
+                    return _c(
+                      "div",
+                      {
+                        staticClass: "container",
+                        staticStyle: {
+                          "border-radius": "10px",
+                          "box-shadow": "1px 1px 10px 2px"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _vm._m(2, true),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-8" }, [
+                            _c("h5", [_vm._v(_vm._s(u.name))]),
+                            _vm._v(" "),
+                            _c("span", [
+                              _c("span", { staticClass: "text-muted" }, [
+                                _vm._v("Whatsapp: " + _vm._s(u.whatsapp))
+                              ]),
+                              _c("br")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", [
+                              _c("span", { staticClass: "text-muted" }, [
+                                _vm._v("CRP: " + _vm._s(u.crp))
+                              ]),
+                              _c("br")
+                            ]),
+                            _vm._v(" "),
+                            _c("button", { staticClass: "btn btn-info" }, [
+                              _vm._v("Escolher")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _c("tbody", [
+                  _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._v(
+                      "Nenhum Psicólogo disponível para o horário selecionado"
+                    )
+                  ])
+                ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "header-calendar" } }, [
+      _c("div", { staticClass: "col-md-2 pre-button" }, [
+        _c("i", { staticClass: "fas fa-angle-left" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "head-day" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "head-month" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 next-button" }, [
+        _c("i", { staticClass: "fas fa-angle-right" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { attrs: { id: "calendar" } }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("Dom")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Seg")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Ter")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Qua")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Qui")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Sex")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Sáb")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("img", {
+        staticStyle: {
+          "vertical-align": "middle",
+          "border-style": "none",
+          width: "60px",
+          height: "60px",
+          "box-shadow": "1px 1px 5px 1px",
+          "border-radius": "50%"
+        },
+        attrs: { src: "/img/demos/app-landing/product/psicologo.png" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -134409,6 +135223,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["d
 
 
 Vue.component('calendario', __webpack_require__(/*! ./components/Calendario.vue */ "./resources/js/components/Calendario.vue")["default"]);
+Vue.component('calendario-paciente', __webpack_require__(/*! ./components/CalendarioPaciente.vue */ "./resources/js/components/CalendarioPaciente.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -134550,6 +135365,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendario_vue_vue_type_template_id_706868e2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendario_vue_vue_type_template_id_706868e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CalendarioPaciente.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/CalendarioPaciente.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalendarioPaciente.vue?vue&type=template&id=58242ba0& */ "./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0&");
+/* harmony import */ var _CalendarioPaciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalendarioPaciente.vue?vue&type=script&lang=js& */ "./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CalendarioPaciente.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CalendarioPaciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CalendarioPaciente.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarioPaciente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarioPaciente.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarioPaciente.vue?vue&type=template&id=58242ba0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalendarioPaciente.vue?vue&type=template&id=58242ba0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarioPaciente_vue_vue_type_template_id_58242ba0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

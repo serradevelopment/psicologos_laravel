@@ -21,6 +21,7 @@ const axios = require('axios').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('calendario', require('./components/Calendario.vue').default);
+Vue.component('calendario-paciente', require('./components/CalendarioPaciente.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

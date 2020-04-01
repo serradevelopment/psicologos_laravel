@@ -30,6 +30,13 @@ class SchedulesController extends Controller
         return response($schedules);
     }
 
+    public function all()
+    {
+        $schedules = Schedule::all();
+
+        return response($schedules);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

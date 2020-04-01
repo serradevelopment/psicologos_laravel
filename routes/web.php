@@ -29,9 +29,13 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 
 
 	// schedules
-	Route::post('/schedules/all','SchedulesController@allAvailable');
-
+	Route::post('/schedules/allAvailable','SchedulesController@allAvailable');
+	Route::get('/schedules/all','SchedulesController@all');
 	Route::resource('/schedules','SchedulesController');
+
+
+	Route::delete('/schedules_users/{schedule}','SchedulesUsersController@destroy')->name('schedules_users.destroy');
+	Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
 	// Route::post('/schedules/all','SchedulesController@all');
 });
 

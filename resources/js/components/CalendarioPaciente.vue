@@ -1,7 +1,7 @@
 <template >
     <div class="">
         <!-- CALENDÁRIO -->
-        <div class="elegant-calencar"  v-show="day == null" style=" margin: auto">
+        <div class="elegant-calencar"  v-show="day == null  && users.length == 0" style=" margin: auto">
             <button class="btn btn-primary" id="reset">Limpar</button>
             <div id="header-calendar">
 
@@ -88,7 +88,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="elegant-calencar" v-if="day != null && schedule == null">
+        <div class="elegant-calencar" v-if="day != null && schedule == null  && users.length == 0">
             <button class="btn btn-primary" @click="resetToDay()" id="reset">Voltar</button>
             <div id="header-calendar">
                 <h3 style="margin: auto; color: white;">Dia selecionado: {{day}}</h3>
@@ -111,18 +111,43 @@
 
                     </div>
 
-                    <div class="col-md-12">
+                   <!--  <div class="col-md-12">
 
                         <button class="btn btn-success" @click="confirmScheduling()">Confirmar</button>
 
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
             <table id="calendar">
-                <tbody>
-                    <!-- <button v-for="s in schedules" class="btn btn-secondary" style="margin: 10px">{{s.hour_start}} | {{s.hour_end}}</button> -->
+                <tbody v-if="users.length != 0">
+
+                    <div class="container" v-for="u in users" style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img style="vertical-align: middle;
+                                border-style: none;
+                                width: 60px;
+                                height: 60px;
+                                box-shadow: 1px 1px 5px 1px;
+                                border-radius: 50%;" src="/img/demos/app-landing/product/psicologo.png">
+                            </div>
+                            <div class="col-md-8">
+                                <h5>{{u.name}}</h5>
+                                <span> <span class="text-muted">Whatsapp: {{u.whatsapp}}</span><br/></span>
+                                <span> <span class="text-muted">CRP: {{u.crp}}</span><br/></span>
+                                <button class="btn btn-info">Escolher</button>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </tbody>
+
+                <tbody v-else>
+                    <div class="alert alert-danger">Nenhum Psicólogo disponível para o horário selecionado</div>
+                </tbody>
+
             </table>
         </div>
 
@@ -137,7 +162,7 @@
                 month: null,
                 year:null,
                 schedule: null,
-                disponibility: true,
+                users: [],
                 schedules: null
             }
         },
@@ -154,14 +179,24 @@
             },
             setSchedule(s){
                 this.schedule = s;
+                var date = this.day+'/'+this.month+'/'+this.year;
+                var vue = this;
+                axios.post("/admin/schedules_users/all_in_date_selected", {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    date: date,
+                    schedule: s
+                })
+                .then(function (response) {
+                    vue.users = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
             getSchedules(){
                 var date = this.day+'/'+this.month+'/'+this.year;
                 var vue = this;
-                axios.post("/admin/schedules/allAvailable", {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    date: date,
-                })
+                axios.get("/admin/schedules/all")
                 .then(function (response) {
                     vue.schedules = response.data;
                 })

@@ -16,8 +16,14 @@ class HomeController extends Controller
 
 	public function index()
 	{
+		$mySchedules = DB::select("SELECT  sh.id,s.hour_start,s.hour_end,u.name, sh.date FROM  schedules_has_users sh 
+			join schedules s on(s.id = sh.schedules_id)
+			join users u on(u.id = sh.users_id)
+			where sh.users_id = ?", [auth()->user()->id]);
+		
 		return view('admin.home',[
-			'schedules'	=>	json_encode(Schedule::all())
+			'schedules'		=>	Schedule::all(),
+			'mySchedules'	=> $mySchedules
 		]);
 	}
 }

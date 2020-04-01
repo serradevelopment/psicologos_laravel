@@ -35,73 +35,47 @@
 
 <div class="row" id="app">
 	<div class="col-md-6">
-		<calendario :schedules="{{$schedules}}"></calendario>
+		<calendario :schedules="{{json_encode($schedules)}}"></calendario>
 	</div>
 	<div class="col-md-6">
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-hover" id="users-list">
+					<table class="table table-hover" id="my-schedules-list">
 						<thead>
 							<tr>
-								<th>Nome</th>
-								<th>E-mail</th>
-								<th>Perfil</th>
+								<th>Data</th>
+								<th>Horário</th>
+								<th>Status</th>
 								<th data-orderable="false"></th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($users as $u)
-							@php
-							$class = '';
-
-							if ($u->locked) {
-							$class = 'text-muted';
-						}
-						@endphp
-
-						<tr class="{{ $class }}">
-							<td>{{ $u->name }}</td>
-							<td>{{ $u->email }}</td>
-							<td>{{ $u->role_string }}</td>
-							<td>
-								<div class="table-actions">
-									@can('edit', $u)
-									<a href="{{ route('users.edit', ['user' => $u]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil-alt"></i> Editar</a>
-									@endcan
-
-									@if (!$u->locked)
-									@can('block', $u)
-									@if ($u->id != Auth::user()->id)
-									<a href="{{ route('users.block', ['user' => $u]) }}" class="btn btn-default btn-sm confirmable"><i class="fa fa-lock"></i> Bloquear</a>
-									@endif
-									@endcan
-									@else
-									@can('unblock', $u)
-									@if ($u->id != Auth::user()->id)
-									<a href="{{ route('users.unblock', ['user' => $u]) }}" class="btn btn-default btn-sm confirmable"><i class="fa fa-lock-open"></i> Desbloquear</a>
-									@endif
-									@endcan
-									@endif
-
-									@can('destroy', $u)
-									@if ($u->id != Auth::user()->id)
-									{{ Html::deleteLink('Excluir', route('users.destroy', ['user' => $u]), ['button_class' => 'btn btn-danger btn-sm confirmable', 'icon' => 'trash']) }}
-									@endif
-									@endcan
-								</div>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
+							@foreach($mySchedules as $my)
+							<tr>
+								<td>{{$my->date}}</td>
+								<td>{{$my->hour_start}} às {{$my->hour_end}}</td>
+								<td><span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="Data disponibilizada, mas nenhum paciente agendou.">Disponível</span></td>
+								<td>
+									<form action="{{route('schedules_users.destroy',['schedule'=>$my->id])}}" method="POST">
+										<input type="hidden" name="_method" value="DELETE">
+										<input type="hidden" name="_token" value="{{csrf_token()}}">
+										<button class="btn btn-danger btn-sm confirmable" type="submit"><i class="fa fa-trash"></i></button>
+									</form>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
 @stop
 
 @section('js')
-{{-- Seus scripts específicos de página aqui --}}
+<script type="text/javascript">
+	$("#my-schedules-list").DataTable();
+</script>
 @endsection

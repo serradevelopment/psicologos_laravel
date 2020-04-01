@@ -310,7 +310,7 @@
 						</section>
 					</div>
 					<div class="col-md-6" style="    background-color: #781e20;"  data-appear-animation="fadeInRight" data-appear-animation-delay="3000" data-plugin-options="{'accY': 200}">
-						<calendario></calendario>
+						<calendario-paciente></calendario-paciente>
 					</div>
 				</div>
 			</div>
