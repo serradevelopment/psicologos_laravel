@@ -1,0 +1,70 @@
+<template>
+	<div class="elegant-calencar" v-if="day != null && schedule != null && user == null">
+		<button class="btn btn-primary" @click="$store.commit('resetToDay')" id="reset">Voltar</button>
+		<div id="header-calendar">
+			<div class="row">
+				<div class="col-md-12" style="margin: auto">
+					<h3 style=" color: white;">Dia selecionado: {{day}}</h3>
+					<h3 style=" color: white;">Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</h3>
+
+				</div>
+			</div>
+
+		</div>
+		<table id="calendar">
+			<tbody v-if="users.length != 0">
+
+				<div class="container" v-for="u in users" style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;">
+					<div class="row">
+						<div class="col-md-4">
+							<img style="vertical-align: middle;
+							border-style: none;
+							width: 60px;
+							height: 60px;
+							box-shadow: 1px 1px 5px 1px;
+							border-radius: 50%;" src="/img/demos/app-landing/product/psicologo.png">
+						</div>
+						<div class="col-md-8">
+							<h5>{{u.name}}</h5>
+							<span> <span class="text-muted">CRP: {{u.crp}}</span><br/></span>
+							<button class="btn btn-info" @click="$store.commit('setUser',u)">Escolher</button>
+						</div>
+
+					</div>
+				</div>
+
+			</tbody>
+
+			<tbody v-else>
+				<div class="alert alert-danger">Nenhum Psicólogo disponível para o horário selecionado</div>
+			</tbody>
+
+		</table>
+	</div>
+</template>
+
+<script>
+	export default {
+		computed:{
+			day: function(){
+				return this.$store.state.day;
+			},
+			schedule: function(){
+				return this.$store.state.schedule;
+			},
+			user: function(){
+				return this.$store.state.user;
+			},
+			users: function(){
+				return this.$store.state.users;
+			},
+			schedules: function(){
+				return this.$store.state.schedules;
+			}
+		},
+		mounted() {
+			//
+		}
+	}
+</script>
+

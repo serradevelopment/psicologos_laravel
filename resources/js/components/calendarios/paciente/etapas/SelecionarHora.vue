@@ -1,6 +1,6 @@
 <template>
 	<div class="elegant-calencar" v-if="day != null && schedule == null  && users.length == 0 && user == null">
-		<button class="btn btn-primary" @click="resetToDay()" id="reset">Voltar</button>
+		<button class="btn btn-primary" @click="$store.commit('resetToDay')" id="reset">Voltar</button>
 		<div id="header-calendar">
 			<h3 style="margin: auto; color: white;">Dia selecionado: {{day}}</h3>
 
@@ -31,10 +31,9 @@
             schedules: function(){
             	return this.$store.state.schedules;
             }
-
 		},
 		mounted() {
-			console.log('Component mounted.')
+			//
 		}
 	}
 </script>

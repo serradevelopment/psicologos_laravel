@@ -202,7 +202,7 @@
                         vuex.state.year = year;
                         vuex.commit('getSchedules');
                     }
-                    
+
                 };
 
                 Calendar.prototype.preMonth = function() {
@@ -273,14 +273,8 @@
                     }
                 };
                 var calendar = new Calendar();
-
-
             }, false);
 },
-mounted(){
-            console.log('selecionar dia montado');
-
-}
 }
 </script>
 

@@ -26,6 +26,8 @@
 Vue.component('calendario-paciente', require('./components/calendarios/paciente/Calendario.vue').default);
 Vue.component('c-selecionar-dia', require('./components/calendarios/paciente/etapas/SelecionarDia.vue').default);
 Vue.component('c-selecionar-hora', require('./components/calendarios/paciente/etapas/SelecionarHora.vue').default);
+Vue.component('c-selecionar-psicologo', require('./components/calendarios/paciente/etapas/SelecionarPsicologo.vue').default);
+Vue.component('c-enviar-agendamento', require('./components/calendarios/paciente/etapas/EnviarAgendamento.vue').default);
 Vue.component('calendario-psicologo-selecionar-dia', require('./components/calendarios/psicologo/SelecionarDia.vue').default);
 
 
@@ -47,6 +49,17 @@ const store = new Vuex.Store({
 		schedulingStatus: false
 	},
 	mutations:{
+		resetToDay(){
+			var vuex = this.state;
+			vuex.day = null;
+			vuex.month = null;
+			vuex.year = null;
+			vuex.schedule = null;
+			vuex.users = [];
+			vuex.schedules = null;
+			vuex.user = null;
+			vuex.schedulingStatus = false;
+		},
 		getSchedules(){
 			var vuex = this.state;
 			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
@@ -59,19 +72,40 @@ const store = new Vuex.Store({
 				console.log(error);
 			});
 		},
-		setSchedule(s){
+		setSchedule(state,s){
 			var vuex = this.state;
 			vuex.schedule = s;
-			console.log(s)
 			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
 			axios.post("/admin/schedules_users/all_in_date_selected", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
-				schedule: s
+				schedule: vuex.schedule
 			})
 			.then(function (response) {
-				console.log(response);
 				vuex.users = response.data;
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		},
+		setUser(state,user){
+			var vuex = this.state;
+			vuex.user = user;
+		},
+		saveScheduling(){
+			var vuex = this.state;
+
+			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
+			axios.post("/admin/schedules_users/savePatient", {
+				_token: $('meta[name="csrf-token"]').attr('content'),
+				date: date,
+				schedule: vuex.schedule,
+				patient: vuex.patient
+			})
+			.then(function (response) {
+				if(response.status == 200){
+					vue.schedulingStatus = true;
+				}
 			})
 			.catch(function (error) {
 				console.log(error);

@@ -61,6 +61,8 @@
 		<calendario-paciente>
 			<c-selecionar-dia slot="selecionarDia"></c-selecionar-dia>
 			<c-selecionar-hora slot="selecionarHora"></c-selecionar-hora>
+			<c-selecionar-psicologo slot="selecionarPsicologo"></c-selecionar-psicologo>
+			<c-enviar-agendamento slot="enviarAgendamento"></c-enviar-agendamento>
 		</calendario-paciente>
 	</div>
 </body>

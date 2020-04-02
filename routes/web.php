@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	return view('index');
+	return view('home');
 });
 
 Route::get('/busca', function () {
@@ -41,6 +41,6 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 	Route::delete('/schedules_users/{schedule}','SchedulesUsersController@destroy')->name('schedules_users.destroy');
 	Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
 	Route::post('/schedules_users/savePatient','SchedulesUsersController@savePatient');
-	
+
 	// Route::post('/schedules/all','SchedulesController@all');
 });

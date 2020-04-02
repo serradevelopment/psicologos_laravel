@@ -5,100 +5,9 @@
 
         <slot name="selecionarHora" ></slot>
 
-        <div class="elegant-calencar" v-if="day != null && schedule != null && user == null">
-            <button class="btn btn-primary" @click="resetToDay()" id="reset">Voltar</button>
-            <div id="header-calendar">
-                <div class="row">
-                    <div class="col-md-12" style="margin: auto">
-                        <h3 style=" color: white;">Dia selecionado: {{day}}</h3>
-                        <h3 style=" color: white;">Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</h3>
+        <slot name="selecionarPsicologo"></slot>
 
-                    </div>
-                </div>
-
-            </div>
-            <table id="calendar">
-                <tbody v-if="users.length != 0">
-
-                    <div class="container" v-for="u in users" style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img style="vertical-align: middle;
-                                border-style: none;
-                                width: 60px;
-                                height: 60px;
-                                box-shadow: 1px 1px 5px 1px;
-                                border-radius: 50%;" src="/img/demos/app-landing/product/psicologo.png">
-                            </div>
-                            <div class="col-md-8">
-                                <h5>{{u.name}}</h5>
-                                <span> <span class="text-muted">CRP: {{u.crp}}</span><br/></span>
-                                <button class="btn btn-info" @click="setUser(u)">Escolher</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </tbody>
-
-                <tbody v-else>
-                    <div class="alert alert-danger">Nenhum Psicólogo disponível para o horário selecionado</div>
-                </tbody>
-
-            </table>
-        </div>
-
-        <div class="elegant-calencar" v-if="day != null && schedule != null && user != null">
-            <button class="btn btn-primary" @click="resetToDay()" id="reset">Voltar</button>
-
-            <div id="header-calendar">
-                <div class="row">
-                    <div class="col-md-12" style="margin: auto">
-                        <h3 style=" color: white;">Dia selecionado: {{day}}</h3>
-                        <h3 style=" color: white;">Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</h3>
-                        <h3 style=" color: white;">Psicólogo selecionado: {{user.name}}</h3>
-                    </div>
-                </div>
-            </div>
-
-            <table id="calendar">
-                <tbody v-if="schedulingStatus == false">
-                    <div class="container">
-                        <div class="row">
-                            <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" name="name" v-model="patient.name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" v-model="patient.email">
-                            </div>
-                            <div class="form-group">
-                                <label for="whatsapp">Whatsapp para atendimento</label>
-                                <input type="text" class="form-control tel-ddd-mask" name="whatsapp" v-model="patient.whatsapp">
-                            </div>
-                            <div class="form-group">
-                                <label for="whatsapp">Observação: </label>
-                                <input type="text" class="form-control" name="obs" v-model="patient.obs">
-                            </div>
-                            <button class="btn btn-success" @click="saveScheduling()">Agendar</button>
-                        </div>
-                    </div>
-
-                </tbody>
-
-                <tbody v-if="schedulingStatus == true">
-                    <div class="container">
-                        <div class="row">
-                            Agendamento realizado com sucesso!
-                        </div>
-                    </div>
-
-                </tbody>
-
-            </table>
-        </div>
-
+        <slot name="enviarAgendamento"></slot>
     </div>
 </template>
 
@@ -122,47 +31,15 @@
             }
         },
         methods:{
-            resetToDay(){
-                var vuex = this.$store.state;
-                vuex.day = null;
-                vuex.month = null;
-                vuex.year = null;
-                vuex.schedule = null;
-                vuex.users = [];
-                vuex.schedules = null;
-                vuex.user = null;
-                vuex.schedulingStatus = false;
-            },
+            
             resetToSchedule(){
                 var vuex = this.$store.state;
                 vuex.schedule = null;
                 vuex.users = [];
 
             },
-            setUser(user){
-                var vuex = this.$store.state;
-                vuex.user = user;
-
-            },
-            saveScheduling(){
-                var vuex = this.$store.state;
-
-                var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
-                axios.post("/admin/schedules_users/savePatient", {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    date: date,
-                    schedule: vuex.schedule,
-                    patient: vuex.patient
-                })
-                .then(function (response) {
-                    if(response.status == 200){
-                        vue.schedulingStatus = true;
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
+            
+            
             
             
             confirmScheduling(){
