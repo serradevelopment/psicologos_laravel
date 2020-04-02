@@ -17,8 +17,12 @@ Route::get('/', function () {
 	return view('index');
 });
 
-Route::get('2', function () {
+Route::get('/busca', function () {
 	return view('psicologos');
+});
+
+Route::get('/calendario', function () {
+	return view('calendario');
 });
 
 Auth::routes();
@@ -36,5 +40,7 @@ Route::namespace('Admin')->prefix('admin')->group(function(){
 
 	Route::delete('/schedules_users/{schedule}','SchedulesUsersController@destroy')->name('schedules_users.destroy');
 	Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
+	Route::post('/schedules_users/savePatient','SchedulesUsersController@savePatient');
+	
 	// Route::post('/schedules/all','SchedulesController@all');
 });
