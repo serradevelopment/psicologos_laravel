@@ -22,7 +22,7 @@
 							width: 60px;
 							height: 60px;
 							box-shadow: 1px 1px 5px 1px;
-							border-radius: 50%;" src="/img/demos/app-landing/product/psicologo.png">
+							border-radius: 50%;" src="/img/psicologo.jpeg">
 						</div>
 						<div class="col-md-8">
 							<h5>{{u.name}}</h5>
