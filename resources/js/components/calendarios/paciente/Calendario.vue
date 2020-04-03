@@ -70,6 +70,25 @@
 
 
 <style type="text/css">
+
+    /* FORMULARIO */
+
+    #textCalendar {
+    margin:auto;
+    }
+
+    #box{
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 4px;
+    top:50px;
+    width: 100%;
+    }
+
+    
+    /* CALENDARIO */
+    
     .elegant-calencar {
         width: 25em;
         border: 1px solid #c9c9c9;
@@ -239,4 +258,5 @@
     .clearfix {
         *zoom: 1;
     }
+
 </style>
