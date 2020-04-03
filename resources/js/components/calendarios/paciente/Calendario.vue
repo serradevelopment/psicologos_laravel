@@ -1,4 +1,4 @@
-<template >
+x'<template >
     <div class="">
         <!-- CALENDÁRIO -->
         <slot name="selecionarDia"></slot>

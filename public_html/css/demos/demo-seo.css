@@ -1,3 +1,30 @@
+
+/*START FONT EU TE APOIO TEXT */
+
+/*.highlighted-word.highlighted-word-rotate {
+    transform: rotate(-15deg)!important;
+}*/
+
+.text-1 {
+    font-size: 50px !important;
+}
+
+.ml-2, .mx-2 {
+    margin-left: .5rem!important;
+}
+
+.d-inline-block {
+    display: inline-block!important;
+}
+
+
+
+/*FINISH FONT EU TE APOIO TEXT */
+
+
+
+
+
 .custom-mw-1 {
     max-width: 110px !important;
 }
