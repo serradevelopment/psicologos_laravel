@@ -5,8 +5,8 @@
 	<!-- Basic -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
-
-	<title>Psicologo - ONLINE</title>	
+   
+	<title>Psicologo - ONLINE</title>
 
 	<meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="Porto - Responsive HTML5 Template">
@@ -18,10 +18,10 @@
 
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-
+  
 	<!-- Web Fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css">
-
+   
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
@@ -84,7 +84,7 @@
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script src="vendor/vide/jquery.vide.min.js"></script>
 <script src="vendor/vivus/vivus.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js"></script> 
 
 <!-- Theme Base, Components and Settings -->
 <script src="js/theme.js"></script>
