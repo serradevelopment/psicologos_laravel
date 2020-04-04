@@ -121,17 +121,17 @@
 				<div class="row align-items-center py-5">
 					<div class="col-lg-6 pt-4 pt-lg-0 mt-5 mt-lg-0 mb-5 mb-lg-0">
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de compartilhar </h1>
+							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de cuidar. </h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">consultas online, com psicólogos especialistas dispostos a te fazer enxergar novos horizontes!</p>
+							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">consultas online, com psicólogos especialistas dispostos a te acolher</p>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
 							<a data-hash data-hash-offset="95" href="#pricing" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}">Agendar consulta</a>
 						</div>
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="550">
-						<img src="img/demos/seo/test.png" class="img-fluid" alt="" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 8, 'transition': true, 'horizontal': true}" />
+						<img src="img/demos/seo/Untitled-2.png" class="img-fluid" alt="" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 8, 'transition': true, 'horizontal': true}" />
 					</div>
 				</div>
 			</div>
@@ -140,7 +140,7 @@
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-8 ">
-							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te apoiamos, conheça nossa equipe de especialistas!</h2>
+							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te apoiamos! conheça nossa equipe de especialistas</h2>
 						</div>
 						<div class="col-lg-4">
 							<form class="custom-form-style-1" method="post">
@@ -180,7 +180,7 @@
 							<h2 class="font-weight-bold line-height-2 text-7 mb-1">Nosso propósito</h2>
 							<span class="d-block text-color-dark text-5 pb-2 mb-4 opacity-7">Quem somos</span>
 						</div>
-						<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">Todos nós buscamos dar o melhor de nós mesmos, seja no trabalho, na família, nos círculos de amizade e nos nossos relacionamentos. Realmente não é uma tarefa fácil, mas é possível! Nós da equipe euteapoio estamos aqui para te auxiliar nos momentos bons e ruins da sua vida. Nascemos da necessidade de ajudar e compartilhar métodos e formas de ajudar pessoas como nós, pessoas como você. Então quando precisar, saiba que você pode nos procurar!</p>
+						<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">Nascemos da necessidade de compartilhar métodos e formas de ajudar pessoas neste momento tão delicado. Nós da equipe<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio, </span></strong> estamos aqui para te auxiliar, seja no trabalho, na família, nos círculos de amizade ou nos relacionamentos. Todos nós buscamos dar o melhor de nós mesmos, nos momentos bons e ruins. Realmente não é uma tarefa fácil, mas é possível! Então, quando precisar, saiba que você pode nos procurar, pois<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio!</span></strong></p>
 						<a data-hash data-hash-offset="95" href="#solutions" class="btn btn-primary btn-outline btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">Nossas Soluçoes</a>
 					</div>
 				</div>
