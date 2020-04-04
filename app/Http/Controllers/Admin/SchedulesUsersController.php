@@ -33,7 +33,7 @@ class SchedulesUsersController extends Controller
     public function savePatient(Request $request)
     {
         $data = $request->all();
-
+        
         $patient = new Patient;
         $patient->fill($data['patient']);
         $patient->save();

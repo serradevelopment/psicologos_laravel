@@ -18,7 +18,7 @@ class CreatePatientsTables extends Migration
             $table->string('name');
             $table->string('whatsapp');
             $table->string('email')->nullable();
-            $table->string('obs')->nullable();
+            $table->text('obs')->nullable();
             $table->timestamps();
         });
     }

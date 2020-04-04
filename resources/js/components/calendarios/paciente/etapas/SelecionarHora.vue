@@ -2,12 +2,12 @@
 	<div class="elegant-calencar" v-if="day != null && schedule == null  && users.length == 0 && user == null">
 		<button class="btn btn-primary" @click="$store.commit('resetToDay')" id="reset">Voltar</button>
 		<div id="header-calendar">
-			<h3 style="margin: auto; color: white;">Dia selecionado: {{day}}</h3>
+			<button class="btn btn-outline-info">Dia selecionado: {{day}}</button>
 
 		</div>
 		<table id="calendar">
 			<tbody>
-				<button v-for="s in schedules"  @click="$store.commit('setSchedule',s)" class="btn btn-secondary" style="margin: 10px">{{s.hour_start}} | {{s.hour_end}}</button>
+				<button v-for="s in schedules" :key="s.id"  @click="$store.commit('setSchedule',s)" class="btn btn-secondary" style="margin: 10px">{{s.hour_start}} | {{s.hour_end}}</button>
 			</tbody>
 		</table>
 	</div>

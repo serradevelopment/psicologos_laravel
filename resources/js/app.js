@@ -28,8 +28,12 @@ Vue.component('c-selecionar-dia', require('./components/calendarios/paciente/eta
 Vue.component('c-selecionar-hora', require('./components/calendarios/paciente/etapas/SelecionarHora.vue').default);
 Vue.component('c-selecionar-psicologo', require('./components/calendarios/paciente/etapas/SelecionarPsicologo.vue').default);
 Vue.component('c-enviar-agendamento', require('./components/calendarios/paciente/etapas/EnviarAgendamento.vue').default);
-Vue.component('calendario-psicologo-selecionar-dia', require('./components/calendarios/psicologo/SelecionarDia.vue').default);
 
+// CALENDARIO PSICOLOGO
+Vue.component('calendario', require('./components/calendarios/psicologo/Calendario.vue').default);
+Vue.component('selecionar-dia', require('./components/calendarios/paciente/etapas/SelecionarDia.vue').default);
+Vue.component('selecionar-hora', require('./components/calendarios/paciente/etapas/SelecionarHora.vue').default);
+Vue.component('enviar-agendamento', require('./components/calendarios/paciente/etapas/EnviarAgendamento.vue').default);
 
 const store = new Vuex.Store({
 	state:{
@@ -104,7 +108,7 @@ const store = new Vuex.Store({
 			})
 			.then(function (response) {
 				if(response.status == 200){
-					vue.schedulingStatus = true;
+					vuex.schedulingStatus = true;
 				}
 			})
 			.catch(function (error) {

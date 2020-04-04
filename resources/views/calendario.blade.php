@@ -58,12 +58,11 @@
 </head>
 <body data-spy="scroll" data-target=".header-nav-main nav" data-offset="65" >
 	<div id="app">
-		<calendario-paciente>
-			<c-selecionar-dia slot="selecionarDia"></c-selecionar-dia>
-			<c-selecionar-hora slot="selecionarHora"></c-selecionar-hora>
-			<c-selecionar-psicologo slot="selecionarPsicologo"></c-selecionar-psicologo>
-			<c-enviar-agendamento slot="enviarAgendamento"></c-enviar-agendamento>
-		</calendario-paciente>
+		<calendario>
+			<selecionar-dia slot="selecionarDia"></c-selecionar-dia>
+			<selecionar-hora slot="selecionarHora"></c-selecionar-hora>
+			<enviar-agendamento slot="enviarAgendamento"></c-enviar-agendamento>
+		</calendario>
 	</div>
 </body>
 

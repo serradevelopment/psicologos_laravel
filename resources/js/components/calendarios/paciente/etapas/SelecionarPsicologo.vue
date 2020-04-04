@@ -4,8 +4,8 @@
 		<div id="header-calendar">
 			<div class="row">
 				<div class="col-md-12" style="margin: auto">
-					<h3 style=" color: white;">Dia selecionado: {{day}}</h3>
-					<h3 style=" color: white;">Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</h3>
+					<button class="btn btn-outline-info" style="width: 90%;margin-bottom: 15px;">Dia selecionado: {{day}}</button>
+					<button class="btn btn-outline-info" style="width: 90%" >Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</button>
 
 				</div>
 			</div>
@@ -14,9 +14,9 @@
 		<table id="calendar">
 			<tbody v-if="users.length != 0">
 
-				<div class="container" v-for="u in users" style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;">
+				<div class="container" :key="u.id" v-for="u in users" style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4 col-4" style="margin: auto">
 							<img style="vertical-align: middle;
 							border-style: none;
 							width: 60px;
@@ -24,8 +24,8 @@
 							box-shadow: 1px 1px 5px 1px;
 							border-radius: 50%;" src="/img/psicologo.jpeg">
 						</div>
-						<div class="col-md-8">
-							<h5>{{u.name}}</h5>
+						<div class="col-md-8 col-8">
+							<h5 style="margin-bottom:0px!important">{{u.name}}</h5>
 							<span> <span class="text-muted">CRP: {{u.crp}}</span><br/></span>
 							<button class="btn btn-info" @click="$store.commit('setUser',u)">Escolher</button>
 						</div>
@@ -36,7 +36,7 @@
 			</tbody>
 
 			<tbody v-else>
-				<div class="alert alert-danger">Nenhum Psicólogo disponível para o horário selecionado</div>
+				<div class="alert alert-danger" style="margin-bottom:0px!important">Nenhum Psicólogo disponível para o horário selecionado</div>
 			</tbody>
 
 		</table>

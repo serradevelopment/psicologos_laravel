@@ -219,10 +219,10 @@
 			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}" data-image-src="img/demos/seo/backgrounds/background-1.jpg" id="freeseo">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-6 col-xl-8 mb-5 mb-lg-0">
+						<div class="col-lg-6 col-xl-6 col-12 col-xs-12 col-sm-12 mb-5 mb-lg-0">
 							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200"><strong>Precisa de apoio emocional?</strong><br> Tenha uma consulta com um especialista agora!</h2>
 						</div>
-						<div class="col-lg-6 col-xl-4" style="height: 600px;">
+						<div class="col-lg-4 col-xl-4 col-sm-4 col-xs-4 col-4" style="height: 600px;">
 							<div class="card appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
 								<div id="app" style="margin: auto;">
 									<calendario-paciente>
