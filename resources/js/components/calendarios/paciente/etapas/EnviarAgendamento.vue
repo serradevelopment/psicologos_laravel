@@ -26,7 +26,7 @@
       <tbody v-if="schedulingStatus == false">
         <div class="container">
           <div class="row">
-            <div class="container" id="box">
+            <div class="container" id="box" style="border-radius: 20px;">
               <h4>Preencha para agendar sua consulta com o psicologo selecionado</h4>
               <div class="container">
                 <div class="form-group">
@@ -101,6 +101,7 @@
                       type="submit"
                       class="btn btn-success"
                       @click="$store.commit('saveScheduling')"
+                      style="border-radius:10px;"
                     >
                       Agendar
                       <span class="glyphicon glyphicon-send"></span>

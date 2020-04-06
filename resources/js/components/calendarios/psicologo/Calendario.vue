@@ -252,10 +252,11 @@
         width: 25em;
         border: 1px solid #c9c9c9;
         -webkit-box-shadow: 0 0 5px #c9c9c9;
-        box-shadow: 0 0 5px #c9c9c9;
+        box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
         text-align: center;
         position: relative;
         margin: auto; 
+        border-radius: 20px;
     }
 
     #header-calendar {
@@ -265,6 +266,7 @@
         display: -ms-flexbox;
         display: flex;
         -ms-flex-wrap: wrap;
+        border-radius: 20px;
     }
 
     .pre-button, .next-button {
@@ -320,6 +322,7 @@
         width: 100%;
         margin: 0 auto;
         background-color: white;
+        border-radius: 20px;
     }
 
     #calendar tr {
@@ -387,6 +390,7 @@
         right: 0.5em;
         top: 0.5em;
         transition: all 0.3s ease;
+        border-radius: 10px;
     }
 
 

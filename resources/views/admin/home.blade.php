@@ -35,7 +35,11 @@
 
 <div class="row" id="app">
 	<div class="col-md-6">
-		<calendario :schedules="{{json_encode($schedules)}}"></calendario>
+		<calendario>
+			<selecionar-dia slot="selecionarDia"></selecionar-dia>
+			<selecionar-hora slot="selecionarHora"></selecionar-hora>
+			<enviar-agendamento slot="enviarAgendamento"></enviar-agendamento>
+		</calendario>
 	</div>
 	<div class="col-md-6">
 		<div class="card">

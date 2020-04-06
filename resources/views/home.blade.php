@@ -24,6 +24,7 @@
 
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="vendor/animate/animate.min.css">
 	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
@@ -131,7 +132,7 @@
 						</div>
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="550">
-						<img src="img/demos/seo/Untitled-2.png" class="img-fluid" alt="" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 8, 'transition': true, 'horizontal': true}" />
+						<img src="img/demos/seo/imagehome.png" class="img-fluid" alt="" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 8, 'transition': true, 'horizontal': true}" />
 					</div>
 				</div>
 			</div>
@@ -198,17 +199,17 @@
 				<div class="content-grid">
 					<div class="row content-grid-row text-center">
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
-							<img src="img/demos/seo/icons/icon-1.png" class="img-fluid mb-4" alt="" />
+							<img src="https://img.icons8.com/nolan/64/share-2.png" class="img-fluid mb-4" alt=""/>
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Conexão</h3>
 							<p class="mb-0">Nosso objetivo é conectar pessoas como você a profissionais especializados.</p>
 						</div>
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
-							<img src="img/demos/seo/icons/icon-2.png" class="img-fluid mb-4" alt="" />
+							<img src="https://img.icons8.com/nolan/64/laptop.png" class="img-fluid mb-4" alt="" />
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Exclusividade</h3>
 							<p class="mb-0">Oferecer um momento de exclusividade e atenção de onde você estiver.</p>
 						</div>
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
-							<img src="img/demos/seo/icons/icon-3.png" class="img-fluid mb-4" alt="" />
+							<img src="https://img.icons8.com/nolan/64/person-female.png" class="img-fluid mb-4" alt="" />
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Transformação</h3>
 							<p class="mb-0">Transformar o mundo em um lugar mais agradável para todos nós.</p>
 						</div>
@@ -216,14 +217,14 @@
 				</div>
 			</div>
 
-			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}" data-image-src="img/demos/seo/backgrounds/background-1.jpg" id="freeseo">
+			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}" data-image-src="img/demos/seo/backgrounds/consultas.jpg" id="freeseo">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-xl-6 col-12 col-xs-12 col-sm-12 mb-5 mb-lg-0">
-							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200"><strong>Precisa de apoio emocional?</strong><br> Tenha uma consulta com um especialista agora!</h2>
+							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200"><strong>Precisa de apoio emocional?</strong><br> Tenha uma consulta com um especialista agora</h2>
 						</div>
 						<div class="col-lg-4 col-xl-4 col-sm-4 col-xs-4 col-4" style="height: 600px;">
-							<div class="card appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
+							<div class="card appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400" style="border-radius: 20px!important;">
 								<div id="app" style="margin: auto;">
 									<calendario-paciente>
 										<c-selecionar-dia slot="selecionarDia"></c-selecionar-dia>
@@ -286,81 +287,41 @@
 				<div class="container" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
 					<div class="row text-center mb-3">
 						<div class="col-lg-8 m-auto">
-							<h2 class="custom-bar _center text-color-dark">Perguntas frequentes</h2>
+							<h2 class="custom-bar _center text-color-dark"><strong>Perguntas frequentes</strong></h2>
 							<p>Estamos aqui para facilitar a sua vida, e a nossa. Portanto se você tiver alguma dúvida procure abaixo, pois provavelmente ela já foi respondida.</p>
 						</div>
 					</div>
 					<div class="row mb-5">
 						<div class="col-lg-10 m-auto">
-							<div class="accordion custom-accordion-style-1" id="accordion">
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1One" expand="true">
-												Preciso pagar para utilizar o serviço?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1One" class="collapse show">
-										<div class="card-body">
-											<p>Devido aos acontecimentos do covid-19 (novo corona virus). Estamos disponibilizando a plataforma gratuitamente para que todos possam ter acesso a um serviço de psicologia com qualidade e profissionalismo! Pois somente juntos venceremos este momento dificil que aflinge a todos nós.</p>
-										</div>
+							<div class="accordion">
+								<div class="accordion-item">
+									<a>Preciso pagar para utilizar o serviço?</a>
+									<div class="content">
+										<p>Devido aos acontecimentos do covid-19 (novo corona virus). Estamos disponibilizando a plataforma gratuitamente para que todos possam ter acesso a um serviço de psicologia com qualidade e profissionalismo! Pois somente juntos venceremos este momento dificil que aflinge a todos nós.</p>
 									</div>
 								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
-												Como posso saber se os psicólogos são realmente formados?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Two" class="collapse">
-										<div class="card-body">
-											<p>Todos os nossos especialistas são verificados pelo número de CRP (Conselho Regional de Psicologia), você pode verificar este mesmo número no perfil profissional disponibilizado ao agendar uma consulta ou em nossa página de especialistas.</p>
-										</div>
+								<div class="accordion-item">
+									<a>Como posso saber se os psicólogos são realmente formados?</a>
+									<div class="content">
+										<p>Todos os nossos especialistas são verificados pelo número de CRP (Conselho Regional de Psicologia), você pode verificar este mesmo número no perfil profissional disponibilizado ao agendar uma consulta ou em nossa página de especialistas.</p>
 									</div>
 								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
-												Quantas vezes posso utilizar a plataforma?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Three" class="collapse">
-										<div class="card-body">
-											<p>Quantas vezes precisar, nosso objetivo é contribuir para o seu bem-estar. Assim como contamos com a sua colaboração para que você contribua para o bem-estar do próximo. Pois só assim viveremos em um mundo melhor e mais justo!</p>
-										</div>
+								<div class="accordion-item">
+									<a>Quantas vezes posso utilizar a plataforma?</a>
+									<div class="content">
+										<p>Quantas vezes precisar, nosso objetivo é contribuir para o seu bem-estar. Assim como contamos com a sua colaboração para que você contribua para o bem-estar do próximo. Pois só assim viveremos em um mundo melhor e mais justo!</p>
 									</div>
 								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
-												Como faço para ingressar na equipe de especialistas?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Four" class="collapse">
-										<div class="card-body">
-											<p>Em nossa página de especialistas nós disponibilizamos uma área para registro de novos psicólogos. Após o registro nós avaliamos e verificamos todos os dados pela integridade dos nossos usuários e para nossa e sua proteção. Esse período de analise pode levar de 1 a 5 semanas.</p>
-										</div>
+								<div class="accordion-item">
+									<a>Como faço para ingressar na equipe de especialistas?</a>
+									<div class="content">
+										<p>Em nossa página de especialistas nós disponibilizamos uma área para registro de novos psicólogos. Após o registro nós avaliamos e verificamos todos os dados pela integridade dos nossos usuários e para nossa e sua proteção. Esse período de analise pode levar de 1 a 5 semanas.</p>
 									</div>
 								</div>
-								<div class="card card-default">
-									<div class="card-header">
-										<h4 class="card-title m-0">
-											<a class="accordion-toggle text-color-dark collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Five">
-												Como posso contribuir com a plataforma e a empresa?
-											</a>
-										</h4>
-									</div>
-									<div id="collapse1Five" class="collapse">
-										<div class="card-body">
-											<p>Você pode divulgar nosso trabalho em suas redes sociais, para que assim mais pessoas sejam alcançadas pela nossa causa e nosso trabalho!</p>
-										</div>
+								<div class="accordion-item">
+									<a>Por onde são feitas as consultas?</a>
+									<div class="content">
+										<p>Nossa equipe de especialistas, irá entrar em contato com você, através do WhatsApp, para realizar a consulta por video-chamamda.</p>
 									</div>
 								</div>
 							</div>
@@ -370,7 +331,7 @@
 						<div class="col">
 							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Marque uma consulta</strong></p>
 							<br>
-							<a href="#consulta" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR CONSULTA</a>
+							<a href="#freeseo" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR CONSULTA</a>
 						</div>
 					</div>
 				</div>
@@ -423,7 +384,7 @@
 				<div class="container py-2">
 					<div class="row justify-content-between py-4">
 						<div class="col-auto">
-							<p style="font-size: 1rem">© Serra Development Copyright 2020. Todos os direitos reservados.</p>
+							<p style="font-size: 1rem">© <a href="https://serradev.com.br/" target="_blank" style="color:white;"><strong>Serra Development</strong></a> Copyright 2020. Todos os direitos reservados.</p>
 						</div>
 						<div class="col-auto">
 							<ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light ml-3">
@@ -461,6 +422,7 @@
 
 	<!-- Theme Base, Components and Settings -->
 	<script src="js/theme.js"></script>
+	<script src="js/faq.js"></script>
 
 	<!-- Current Page Vendor and Views -->
 	<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
