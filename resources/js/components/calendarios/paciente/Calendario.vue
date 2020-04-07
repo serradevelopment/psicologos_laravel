@@ -1,5 +1,5 @@
 x'<template >
-  <div class>
+  <div>
     <!-- CALENDÁRIO -->
     <slot name="selecionarDia"></slot>
 
@@ -66,8 +66,9 @@ export default {
 
 
 <style type="text/css">
-/* FORMULARIO */
 
+
+/* FORMULARIO */
 #textCalendar {
   margin: auto;
 }

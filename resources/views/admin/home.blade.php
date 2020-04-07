@@ -31,10 +31,11 @@
 
 </div>
 
-<h1>Agendamentos</h1>
 
 <div class="row" id="app">
 	<div class="col-md-6">
+	<h1>Disponibilize um horário</h1>
+
 		<calendario>
 			<selecionar-dia slot="selecionarDia"></selecionar-dia>
 			<selecionar-hora slot="selecionarHora"></selecionar-hora>
@@ -42,44 +43,12 @@
 		</calendario>
 	</div>
 	<div class="col-md-6">
-		<div class="card">
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-hover" id="my-schedules-list">
-						<thead>
-							<tr>
-								<th>Data</th>
-								<th>Horário</th>
-								<th>Status</th>
-								<th data-orderable="false"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($mySchedules as $my)
-							<tr>
-								<td>{{$my->date}}</td>
-								<td>{{$my->hour_start}} às {{$my->hour_end}}</td>
-								<td><span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="Data disponibilizada, mas nenhum paciente agendou.">Disponível</span></td>
-								<td>
-									<form action="{{route('schedules_users.destroy',['schedule'=>$my->id])}}" method="POST">
-										<input type="hidden" name="_method" value="DELETE">
-										<input type="hidden" name="_token" value="{{csrf_token()}}">
-										<button class="btn btn-danger btn-sm confirmable" type="submit"><i class="fa fa-trash"></i></button>
-									</form>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+	<h1>Consulte seus agendamentos</h1>
+
+		<table-scheduling />
 	</div>
 </div>
 @stop
 
 @section('js')
-<script type="text/javascript">
-	$("#my-schedules-list").DataTable();
-</script>
 @endsection

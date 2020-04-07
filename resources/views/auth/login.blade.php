@@ -1,14 +1,23 @@
+	<!-- Demo CSS -->
+	<link rel="stylesheet" href="css/demos/demo-seo.css">
+
+	<!-- Skin CSS -->
+    <link rel="stylesheet" href="css/skins/skin-seo.css"> 
+    
 @extends('ramodnil.raw')
 
 @section('content')
-<div class="login">
+<div class="login" style="background-color:#e5f6fb !important">
     <div class="wrapper wrapper-login">
 
         <div class="container container-login animated fadeIn">
             <div class="login-form">
                 @if (\App\User::first())
                 {{ Form::open(['url' => route('login')]) }}
-                <h3 class="text-center">Laravel Ramodnil</h3>
+                <span class="text-center d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span>
+                <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                    <p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Olá! Faça login no painel para continuar.</p>
+                </div>
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control" placeholder="E-mail">
 

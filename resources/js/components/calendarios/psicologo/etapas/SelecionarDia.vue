@@ -1,90 +1,92 @@
 <template>
-  <div class="elegant-calencar" v-show="day == null" style=" margin: auto">
-    <button class="btn btn-primary" id="reset">Limpar</button>
-    <div id="header-calendar">
-      <div class="col-md-2 pre-button">
-        <i class="fas fa-angle-left"></i>
-      </div>
+  <transition appear name="fade">
+    <div class="elegant-calencar" v-show="day == null">
+      <button class="btn btn-primary" id="reset">Limpar</button>
+      <div id="header-calendar">
+        <div class="col-md-2 pre-button">
+          <i class="fas fa-angle-left"></i>
+        </div>
 
-      <div class="col-md-8">
-        <div class="head-day"></div>
-        <div class="head-month"></div>
-      </div>
+        <div class="col-md-8">
+          <div class="head-day"></div>
+          <div class="head-month"></div>
+        </div>
 
-      <div class="col-md-2 next-button">
-        <i class="fas fa-angle-right"></i>
+        <div class="col-md-2 next-button">
+          <i class="fas fa-angle-right"></i>
+        </div>
       </div>
+      <table id="calendar">
+        <thead>
+          <tr>
+            <th>Dom</th>
+            <th>Seg</th>
+            <th>Ter</th>
+            <th>Qua</th>
+            <th>Qui</th>
+            <th>Sex</th>
+            <th>Sáb</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table id="calendar">
-      <thead>
-        <tr>
-          <th>Dom</th>
-          <th>Seg</th>
-          <th>Ter</th>
-          <th>Qua</th>
-          <th>Qui</th>
-          <th>Sex</th>
-          <th>Sáb</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -105,6 +107,7 @@ export default {
   },
   created() {
     var vuex = this.$store;
+
     document.addEventListener(
       "DOMContentLoaded",
       function() {
@@ -223,11 +226,21 @@ export default {
           selectedDay = new Date(year, month, o.innerHTML);
           this.drawHeader(o.innerHTML);
           this.setCookie("selected_day", 1);
+
           if (o.innerHTML != "") {
-            vuex.state.day = o.innerHTML;
-            vuex.state.month = month + 1;
+            var day = parseInt(o.innerHTML);
+            var formatedMonth = parseInt(month) + 1;
+
+            if (day <= 9) {
+              day = "0" + day;
+            }
+            if (formatedMonth <= 9) {
+              formatedMonth = "0" + formatedMonth;
+            }
+            vuex.state.day = day;
+            vuex.state.month = formatedMonth;
             vuex.state.year = year;
-            vuex.commit("getSchedules");
+            vuex.commit("getSchedulesAvaibleToPsico");
           }
         };
 

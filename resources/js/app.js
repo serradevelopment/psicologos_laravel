@@ -3,14 +3,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
- import Vuex from 'vuex'
+import Vuex from 'vuex'
+import DataTable from 'laravel-vue-datatable';
 
- require('./bootstrap');
+require('./bootstrap');
 
- window.Vue = require('vue');
- const axios = require('axios').default;
- Vue.use(Vuex)
-
+window.Vue = require('vue');
+const axios = require('axios').default;
+Vue.use(Vuex)
+Vue.use(DataTable);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -31,29 +32,67 @@ Vue.component('c-enviar-agendamento', require('./components/calendarios/paciente
 
 // CALENDARIO PSICOLOGO
 Vue.component('calendario', require('./components/calendarios/psicologo/Calendario.vue').default);
-Vue.component('selecionar-dia', require('./components/calendarios/paciente/etapas/SelecionarDia.vue').default);
-Vue.component('selecionar-hora', require('./components/calendarios/paciente/etapas/SelecionarHora.vue').default);
-Vue.component('enviar-agendamento', require('./components/calendarios/paciente/etapas/EnviarAgendamento.vue').default);
+Vue.component('selecionar-dia', require('./components/calendarios/psicologo/etapas/SelecionarDia.vue').default);
+Vue.component('selecionar-hora', require('./components/calendarios/psicologo/etapas/SelecionarHora.vue').default);
+Vue.component('enviar-agendamento', require('./components/calendarios/psicologo/etapas/EnviarAgendamento.vue').default);
+
+
+//TABELA DE LISTAGEM DE AGENDAMENTOS DO PSICOLOGO
+Vue.component('table-scheduling', require('./components/TableScheduling.vue').default);
 
 const store = new Vuex.Store({
-	state:{
+	state: {
 		day: null,
 		month: null,
-		year:null,
+		year: null,
 		schedule: null,
 		users: [],
 		schedules: null,
 		user: null,
-		patient:{
-			name:'',
-			whatsapp:'',
-			email:'',
-			obs:'',
+		patient: {
+			name: '',
+			whatsapp: '',
+			email: '',
+			obs: '',
 		},
-		schedulingStatus: false
+		schedulingStatus: false,
+		psico: {
+			dataTableSchedulingRef:{},
+			my_schedules: {},
+			dataTableScheduling: {}
+		}
 	},
-	mutations:{
-		resetToDay(){
+	actions: {
+
+		fetchMySchedules({ commit }, { self }) {
+			$.get('/painel/psicologo/mySchedules')
+				.then((response) => {
+					commit("fetchSchedules", response);
+					self.filterUsers();
+				})
+				.catch((error) => {
+					console.log(error.statusText)
+				});
+		}
+	},
+	mutations: {
+		getDataFromTableScheduling(state,url = '/painel/psicologo/mySchedules') {
+			axios
+				.get(url)
+				.then(response => {
+					// this.state.psico.dataTableScheduling = response.data;
+					var table = $("#table-scheduling");
+					console.log(table);
+				})
+				// eslint-disable-next-line
+				.catch(errors => {
+					console.log(errors)
+				});
+		},
+		fetchSchedules(state, schedules) {
+			state.psico.my_schedules = schedules
+		},
+		resetToDay() {
 			var vuex = this.state;
 			vuex.day = null;
 			vuex.month = null;
@@ -64,56 +103,93 @@ const store = new Vuex.Store({
 			vuex.user = null;
 			vuex.schedulingStatus = false;
 		},
-		getSchedules(){
+		getSchedules() {
 			var vuex = this.state;
-			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
+			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 
-			axios.get("/admin/schedules/all")
-			.then(function (response) {
-				vuex.schedules = response.data;
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+			axios.get("/painel/psicologo/schedules/all")
+				.then(function (response) {
+					vuex.schedules = response.data;
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		},
-		setSchedule(state,s){
+		confirmDisponibility() {
+			var vuex = this;
+			var day = vuex.state.day;
+			var month = vuex.state.month;
+			var year = vuex.state.year;
+			var schedule = vuex.state.schedule;
+			$.post(
+				"/painel/psicologo/schedules",
+				{
+					_token: $('meta[name="csrf-token"]').attr("content"),
+					date: day + "/" + month + "/" + year,
+					schedule: schedule
+				},
+				function (data, status) {
+					vuex.schedulingStatus = true;
+					vuex.dispatch("fetchMySchedules", { self: this });
+					vuex.commit('fetchMySchedules');
+
+				}
+			);
+		},
+		getSchedulesAvaibleToPsico() {
+			var vuex = this.state;
+			var date = vuex.day + "/" + vuex.month + "/" + vuex.year;
+
+			axios
+				.post("/painel/psicologo/schedules/allAvailable", {
+					_token: $('meta[name="csrf-token"]').attr("content"),
+					date: date
+				})
+				.then(function (response) {
+					vuex.schedules = response.data;
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		},
+		setSchedule(state, s) {
 			var vuex = this.state;
 			vuex.schedule = s;
-			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
-			axios.post("/admin/schedules_users/all_in_date_selected", {
+			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
+			axios.post("/painel/psicologo/schedules_users/all_in_date_selected", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
 				schedule: vuex.schedule
 			})
-			.then(function (response) {
-				vuex.users = response.data;
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+				.then(function (response) {
+					vuex.users = response.data;
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		},
-		setUser(state,user){
+		setUser(state, user) {
 			var vuex = this.state;
 			vuex.user = user;
 		},
-		saveScheduling(){
+		saveScheduling() {
 			var vuex = this.state;
 
-			var date = vuex.day+'/'+vuex.month+'/'+vuex.year;
-			axios.post("/admin/schedules_users/savePatient", {
+			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
+			axios.post("/painel/psicologo/schedules_users/savePatient", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
 				schedule: vuex.schedule,
 				patient: vuex.patient
 			})
-			.then(function (response) {
-				if(response.status == 200){
-					vuex.schedulingStatus = true;
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+				.then(function (response) {
+					if (response.status == 200) {
+						vuex.schedulingStatus = true;
+					}
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		},
 	}
 });
@@ -124,7 +200,7 @@ const store = new Vuex.Store({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- const app = new Vue({
- 	el: '#app',
- 	store
- });
+const app = new Vue({
+	el: '#app',
+	store
+});
