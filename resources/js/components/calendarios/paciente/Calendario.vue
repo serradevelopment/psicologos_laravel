@@ -55,9 +55,7 @@ export default {
       );
     }
   },
-  mounted() {
-    console.log("calendario montado");
-  },
+  mounted() {},
   created() {
     var vuex = this.$store.state;
   }
@@ -66,8 +64,6 @@ export default {
 
 
 <style type="text/css">
-
-
 /* FORMULARIO */
 #textCalendar {
   margin: auto;
@@ -198,7 +194,7 @@ export default {
 
 #calendar tbody td:hover {
   border-radius: 50%;
-  box-shadow: 0 2px 10px RGBA(255, 50, 120, 0.9);
+  box-shadow: 0 2px 10px RGBA(0,91,155, 0.9);
 }
 
 #calendar tbody td:active {

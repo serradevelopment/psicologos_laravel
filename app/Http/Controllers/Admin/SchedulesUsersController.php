@@ -51,16 +51,45 @@ class SchedulesUsersController extends Controller
         $data = DB::table('schedules_has_users', 'sh')
             ->join('schedules', 'schedules.id', '=', 'sh.schedules_id')
             ->join('users', 'users.id', '=', 'sh.users_id')
+            ->leftJoin('patients', 'patients.id', '=', 'sh.patients_id')
             ->select(
                 'sh.id',
                 'schedules.hour_start',
                 'schedules.hour_end',
                 'users.name',
                 'sh.date',
+                'patients.name as patient_name',
+                'patients.whatsapp as patient_whatsapp',
+                'patients.email as patient_email',
+                'patients.obs as patient_obs',
                 DB::raw('(CASE WHEN sh.patients_id IS NULL THEN FALSE ELSE TRUE END) AS status')
             )
             ->where('sh.users_id', '=', auth()->user()->id)->get();
         $data = ["data"=>$data];
         return response()->json($data);
+    }
+
+    public function getScheduleUser(Request $request)
+    {
+        $data = DB::table('schedules_has_users', 'sh')
+        ->join('schedules', 'schedules.id', '=', 'sh.schedules_id')
+        ->join('users', 'users.id', '=', 'sh.users_id')
+        ->leftJoin('patients', 'patients.id', '=', 'sh.patients_id')
+        ->select(
+            'sh.id',
+            'schedules.hour_start',
+            'schedules.hour_end',
+            'users.name',
+            'sh.date',
+            'patients.name as patient_name',
+            'patients.whatsapp as patient_whatsapp',
+            'patients.email as patient_email',
+            'patients.obs as patient_obs',
+            DB::raw('(CASE WHEN sh.patients_id IS NULL THEN FALSE ELSE TRUE END) AS status')
+        )
+        ->where('sh.id', '=', $request->sh_id)->first();
+
+        return response()->json($data);
+
     }
 }

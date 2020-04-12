@@ -67,7 +67,7 @@ export default {
   position: relative;
   margin: auto;
   border-radius: 20px;
-  z-index: 99999;
+  z-index: 10;
 }
 
 #header-calendar {
@@ -170,7 +170,7 @@ export default {
 
 #calendar tbody td:hover {
   border-radius: 50%;
-  box-shadow: 0 2px 10px RGBA(255, 50, 120, 0.9);
+  box-shadow: 0 2px 10px RGBA(0,91,155, 0.9);
 }
 
 #calendar tbody td:active {

@@ -11,22 +11,22 @@
 
 @section('body')
 <div class="wrapper">
-    <div class="main-header" style="background-color:#0088cc !important">
+    <div class="main-header" style="background-color:#86e0ff !important">
         <!-- Logo Header -->
         <div class="logo-header">
 
-            <span class="page-title logo" style="padding-top: 20px!important; color: white"><b>Painel</b></span>
+            <img src="/img/eu-te-apoio-text.png" width="180"/>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <i class="fa fa-bars"></i>
                 </span>
             </button>
-            <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+            {{-- <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
             <div class="navbar-minimize">
                 <button class="btn btn-minimize btn-rounded">
                     <i class="fa fa-bars"></i>
                 </button>
-            </div>
+            </div> --}}
         </div>
         <!-- End Logo Header -->
 
@@ -114,7 +114,7 @@
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                             <span>
                                 {{Auth::user()->name}}
-                                <span class="user-level">{{(Auth::user()->role == 0)?"Administrador":"Usuário Comum"}}</span>
+                                <span class="user-level">{{(Auth::user()->role == 0)?"Administrador":"Psicólogo"}}</span>
                                 <span class="caret"></span>
                             </span>
                         </a>

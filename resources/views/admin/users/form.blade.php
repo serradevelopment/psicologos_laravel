@@ -3,6 +3,9 @@
 <div class="card">
     <div class="card-body">
         {{ Form::bsText('name', 'Nome') }}
+        {{ Form::bsText('crp', 'CRP') }}
+        {{ Form::bsText('whatsapp', 'Whatsapp') }}
+        {{ Form::bsText('specialty', 'Especialidade') }}
 
         {{ Form::bsEmail('email', 'E-mail') }}
 

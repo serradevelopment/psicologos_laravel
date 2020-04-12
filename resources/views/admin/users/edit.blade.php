@@ -14,5 +14,5 @@
 @endsection
 
 @section('content')
-    @include('users.form')
+    @include('admin.users.form')
 @stop

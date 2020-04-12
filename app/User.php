@@ -54,7 +54,7 @@ class User extends Authenticatable
     public static function roles() {
         return [
             self::ROLE_ADMIN => 'Administrador',
-            self::ROLE_COMMON => 'Comum',
+            self::ROLE_COMMON => 'Psicólogo',
         ];
     }
 

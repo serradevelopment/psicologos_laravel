@@ -4,18 +4,21 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Laravel Ramodnil</title>
+	<title>Painel | euteapoio</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/azzara.min.css') }}">
 	<link rel="stylesheet" href="{{asset('fonts/flaticon/flaticon.css')}}">
+	<link rel="stylesheet" href="css/demos/demo-seo.css">
+
 	@yield('adminlte_css')
 </head>
 
 <body class="hold-transition sidebar-mini @yield('body_class')">
 	@yield('body')
+
 
 	<script src="{{ asset('js/app.js') }}"></script>
 	<!--   Core JS Files   -->
@@ -58,6 +61,7 @@
 
 	<!-- Azzara JS -->
 	<script src="{{asset('js/ready.min.js')}}"></script>
+	
 	@yield('adminlte_js')
 </body>
 

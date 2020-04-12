@@ -66,7 +66,7 @@
 							<div class="header-row">
 								<div class="header-logo">
 									<a href="index.html">
-										<img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="img/logo-flat.png">
+										<img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="img/eu-te-apoio.png">
 									</a>
 								</div>
 							</div>
@@ -99,7 +99,7 @@
 										<i class="fas fa-bars"></i>
 									</button>
 								</div>
-								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-none d-md-block mr-3 mr-lg-0" data-hash data-hash-offset="65" href="#freeseo">Agendar consulta</a>
+								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-none d-md-block mr-3 mr-lg-0" data-hash data-hash-offset="65" href="{{ route('login') }}">Sou um especialista</a>
 							</div>
 						</div>
 					</div>
@@ -128,7 +128,7 @@
 							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">consultas online, com psicólogos especialistas dispostos a te acolher</p>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
-							<a data-hash data-hash-offset="95" href="#pricing" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}">Agendar consulta</a>
+							<a data-hash data-hash-offset="95" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}" href="#agendamento">Agendar consulta</a>
 						</div>
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="550">
@@ -217,11 +217,12 @@
 				</div>
 			</div>
 
-			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}" data-image-src="img/demos/seo/backgrounds/consultas.jpg" id="freeseo">
+			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}" data-image-src="img/demos/seo/backgrounds/consultas.jpg" id="agendamento">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-xl-6 col-12 col-xs-12 col-sm-12 mb-5 mb-lg-0">
-							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200"><strong>Precisa de apoio emocional?</strong><br> Tenha uma consulta com um especialista agora</h2>
+							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+								<strong style="text-shadow: 1px 1px 5px black;">Precisa de apoio emocional?</strong><br><span style="text-shadow: 1px 1px 5px black;"> Tenha uma consulta com um especialista agora</span></h2>
 						</div>
 						<div class="col-lg-4 col-xl-4 col-sm-4 col-xs-4 col-4" style="height: 600px;">
 							<div class="card appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400" style="border-radius: 20px!important;">

@@ -4,14 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vuex from 'vuex'
-import DataTable from 'laravel-vue-datatable';
 
-require('./bootstrap');
-
+require('./bootstrap')
 window.Vue = require('vue');
 const axios = require('axios').default;
 Vue.use(Vuex)
-Vue.use(DataTable);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -82,7 +79,6 @@ const store = new Vuex.Store({
 				.then(response => {
 					// this.state.psico.dataTableScheduling = response.data;
 					var table = $("#table-scheduling");
-					console.log(table);
 				})
 				// eslint-disable-next-line
 				.catch(errors => {
@@ -162,6 +158,7 @@ const store = new Vuex.Store({
 				schedule: vuex.schedule
 			})
 				.then(function (response) {
+					console.log(response)
 					vuex.users = response.data;
 				})
 				.catch(function (error) {

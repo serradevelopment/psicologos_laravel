@@ -27,8 +27,12 @@ Route::get('/calendario', function () {
 
 Auth::routes();
 
-Route::namespace('Admin')->prefix('painel')->group(function(){
 
+
+
+Route::namespace('Admin')->prefix('painel')->group(function(){
+	Route::post('/cadastrar','UsersController@register')->name('users.cadastrar');
+	Route::get('/cadastrar','UsersController@registerForm')->name('users.cadastrar.create');
 	Route::prefix('psicologo')->group(function(){
 		Route::get('/','HomeController@index')->name('home');
 		\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
@@ -41,6 +45,7 @@ Route::namespace('Admin')->prefix('painel')->group(function(){
 		Route::delete('/schedules_users/{schedule}','SchedulesUsersController@destroy')->name('schedules_users.destroy');
 		Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
 		Route::post('/schedules_users/savePatient','SchedulesUsersController@savePatient');
+		Route::post('/schedules_users/getScheduleUser','SchedulesUsersController@getScheduleUser');
 		
 		// Route::post('/schedules/all','SchedulesController@all');
 	});
