@@ -65,8 +65,8 @@
 						<div class="header-column">
 							<div class="header-row">
 								<div class="header-logo">
-									<a href="index.html">
-										<img alt="euteapoio - consultas online" width="110" height="100" data-sticky-width="82" data-sticky-height="40" src="img/eu-te-apoio.png">
+									<a href="#">
+										<img alt="euteapoio - consultas online" width="80" height="50" data-sticky-width="82" data-sticky-height="40" src="img/eu-te-apoio-logo.png">
 									</a>
 								</div>
 							</div>

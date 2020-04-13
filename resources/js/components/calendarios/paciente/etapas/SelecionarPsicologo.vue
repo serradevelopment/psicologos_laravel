@@ -20,10 +20,10 @@
           <div
             class="container"
             :key="i"
-            v-for="(u,i) in users"
+            v-for="(u,i) in users" 
             style="border-radius: 10px;box-shadow: 1px 1px 10px 2px; margin-top: 5px;margin-bottom: 10px;"
           >
-            <div class="row">
+            <div class="row" v-if="i <= 4">
               <div class="col-md-4 col-4" style="margin: auto">
                 <img v-if="u.avatar_extension != null"
                   style="vertical-align: middle;
@@ -49,7 +49,7 @@
                   <span class="text-muted">CRP: {{u.crp}}</span>
                   <br />
                 </span>
-                <button class="btn btn-info" @click="$store.commit('setUser',u)">Escolher</button>
+                <button class="btn btn-info mb-10" @click="$store.commit('setUser',u)">Escolher</button>
               </div>
             </div>
           </div>

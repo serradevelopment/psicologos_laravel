@@ -204,6 +204,7 @@ export default {
                 days[j].id = "today";
               }
             }
+            selectedDay = new Date();
             if (selectedDay) {
               if (
                 j === selectedDay.getDate() + startDay - 1 &&
