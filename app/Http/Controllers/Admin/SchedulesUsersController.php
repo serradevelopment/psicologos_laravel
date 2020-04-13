@@ -20,7 +20,7 @@ class SchedulesUsersController extends Controller
     {
         $data = $request->all();
 
-        $users = DB::select('SELECT sh.date, u.name,u.whatsapp,u.crp,u.avatar_extension,s.hour_start,s.hour_end FROM schedules_has_users sh 
+        $users = DB::select('SELECT u.id,sh.date, u.name,u.whatsapp,u.crp,u.avatar_extension,s.hour_start,s.hour_end FROM schedules_has_users sh 
     	join users u on(u.id = sh.users_id)
     	join schedules s on(s.id = sh.schedules_id)
     	where sh.schedules_id = ? and sh.date = ?', [
