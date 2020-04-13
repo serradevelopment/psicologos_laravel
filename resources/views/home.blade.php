@@ -125,11 +125,7 @@
 							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de cuidar </h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-<<<<<<< HEAD
 							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Acolhimento online com psicólogos especialistas dispostos a te acolher.</p>
-=======
-							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Consultas online, com psicólogos especialistas dispostos a te acolher</p>
->>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
 							<a data-hash data-hash-offset="95" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}" href="#agendamento">Agendar acolhimento</a>
@@ -148,19 +144,9 @@
 							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te apoiamos! conheça nossa equipe de especialistas</h2>
 						</div>
 						<div class="col-lg-4">
-<<<<<<< HEAD
 							<div class="col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
 							<a class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" href="#agendamento">Conhecer especialistas</a>
 							</div>
-=======
-							<form class="custom-form-style-1" method="post">
-								<div class="form-row">
-									<div class="form-group col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
-										{{-- <input type="submit" class="btn btn-primary btn-outline font-weight-bold text-3 h-100 rounded-0 btn-px-4" value="Conhecer Equipe"> --}}
-									</div>
-								</div>
-							</form>
->>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 					</div>
 				</div>
@@ -340,15 +326,9 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 					</div>
 					<div class="row text-center">
 						<div class="col">
-<<<<<<< HEAD
 							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Agende um acolhimento psicológico.</strong></p>
 							<br>
 							<a href="#agendamento" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR ACOLHIMENTO</a>
-=======
-							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas dúvidas? <strong>Marque uma consulta</strong></p>
-							<br>
-							<a href="#agendamento" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR CONSULTA</a>
->>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 					</div>
 				</div>
