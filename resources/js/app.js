@@ -181,11 +181,13 @@ const store = new Vuex.Store({
 			var vuex = this.state;
 
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
+			console.log(vuex.user);
 			axios.post("/painel/psicologo/schedules_users/savePatient", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
 				schedule: vuex.schedule,
-				patient: vuex.patient
+				patient: vuex.patient,
+				user: vuex.user
 			})
 				.then(function (response) {
 					if (response.status == 200) {

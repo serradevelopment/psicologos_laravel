@@ -23,7 +23,7 @@ class SchedulesUsersController extends Controller
         $users = DB::select('SELECT u.id,sh.date, u.name,u.whatsapp,u.crp,u.avatar_extension,s.hour_start,s.hour_end FROM schedules_has_users sh 
     	join users u on(u.id = sh.users_id)
     	join schedules s on(s.id = sh.schedules_id)
-    	where sh.schedules_id = ? and sh.date = ?', [
+    	where sh.schedules_id = ? and sh.date = ? and sh.status IS NULL', [
             $data['schedule']['id'],
             $data['date']
         ]);
@@ -39,8 +39,8 @@ class SchedulesUsersController extends Controller
         $patient->fill($data['patient']);
         $patient->save();
 
-        $save = DB::insert('UPDATE schedules_has_users SET patients_id = ?, status = "SCHEDULED" WHERE schedules_id = ? and date = ? ', [
-            $patient->id, $data['schedule']['id'], $data['date']
+        $save = DB::insert('UPDATE schedules_has_users SET patients_id = ?, status = "SCHEDULED" WHERE schedules_id = ? and date = ? and users_id = ?', [
+            $patient->id, $data['schedule']['id'], $data['date'],$data['user']['id']
         ]);
 
         return $save;
