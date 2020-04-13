@@ -15,13 +15,13 @@
           </div>
         </div>
       </div>
-      <table id="calendar">
+      <table id="calendar" style="max-height: 400px!important;overflow: auto!important;">
         <tbody v-if="users.length != 0">
           <div
             class="container"
             :key="i"
             v-for="(u,i) in users"
-            style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;"
+            style="border-radius: 10px;box-shadow: 1px 1px 10px 2px; margin-top: 5px;margin-bottom: 10px;"
           >
             <div class="row">
               <div class="col-md-4 col-4" style="margin: auto">

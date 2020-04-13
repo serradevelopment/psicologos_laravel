@@ -40,8 +40,11 @@
           <div class="modal-body">Data: <span id="date"></span> </div>
           <div class="modal-body">Horário: <span id="hours"></span> </div>
           <div class="modal-body">Mensagem: <span id="patient_obs"></span> </div>
-          <div class="modal-footer footer-modal-schedule">
-            <a  class="btn btn-success" id="call_whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chamar no Whatsapp</a>
+          <div class="modal-footer ">
+			<a  class="btn btn-success" id="call_whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chamar no Whatsapp</a>
+			<div class="footer-modal-schedule">
+
+			</div>
           </div>
         </div>
       </div>
@@ -126,8 +129,8 @@
 					$("#patient_email").html(data.patient_email)
 					$("#patient_obs").html(data.patient_obs)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
-					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=");
-					$(".footer-modal-schedule").append('<a  class="btn btn-secondary" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Marcar como finalizado</a>')
+					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Me chamo "+data.name+", sou psicólogo na plataforma euteapoio e vi que você agendou uma consulta dia "+data.date+" de "+data.hour_start+" às "+data.hour_end+" comigo, poderia me confirmar, por favor?");
+					$(".footer-modal-schedule").html('<a  class="btn btn-secondary" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Marcar como finalizado</a>')
 					
 
 				}

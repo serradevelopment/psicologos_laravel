@@ -41,6 +41,7 @@
                         class="form-control"
                         placeholder="Nome Completo"
                         name="name"
+                        required
                         v-model="patient.name"
                       />
                     </div>
@@ -58,6 +59,7 @@
                         placeholder="Email"
                         name="email"
                         v-model="patient.email"
+                        required
                       />
                     </div>
                   </div>
@@ -71,8 +73,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="WhatsApp (00) 00000-0000"
+                        placeholder="(00) 00000-0000"
                         name="whatsapp"
+                        required
                         v-model="patient.whatsapp"
                       />
                     </div>

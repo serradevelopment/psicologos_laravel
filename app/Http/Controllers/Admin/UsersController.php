@@ -42,15 +42,14 @@ class UsersController extends Controller
         $user->fill($request->all());
 
         $user->password = Hash::make($request->password);
+
         $user->role = User::ROLE_COMMON;
+
+        $user->locked = 1;
 
         $user->save();
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
-            return redirect()->route('home');
-        }
-
-        return redirect()->route('home');
+        return redirect()->route('login')->with('flash.success','Usuário cadastrado com sucesso. Seus dados serão validados e assim que confimados, seu acesso será liberado à plataforma.');
     }
 
     public function index()
@@ -84,6 +83,7 @@ class UsersController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
+
 
         $allAdmins = User::all()->where('role',0);
 
