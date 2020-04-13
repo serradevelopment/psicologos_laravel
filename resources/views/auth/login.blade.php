@@ -71,6 +71,16 @@
                         Usuário ou senha inválidos
                     </div>
                     @endif
+
+                    @if(Session::has('flash.success'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                        {{ Session::get('flash.success') }}
+                    </div>
+                    @endif
                     <p><a href="{{ route('users.cadastrar.create') }}">Não possuo cadastro.</a></p>
                 </p>
                 @elseif($controller == 'UsersController' && $action == 'registerForm')

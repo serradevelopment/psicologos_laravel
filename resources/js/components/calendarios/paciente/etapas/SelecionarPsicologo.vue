@@ -15,25 +15,33 @@
           </div>
         </div>
       </div>
-      <table id="calendar">
+      <table id="calendar" style="max-height: 400px!important;overflow: auto!important;">
         <tbody v-if="users.length != 0">
           <div
             class="container"
-            :key="u.id"
-            v-for="u in users"
-            style="border-radius: 10px;box-shadow: 1px 1px 10px 2px;"
+            :key="i"
+            v-for="(u,i) in users"
+            style="border-radius: 10px;box-shadow: 1px 1px 10px 2px; margin-top: 5px;margin-bottom: 10px;"
           >
             <div class="row">
               <div class="col-md-4 col-4" style="margin: auto">
-                <img
+                <img v-if="u.avatar_extension != null"
                   style="vertical-align: middle;
 							border-style: none;
 							width: 60px;
 							height: 60px;
 							box-shadow: 1px 1px 5px 1px;
 							border-radius: 50%;"
-                  src="/img/psicologo.jpeg"
+                  :src="'/files/users/'+u.id+'.'+u.avatar_extension"
                 />
+               <img v-if="u.avatar_extension == null" style="vertical-align: middle;
+							border-style: none;
+							width: 60px;
+							height: 60px;
+							box-shadow: 1px 1px 5px 1px;
+							border-radius: 50%;"
+                  src="/img/psicologo.jpeg"
+                /> 
               </div>
               <div class="col-md-8 col-8">
                 <h5 style="margin-bottom:0px!important">{{u.name}}</h5>

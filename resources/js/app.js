@@ -54,7 +54,7 @@ const store = new Vuex.Store({
 		},
 		schedulingStatus: false,
 		psico: {
-			dataTableSchedulingRef:{},
+			dataTableSchedulingRef: {},
 			my_schedules: {},
 			dataTableScheduling: {}
 		}
@@ -73,7 +73,7 @@ const store = new Vuex.Store({
 		}
 	},
 	mutations: {
-		getDataFromTableScheduling(state,url = '/painel/psicologo/mySchedules') {
+		getDataFromTableScheduling(state, url = '/painel/psicologo/mySchedules') {
 			axios
 				.get(url)
 				.then(response => {
@@ -103,13 +103,21 @@ const store = new Vuex.Store({
 			var vuex = this.state;
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 
-			axios.get("/painel/psicologo/schedules/all")
-				.then(function (response) {
-					vuex.schedules = response.data;
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+			axios.post("/painel/psicologo/schedules/all",
+				{
+					_token: $('meta[name="csrf-token"]').attr("content"),
+					date: date
+				},
+			).then(function (response) {
+
+
+				console.log(response.data);
+				vuex.schedules = response.data;
+
+
+			}).catch(function (error) {
+				console.log(error);
+			});
 		},
 		confirmDisponibility() {
 			var vuex = this;

@@ -40,7 +40,7 @@ export default {
       ajax: {
         url: "/painel/psicologo/mySchedules",
         method: "GET",
-        dataSrc: "data"
+        dataSrc: "data",
       },
       columns: [
         { data: "hour_start" },
@@ -49,12 +49,15 @@ export default {
         // STATUS
         {
           mRender: function(data, type, row) {
-            if (row.status == true) {
-                return '<button class="btn btn-success" onclick="showSh('+row.id+')" data-id="'+row.id+'" data-toggle="modal"  data-target="#exampleModal"><div class="badge badge-success">Agendado</div></button>';
-            } else {
+            if (row.status == 'SCHEDULED') {
+              console.log(row)
+                return '<button class="btn btn-secondary btn-sm" onclick="showSh('+row.id+')" data-id="'+row.id+'" data-toggle="modal"  data-target="#exampleModal">Agendado</button>';
+            } else if(row.status == 'FINISHED') {
+              return '<div class="badge badge-success">Finalizado</div>';
+            } else if(row.status == null){
               return '<div class="badge badge-info">Disponível</div>';
             }
-          }
+          },
         }
 
         // /* EDIT */ {

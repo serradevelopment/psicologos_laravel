@@ -8,14 +8,18 @@
         <button class="btn btn-outline-info">Dia selecionado: {{day}}</button>
       </div>
       <table id="calendar">
-        <tbody>
+        <tbody v-if="schedules != null">
           <button
             v-for="s in schedules"
             :key="s.id"
             @click="$store.commit('setSchedule',s)"
             class="btn"
-            style="margin: 10px  background-color:#5cb8ff!important; color:white"
+            style="margin: 10px; background-color:#5cb8ff!important; color:white"
           >{{s.hour_start}} | {{s.hour_end}}</button>
+        </tbody>
+
+        <tbody v-if="schedules == null || schedules.length == 0">
+          <div class="alert alert-info">Nenhum especialista disponível para a data selecionada.</div>
         </tbody>
       </table>
     </div>
@@ -41,7 +45,6 @@ export default {
     }
   },
   mounted() {
-    //
   }
 };
 </script>

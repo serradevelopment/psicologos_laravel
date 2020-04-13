@@ -6,15 +6,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-	<title>euteapoio - consultas online</title>	
+	<title>euteapoio - Consultas online</title>	
 
-	<meta name="keywords" content="Consultas online" />
-	<meta name="description" content="euteapoio - uma nova forma de encontrar o seu psicologo ideal online">
-	<meta name="author" content="Serra Development - serradev.com.br">
+	<meta name="keywords" content="Consultas online, euteapoio, Eu te Apoio, Consunta com psicologos online" />
+	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Consultas online, com psicólogos especialistas dispostos a te acolher.">
+	<meta name="author" content="Serra Development - http://serradev.com.br">
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+	<link rel="shortcut icon" href="img/eu-te-apoio-logo.png" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="img/eu-te-apoio-logo.png">
 
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
@@ -35,12 +35,12 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/theme-elements.css">
-	<link rel="stylesheet" href="css/theme-blog.css">
+	{{-- <link rel="stylesheet" href="css/theme-blog.css"> --}}
 
 	<!-- Current Page CSS -->
 	<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">
-	<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css">
+	{{-- <link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css"> --}}
 
 	<!-- Demo CSS -->
 	<link rel="stylesheet" href="css/demos/demo-seo.css">
@@ -66,7 +66,7 @@
 							<div class="header-row">
 								<div class="header-logo">
 									<a href="index.html">
-										<img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="img/eu-te-apoio.png">
+										<img alt="euteapoio - consultas online" width="110" height="100" data-sticky-width="82" data-sticky-height="40" src="img/eu-te-apoio.png">
 									</a>
 								</div>
 							</div>
@@ -99,7 +99,7 @@
 										<i class="fas fa-bars"></i>
 									</button>
 								</div>
-								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-none d-md-block mr-3 mr-lg-0" data-hash data-hash-offset="65" href="{{ route('login') }}">Sou um especialista</a>
+								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-none d-md-block mr-3 mr-lg-0" href="{!! route('login') !!}">Sou um especialista</a>
 							</div>
 						</div>
 					</div>
@@ -125,7 +125,11 @@
 							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de cuidar </h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+<<<<<<< HEAD
 							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Acolhimento online com psicólogos especialistas dispostos a te acolher.</p>
+=======
+							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Consultas online, com psicólogos especialistas dispostos a te acolher</p>
+>>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
 							<a data-hash data-hash-offset="95" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}" href="#agendamento">Agendar acolhimento</a>
@@ -144,9 +148,19 @@
 							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te apoiamos! conheça nossa equipe de especialistas</h2>
 						</div>
 						<div class="col-lg-4">
+<<<<<<< HEAD
 							<div class="col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
 							<a class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" href="#agendamento">Conhecer especialistas</a>
 							</div>
+=======
+							<form class="custom-form-style-1" method="post">
+								<div class="form-row">
+									<div class="form-group col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
+										{{-- <input type="submit" class="btn btn-primary btn-outline font-weight-bold text-3 h-100 rounded-0 btn-px-4" value="Conhecer Equipe"> --}}
+									</div>
+								</div>
+							</form>
+>>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 					</div>
 				</div>
@@ -326,53 +340,22 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 					</div>
 					<div class="row text-center">
 						<div class="col">
+<<<<<<< HEAD
 							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Agende um acolhimento psicológico.</strong></p>
 							<br>
 							<a href="#agendamento" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR ACOLHIMENTO</a>
+=======
+							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas dúvidas? <strong>Marque uma consulta</strong></p>
+							<br>
+							<a href="#agendamento" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR CONSULTA</a>
+>>>>>>> 2702d5c968715925eeb7e5fb44ffa34d55d2af2d
 						</div>
 					</div>
 				</div>
 			</section>
 
 
-			<!-- Form -->
-
-			<form id="demo-form" class="white-popup-block mfp-hide">
-				<div class="form-row mt-2">
-					<div class="col-sm-12">
-						<h2 class="font-weight-bold text-center text-7 mb-4">Get a Quote</h2>
-					</div>
-				</div>
-
-				<div class="custom-form-style-1 custom-form-style-1-elegant">
-					<div class="form-row">
-						<div class="form-group col mb-2">
-							<input type="text" class="form-control" value="" placeholder="NAME*" required>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col mb-2">
-							<input type="email" class="form-control" value="" placeholder="EMAIL*" required>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col mb-2">
-							<input type="text" class="form-control" value="" placeholder="WEBSITE*" required>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col">
-							<input type="text" class="form-control" value="" placeholder="COMPANY NAME*" required>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col mb-0">
-							<input type="submit" class="btn btn-primary btn-outline btn-elegant font-weight-semibold text-center text-4 btn-py-2 w-100 mb-3" value="Submit">
-						</div>
-					</div>
-				</div>
-
-			</form>
+			
 
 		</div> 
 
@@ -385,9 +368,9 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 						</div>
 						<div class="col-auto">
 							<ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light ml-3">
-								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+								{{-- <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
 								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li> --}}
 							</ul>
 						</div>
 					</div>
@@ -399,8 +382,9 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 
 	<!-- Vendor -->
 	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+	<script src="js/app.js"></script>
 	<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
 	<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
 	<script src="vendor/popper/umd/popper.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -433,7 +417,6 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 
 	<!-- Theme Initialization Files -->
 	<script src="js/theme.init.js"></script>
-	<script src="js/app.js"></script>
 	
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.

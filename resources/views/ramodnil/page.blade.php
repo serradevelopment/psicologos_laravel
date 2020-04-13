@@ -15,12 +15,13 @@
         <!-- Logo Header -->
         <div class="logo-header">
 
-            <img src="/img/eu-te-apoio-text.png" width="180"/>
+            <img src="/img/eu-te-apoio-text.png" class="d-none d-md-block d-lg-block" width="180"/>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <i class="fa fa-bars"></i>
                 </span>
             </button>
+            
             {{-- <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
             <div class="navbar-minimize">
                 <button class="btn btn-minimize btn-rounded">
@@ -31,11 +32,11 @@
         <!-- End Logo Header -->
 
         <!-- Navbar Header -->
-        <nav class="navbar navbar-header navbar-expand-lg">
+        <nav class="navbar navbar-header navbar-expand-lg ">
 
             <div class="container-fluid">
                 <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                    @php
+                    {{-- @php
 
                     $countNotifications = count(auth()->user()->unreadNotifications);
 
@@ -69,7 +70,7 @@
                                 <a class="see-all" href="javascript:void(0);">Ver todas notificações<i class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown hidden-caret">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                             <div class="avatar-sm">
@@ -114,7 +115,7 @@
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                             <span>
                                 {{Auth::user()->name}}
-                                <span class="user-level">{{(Auth::user()->role == 0)?"Administrador":"Psicólogo"}}</span>
+                                <span class="user-level badge badge-info" style="color:white">{{(Auth::user()->role == 0)?"Administrador":"Psicólogo"}}</span>
                                 <span class="caret"></span>
                             </span>
                         </a>
@@ -126,6 +127,9 @@
                                     <a href="{{route('users.profile')}}">
                                         <span class="link-collapse">Meu Perfil</span>
                                     </a>
+                                </li>
+                                <li>
+                                <a class="link-collapse" style="color:black" href="{{route('logout')}}">Sair</a>
                                 </li>
                             </ul>
                         </div>

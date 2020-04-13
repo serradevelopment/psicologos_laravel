@@ -66,7 +66,11 @@
 
                             @can('destroy', $u)
                             @if ($u->id != Auth::user()->id)
-                            {{ Html::deleteLink('Excluir', route('users.destroy', ['user' => $u]), ['button_class' => 'btn btn-danger btn-sm confirmable', 'icon' => 'trash']) }}
+                            <form method="POST" action="{{ route('users.destroy', ['user' => $u]) }}">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger btn-sm confirmable"><i class="fa fa-trash"></i></button>
+                            </form>
                             @endif
                             @endcan
                         </div>

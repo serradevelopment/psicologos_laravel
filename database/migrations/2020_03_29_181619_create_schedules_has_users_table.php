@@ -19,6 +19,7 @@ class CreateSchedulesHasUsersTable extends Migration
             $table->unsignedBigInteger('schedules_id');
             $table->unsignedBigInteger('patients_id')->nullable();
             $table->string('date');
+            $table->string('status')->nullable();
 
             $table->foreign('users_id')
             ->references('id')->on('users')

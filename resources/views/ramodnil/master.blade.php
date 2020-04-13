@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="{{ asset('css/azzara.min.css') }}">
 	<link rel="stylesheet" href="{{asset('fonts/flaticon/flaticon.css')}}">
 	<link rel="stylesheet" href="css/demos/demo-seo.css">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/img/eu-te-apoio-logo.png" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="/img/eu-te-apoio-logo.png">
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
 	@yield('adminlte_css')
 </head>
