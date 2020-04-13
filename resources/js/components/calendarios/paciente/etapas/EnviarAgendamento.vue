@@ -27,7 +27,7 @@
           <div class="container">
             <div class="row">
               <div class="container" id="box" style="border-radius: 20px;">
-                <h4>Preencha para agendar sua consulta com o psicologo selecionado</h4>
+                <h4>Preencha para agendar sua consulta com o especialista selecionado:</h4>
                 <div class="container">
                   <div class="form-group">
                     <div class="input-group input-group-merge">
@@ -117,7 +117,11 @@
           <div
             class="alert alert-success"
             style="width: 100%; border-bottom: 0px!important;"
-          >Agendamento realizado com sucesso!</div>
+          >
+          <p>Agendamento realizado com sucesso!</p>
+          <h4>Em breve um especialista entrará em contato pelo número informado.</h4>
+          
+          </div>
         </tbody>
       </table>
     </div>

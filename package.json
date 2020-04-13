@@ -36,6 +36,7 @@
         "jquery-mask-plugin": "^1.14.16",
         "jquery-maskmoney": "^3.0.2",
         "jquery-validation": "^1.19.1",
+        "jquery.easing": "^1.4.1",
         "laravel-vue-datatable": "^0.5.11",
         "moment": "^2.24.0",
         "numeral": "^2.0.6",

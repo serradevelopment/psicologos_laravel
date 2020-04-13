@@ -39,7 +39,7 @@ class SchedulesUsersController extends Controller
         $patient->fill($data['patient']);
         $patient->save();
 
-        $save = DB::insert('UPDATE schedules_has_users SET patients_id = ? WHERE schedules_id = ? and date = ?', [
+        $save = DB::insert('UPDATE schedules_has_users SET patients_id = ?, status = "SCHEDULED" WHERE schedules_id = ? and date = ? ', [
             $patient->id, $data['schedule']['id'], $data['date']
         ]);
 
@@ -62,9 +62,10 @@ class SchedulesUsersController extends Controller
                 'patients.whatsapp as patient_whatsapp',
                 'patients.email as patient_email',
                 'patients.obs as patient_obs',
-                DB::raw('(CASE WHEN sh.patients_id IS NULL THEN FALSE ELSE TRUE END) AS status')
+                'sh.status as status'
             )
-            ->where('sh.users_id', '=', auth()->user()->id)->get();
+            ->where('sh.users_id', '=', auth()->user()->id)
+            ->orderBy('sh.date','desc')->get();
         $data = ["data"=>$data];
         return response()->json($data);
     }
@@ -85,11 +86,23 @@ class SchedulesUsersController extends Controller
             'patients.whatsapp as patient_whatsapp',
             'patients.email as patient_email',
             'patients.obs as patient_obs',
-            DB::raw('(CASE WHEN sh.patients_id IS NULL THEN FALSE ELSE TRUE END) AS status')
+            'sh.status as status'
         )
-        ->where('sh.id', '=', $request->sh_id)->first();
+        ->where('sh.id', '=', $request->sh_id)
+        ->orderBy('sh.date')
+        ->first();
 
         return response()->json($data);
+    }
 
+    public function endSchedule(Request $request)
+    {
+        $data = $request->all();
+
+        $update = DB::table('schedules_has_users', 'sh')
+        ->where('id', $data['sh_id'])
+        ->update(['status' => 'FINISHED']);
+
+        return response()->json($update);
     }
 }

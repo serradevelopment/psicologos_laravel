@@ -156,7 +156,7 @@ class UsersController extends Controller
         $user->save();
 
         if ($request->hasFile('imagem')) {
-            $request->file('imagem')->move(base_path('/public/files/users'), sprintf('%s.%s', $user->id, $extension));
+            $request->file('imagem')->move(base_path('/public_html/files/users'), sprintf('%s.%s', $user->id, $extension));
         }
 
         return redirect()->route('users.profile')->with('flash.success', 'Perfil salvo com sucesso');

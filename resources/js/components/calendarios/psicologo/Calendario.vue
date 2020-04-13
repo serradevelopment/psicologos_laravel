@@ -62,7 +62,7 @@ export default {
   width: 25em;
   border: 1px solid #c9c9c9;
   -webkit-box-shadow: 0 0 5px #c9c9c9;
-  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75); */
   text-align: center;
   position: relative;
   margin: auto;

@@ -40,9 +40,8 @@
           <div class="modal-body">Data: <span id="date"></span> </div>
           <div class="modal-body">Horário: <span id="hours"></span> </div>
           <div class="modal-body">Mensagem: <span id="patient_obs"></span> </div>
-          <div class="modal-footer">
+          <div class="modal-footer footer-modal-schedule">
             <a  class="btn btn-success" id="call_whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chamar no Whatsapp</a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Fechar</button>
           </div>
         </div>
       </div>
@@ -128,8 +127,22 @@
 					$("#patient_obs").html(data.patient_obs)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
 					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=");
+					$(".footer-modal-schedule").append('<a  class="btn btn-secondary" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Marcar como finalizado</a>')
 					
 
+				}
+			);
+	}
+
+	function endSchedule(sh_id){
+		$.post(
+				"/painel/psicologo/schedules_users/endSchedule",
+				{
+					_token: $('meta[name="csrf-token"]').attr("content"),
+					sh_id: sh_id,
+				},
+				function (data, status) {
+					window.location.href = '/painel/psicologo';
 				}
 			);
 	}

@@ -30,9 +30,13 @@ class SchedulesController extends Controller
         return response($schedules);
     }
 
-    public function all()
+    public function all(Request $request)
     {
-        $schedules = Schedule::all();
+        $data = $request->all();
+
+        $schedules = DB::select("SELECT  * FROM    schedules WHERE EXISTS (  SELECT  null  FROM    
+        schedules_has_users  
+        WHERE   schedules.id = schedules_has_users.schedules_id and schedules_has_users.date = ? and schedules_has_users.status is NULL) ",[$data['date']]);
 
         return response($schedules);
     }

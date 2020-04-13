@@ -11,7 +11,7 @@ if ($controller == 'HomeController') {
 $class = 'active';
 }
 @endphp
-<svg style="position:absolute;transform:scaleY(-1)" class="custom-svg-style-1" viewBox="0 0 180 470" x="0px" y="0px" width="100%" height="100%">
+<svg style="position:absolute;transform:scaleY(-1);top:0;z-index:-1;" class="custom-svg-style-1" viewBox="0 0 180 470" x="0px" y="0px" width="100%" height="100%">
     <g>
         <path id="shape_one_start" opacity="0.098" fill="#00a3d5" d="M 847.5703 23.7939 C 847.5703 23.7939 581.8154 -245.1675 394.2842 33.9375 C 305.4043 166.2183 345.0537 358.8125 253.5615 364.6631 C 162.0684 370.5146 129.5303 342.542 70.9883 383.9072 C 3.0254 431.9297 17.8926 499.2158 17.8926 499.2158 L 847.5703 499.2158 L 847.5703 23.7939 Z" />
         <path id="shape_one_end" opacity="0.098" fill="#00a3d5" d="m847.5703,24.7939c0,0 -85.7549,-346.9614 -273.2861,-67.8564c149.1201,176.2808 52.7695,313.875 -46.7227,312.7256c-99.4922,-1.1494 -59.0312,107.8789 -117.5732,149.2441c-67.9629,48.0225 -186.0957,167.3086 -207.0957,167.3086l644.6777,-86l0,-475.4219z" style="visibility:hidden" />
