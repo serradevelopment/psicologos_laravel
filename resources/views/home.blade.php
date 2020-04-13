@@ -84,13 +84,13 @@
 													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#about">Sobre</a>
 												</li>
 												<li class="dropdown">
-													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#solutions">Soluções</a>
+													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#solutions">Serviços</a>
 												</li>
 												<li class="dropdown">
 													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#reviews">Opiniões</a>
 												</li>
 												<li class="dropdown">
-													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#about">Especialistas</a>
+													<a class="dropdown-item"  data-hash data-hash-offset="95" href="#agendamento">Especialistas</a>
 												</li>
 											</ul>
 										</nav>
@@ -122,13 +122,13 @@
 				<div class="row align-items-center py-5">
 					<div class="col-lg-6 pt-4 pt-lg-0 mt-5 mt-lg-0 mb-5 mb-lg-0">
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de cuidar. </h1>
+							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}"><strong><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu te apoio</span></strong>, um novo jeito de cuidar </h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">consultas online, com psicólogos especialistas dispostos a te acolher</p>
+							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">Acolhimento online com psicólogos especialistas dispostos a te acolher.</p>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
-							<a data-hash data-hash-offset="95" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}" href="#agendamento">Agendar consulta</a>
+							<a data-hash data-hash-offset="95" class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 0.3, 'transition': true, 'horizontal': false}" href="#agendamento">Agendar acolhimento</a>
 						</div>
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="550">
@@ -144,13 +144,9 @@
 							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te apoiamos! conheça nossa equipe de especialistas</h2>
 						</div>
 						<div class="col-lg-4">
-							<form class="custom-form-style-1" method="post">
-								<div class="form-row">
-									<div class="form-group col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
-										<input type="submit" class="btn btn-primary btn-outline font-weight-bold text-3 h-100 rounded-0 btn-px-4" value="Conhecer Equipe">
-									</div>
-								</div>
-							</form>
+							<div class="col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600">
+							<a class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2" href="#agendamento">Conhecer especialistas</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -181,8 +177,8 @@
 							<h2 class="font-weight-bold line-height-2 text-7 mb-1">Nosso propósito</h2>
 							<span class="d-block text-color-dark text-5 pb-2 mb-4 opacity-7">Quem somos</span>
 						</div>
-						<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">Nascemos da necessidade de compartilhar métodos e formas de ajudar pessoas neste momento tão delicado. Nós da equipe<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio, </span></strong> estamos aqui para te auxiliar, seja no trabalho, na família, nos círculos de amizade ou nos relacionamentos. Todos nós buscamos dar o melhor de nós mesmos, nos momentos bons e ruins. Realmente não é uma tarefa fácil, mas é possível! Então, quando precisar, saiba que você pode nos procurar, pois<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio!</span></strong></p>
-						<a data-hash data-hash-offset="95" href="#solutions" class="btn btn-primary btn-outline btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">Nossas Soluçoes</a>
+						<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">Nascemos da necessidade de ajudar as pessoas neste momento tão delicado de isolamento social causado pela pandemia do Coronavírus. Nós da equipe<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio, </span></strong> estamos aqui para te auxiliar, seja no trabalho, na família, nos círculos de amizade ou nos relacionamentos, através de acolhimento psicológico com profissionais preparados e especialistas nas mais diversas áreas. Precisa de um acolhimento profissional nesse momento? Venha,<span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2" style="font-size: 20px !important;">eu te apoio!</span></strong></p>
+						<a data-hash data-hash-offset="95" href="#solutions" class="btn btn-primary btn-outline btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">Como nós fazemos</a>
 					</div>
 				</div>
 			</div>
@@ -222,7 +218,7 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-xl-6 col-12 col-xs-12 col-sm-12 mb-5 mb-lg-0">
 							<h2 class="text-color-light line-height-3 text-10 mb-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
-								<strong style="text-shadow: 1px 1px 5px black;">Precisa de apoio emocional?</strong><br><span style="text-shadow: 1px 1px 5px black;"> Tenha uma consulta com um especialista agora</span></h2>
+								<strong style="text-shadow: 1px 1px 5px black;">Precisa de apoio?</strong><br><span style="text-shadow: 1px 1px 5px black;"> Tenha um acolhimento psicológico com um especialista agora!</span></h2>
 						</div>
 						<div class="col-lg-4 col-xl-4 col-sm-4 col-xs-4 col-4" style="height: 600px;">
 							<div class="card appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400" style="border-radius: 20px!important;">
@@ -245,8 +241,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col text-center">
-							<h2 class="font-weight-bold line-height-2 text-7 mb-1">Depoimentos</h2>
-							<span class="d-block text-color-dark text-5 pb-2 mb-4 opacity-7">dos nossos usuários</span>
+							<h2 class="font-weight-bold line-height-2 text-7 mb-1" style="padding-bottom: 10px;">Depoimentos</h2>
 						</div>
 					</div>
 					<div class="row justify-content-center">
@@ -289,7 +284,7 @@
 					<div class="row text-center mb-3">
 						<div class="col-lg-8 m-auto">
 							<h2 class="custom-bar _center text-color-dark"><strong>Perguntas frequentes</strong></h2>
-							<p>Estamos aqui para facilitar a sua vida, e a nossa. Portanto se você tiver alguma dúvida procure abaixo, pois provavelmente ela já foi respondida.</p>
+							<p>Estamos aqui para facilitar as nossas vidas. Se você tiver alguma dúvida procure abaixo. Provavelmente ela já foi respondida.</p>
 						</div>
 					</div>
 					<div class="row mb-5">
@@ -298,31 +293,32 @@
 								<div class="accordion-item">
 									<a>Preciso pagar para utilizar o serviço?</a>
 									<div class="content">
-										<p>Devido aos acontecimentos do covid-19 (novo corona virus). Estamos disponibilizando a plataforma gratuitamente para que todos possam ter acesso a um serviço de psicologia com qualidade e profissionalismo! Pois somente juntos venceremos este momento dificil que aflinge a todos nós.</p>
+										<p>Devido aos acontecimentos do Covid-19 (novo coronavírus). Estamos disponibilizando a plataforma gratuitamente para que todos possam ter acesso a um acolhimento psicológico com qualidade e profissionalismo! Pois somente juntos venceremos este momento difícil que aflige a todos nós.</p>
 									</div>
 								</div>
 								<div class="accordion-item">
 									<a>Como posso saber se os psicólogos são realmente formados?</a>
 									<div class="content">
-										<p>Todos os nossos especialistas são verificados pelo número de CRP (Conselho Regional de Psicologia), você pode verificar este mesmo número no perfil profissional disponibilizado ao agendar uma consulta ou em nossa página de especialistas.</p>
+										<p>Todos os nossos especialistas são cadastrados informando o número de seu CRP (Conselho Regional de Psicologia). Inicialmente todos os psicólogos que disponibilizam o seu tempo para realizar um acolhimento através dessa plataforma são egressos do curso de Psicologia da Universidade de Vassouras. 
+Para conferir se um psicólogo tem registro profissional válido, basta entrar em contato com o Conselho Regional de Psicologia pelo telefone (21) 2139-5400 ou fazer a consulta no site do órgão (http://www.crprj.org.br/site/).</p>
 									</div>
 								</div>
 								<div class="accordion-item">
 									<a>Quantas vezes posso utilizar a plataforma?</a>
 									<div class="content">
-										<p>Quantas vezes precisar, nosso objetivo é contribuir para o seu bem-estar. Assim como contamos com a sua colaboração para que você contribua para o bem-estar do próximo. Pois só assim viveremos em um mundo melhor e mais justo!</p>
+										<p>Quantas vezes você precisar. O nosso objetivo é contribuir para o seu bem-estar. Além disso, contamos com a sua colaboração para que você contribua para o bem-estar do próximo, pois só assim viveremos em um mundo melhor e mais justo.</p>
 									</div>
 								</div>
 								<div class="accordion-item">
 									<a>Como faço para ingressar na equipe de especialistas?</a>
 									<div class="content">
-										<p>Em nossa página de especialistas nós disponibilizamos uma área para registro de novos psicólogos. Após o registro nós avaliamos e verificamos todos os dados pela integridade dos nossos usuários e para nossa e sua proteção. Esse período de analise pode levar de 1 a 5 semanas.</p>
+										<p>Em nossa página é disponibilizada uma área para o registro de novos psicólogos. Após o registro, o perfil do profissional cadastrado é avaliado. Esse procedimento é realizado para a sua segurança e para a proteção de todos os usuários do serviço oferecido nessa plataforma. O período de análise pode levar de 1 a 5 semanas. Fazemos contato para informar que o seu cadastro foi aceito. </p>
 									</div>
 								</div>
 								<div class="accordion-item">
 									<a>Por onde são feitas as consultas?</a>
 									<div class="content">
-										<p>Nossa equipe de especialistas, irá entrar em contato com você, através do WhatsApp, para realizar a consulta por video-chamamda.</p>
+										<p>Nossa equipe de especialista irá entrar em contato com você através do WhatsApp, no dia e horário agendado, para realizar o seu acolhimento por video-chamada.</p>
 									</div>
 								</div>
 							</div>
@@ -330,9 +326,9 @@
 					</div>
 					<div class="row text-center">
 						<div class="col">
-							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Marque uma consulta</strong></p>
+							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas? <strong>Agende um acolhimento psicológico.</strong></p>
 							<br>
-							<a href="#freeseo" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR CONSULTA</a>
+							<a href="#agendamento" class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR ACOLHIMENTO</a>
 						</div>
 					</div>
 				</div>
