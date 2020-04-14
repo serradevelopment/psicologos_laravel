@@ -34,7 +34,6 @@
             <div class="container" id="box" style="border-radius: 20px;">
               <h4>Preencha para agendar sua consulta com o especialista selecionado:</h4>
               <div class="container">
-                <form id="form-patient">
                   <div class="form-group">
                     <div class="input-group input-group-merge">
                       <div class="input-group-prepend">
@@ -105,13 +104,12 @@
                   </div>
                   <div class="form-group">
                     <div class="col-md-12">
-                      <button type="submit" class="btn btn-success" style="border-radius:10px;">
+                      <button type="button" @click="$store.commit('saveScheduling')" class="btn btn-success" style="border-radius:10px;">
                         Agendar
                         <span class="glyphicon glyphicon-send"></span>
                       </button>
                     </div>
                   </div>
-                </form>
               </div>
             </div>
           </div>
@@ -155,14 +153,6 @@ export default {
   updated() {
     $(".tel-ddd-mask").mask("(00) 000000009");
     var vue = this;
-    $("#form-patient").submit(function(event) {
-      if(vue.patient.whatsapp.length == 14){
-        vue.$store.commit("saveScheduling");
-      }else{
-        event.preventDefault();
-      }
-      event.preventDefault();
-    });
   }
 };
 </script>

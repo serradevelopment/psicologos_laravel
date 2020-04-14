@@ -51,7 +51,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('login')->with('flash.success','Usuário cadastrado com sucesso. Seus dados serão validados e assim que confimados, seu acesso será liberado à plataforma.');
+        return redirect()->route('login')->with('flash.success','Usuário cadastrado com sucesso. Seus dados serão validados e assim que confimados, você reberá um email informando que seu acesso foi liberado. Não esqueça de verificar a caixa de spam do seu email.');
     }
 
     public function index()

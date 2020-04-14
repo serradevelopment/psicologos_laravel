@@ -179,9 +179,9 @@ const store = new Vuex.Store({
 		},
 		saveScheduling() {
 			var vuex = this.state;
-
+			console.log('s')
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
-			console.log(vuex.user);
+
 			axios.post("/painel/psicologo/schedules_users/savePatient", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
