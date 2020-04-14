@@ -138,7 +138,7 @@ a[x-apple-data-detectors] {
                        </table></td> 
                      </tr> 
                      <tr style="border-collapse:collapse;"> 
-                      <td class="es-m-p0l" align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-left:15px;font-size:0px;"><a href="https://euteapoio.com" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:11px;text-decoration:underline;color:#666666;"><img src="https://euteapoio.com/img/eu-te-apoio.png" alt="Marseille logo" title="Marseille logo" width="105" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"></a></td> 
+                      <td class="es-m-p0l" align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-left:15px;font-size:0px;"><a href="https://euteapoio.com" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:11px;text-decoration:underline;color:#666666;"><img src="https://euteapoio.com/img/eu-te-apoio.png" alt="Logo EuTeApoio" title="Marseille logo" width="105" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"></a></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
