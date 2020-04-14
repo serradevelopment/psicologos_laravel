@@ -31,7 +31,7 @@ class CadastroLiberado extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('emails.test')
+        return $this->view('emails.cadastro_liberado')
                 ->with([
                     'user' => $this->user,
                 ]);
