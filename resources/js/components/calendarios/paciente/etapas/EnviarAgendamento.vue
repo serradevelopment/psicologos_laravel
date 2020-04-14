@@ -102,6 +102,7 @@
                     ></textarea>
                   </div>
                 </div>
+                <small>Se possível, tenha um lugar reservado para a chamada em vídeo.</small>
                 <div class="form-group">
                   <div class="col-md-12">
                     <button
@@ -159,14 +160,13 @@ export default {
   updated() {
     $(".tel-ddd-mask").mask("(00) 000000009");
     var vue = this;
-    var submitButton = $('#btn-saveScheduling');
+    var submitButton = $("#btn-saveScheduling");
 
-    submitButton.click(function(){
-      console.log('clicado');
+    submitButton.click(function() {
+      console.log("clicado");
       submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
-    submitButton.attr("disabled", "disabled");
+      submitButton.attr("disabled", "disabled");
     });
-    
   }
 };
 </script>

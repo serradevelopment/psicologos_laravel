@@ -173,6 +173,7 @@ export default {
         };
 
         Calendar.prototype.drawDays = function() {
+          var formatedMonth = parseInt(month) + 1;
           var startDay = new Date(year, month, 1).getDay(),
             nDays = new Date(year, month + 1, 0).getDate(),
             n = startDay;
@@ -181,10 +182,23 @@ export default {
             days[k].id = "";
             days[k].className = "";
           }
-
+          if (formatedMonth <= 9) {
+            formatedMonth = "0" + formatedMonth;
+          }
           for (var i = 1; i <= nDays; i++) {
-            days[n].innerHTML = i;
-            n++;
+            if (i <= 9) {
+              i = "0" + i;
+            }
+            var fullDay = new Date(formatedMonth + "/" + i + "/" + year);
+            var todayy = new Date();
+
+            if (todayy < fullDay || todayy.getDate() == fullDay.getDate()) {
+              days[n].innerHTML = i;
+              n++;
+            } else {
+              days[n].innerHTML = '';
+              n++;
+            }
           }
 
           for (var j = 0; j < 42; j++) {
