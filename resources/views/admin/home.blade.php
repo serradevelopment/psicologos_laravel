@@ -49,8 +49,8 @@
         </div>
       </div>
 	</div>
-	
-	{{-- <div class="col-sm-6 col-md-3">
+	@can('index', \App\User::class)    
+	<div class="col-sm-6 col-md-3">
 		<div class="card card-stats card-primary card-round">
 			<div class="card-body">
 				<div class="row">
@@ -61,7 +61,7 @@
 					</div>
 					<div class="col col-stats">
 						<div class="numbers">
-							<p class="card-category">Usuários</p>
+							<p class="card-category">Psicólogos Cadastrados</p>
 							<h4 class="card-title">{{count(App\User::all())}}</h4>
 						</div>
 					</div>
@@ -69,8 +69,47 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="col-sm-6 col-md-3">
+		<div class="card card-stats card-primary card-round">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<i class="fas fa-hand-holding-heart"></i>
+						</div>
+					</div>
+					<div class="col col-stats">
+						<div class="numbers">
+							<p class="card-category">Acolhimentos Agendados</p>
+							<h4 class="card-title">{{DB::table('schedules_has_users')->where('status','SCHEDULED')->count()}}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-3">
+		<div class="card card-stats card-primary card-round">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<i class="fas fa-smile-beam"></i>
+						</div>
+					</div>
+					<div class="col col-stats">
+						<div class="numbers">
+							<p class="card-category">Pacientes Acolhidos</p>
+							<h4 class="card-title">{{DB::table('schedules_has_users')->where('status','FINISHED')->count()}}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@endcan
+	
+	{{-- <div class="col-sm-6 col-md-3">
 		<div class="card card-stats card-primary card-round">
 			<div class="card-body">
 				<div class="row">
