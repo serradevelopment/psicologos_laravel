@@ -325,6 +325,39 @@
 										</div>
 									</div>
 								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/psicologo.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">Posso dizer que  minha vida se divide em antes da terapia e depois que descobri a importância da terapia.
+												Hoje posso afirmar, com toda certeza, que não imagino mais minha vida sem esse trabalho tão importante que me faz crescer e descobrir tantas possibilidades para ser uma pessoa melhor.</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">M.R.</strong></p>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/psicologo.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">Sabe esse momento inesperado, crítico e sem previsão que o mundo está  atravessando chamado Covid-19...?
+												sabe como lido isso?
+												Capacitando minhas forças todo início de semana através do meu  atendimento on-line,  que faz fruir a razão da minha existência sem desistência de viver plenamente meu "Eu" nesse momento delicado.
+												Portanto , só tenho o que agradecer ao  profissional que se dispõe e coloca toda a sua sabedoria, técnica e  solidariedade para me ouvir e tratar  das minhas angústias, me impulsionar para dias melhores, na certeza de que eles virão 🙏🏻
+												Gratidão. </p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">V.M.</strong></p>
+										</div>
+									</div>
+								</div>
+
+
 							</div>
 						</div>
 					</div>
