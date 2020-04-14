@@ -179,7 +179,6 @@ const store = new Vuex.Store({
 		},
 		saveScheduling() {
 			var vuex = this.state;
-			console.log('s')
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 
 			axios.post("/painel/psicologo/schedules_users/savePatient", {
