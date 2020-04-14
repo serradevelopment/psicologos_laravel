@@ -99,7 +99,7 @@
 										<i class="fas fa-bars"></i>
 									</button>
 								</div>
-								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-none d-md-block mr-3 mr-lg-0" href="{!! route('login') !!}">Sou um especialista</a>
+								<a class="btn btn-primary btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2  d-md-block mr-3 mr-lg-0" href="{!! route('login') !!}">Sou um especialista</a>
 							</div>
 						</div>
 					</div>
