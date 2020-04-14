@@ -9,7 +9,7 @@
 	<title>euteapoio - Acolhimento online</title>	
 
 	<meta name="keywords" content="Acolhimento online, euteapoio, Eu te Apoio, Acolhimento com psicologos online" />
-	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Acolhimento online, com psicólogos especialistas dispostos a te acolher.">
+	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Acolhimento online, com psicólogos especialistas dispostos a te ajudar.">
 	<meta name="author" content="Serra Development - http://serradev.com.br">
 
 	<!-- Favicon -->
