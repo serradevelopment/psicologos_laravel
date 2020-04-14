@@ -193,7 +193,7 @@ export default {
             var fullDay = new Date(formatedMonth + "/" + i + "/" + year);
             var todayy = new Date();
 
-            if (todayy < fullDay || todayy.getDate() == fullDay.getDate()) {
+            if (todayy < fullDay || (todayy.getDate() == fullDay.getDate() && todayy.getMonth() == fullDay.getMonth())) {
               days[n].innerHTML = i;
               n++;
             } else {
