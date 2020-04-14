@@ -32,84 +32,90 @@
         <div class="container">
           <div class="row">
             <div class="container" id="box" style="border-radius: 20px;">
-              <h4>Preencha para agendar sua consulta com o especialista selecionado:</h4>
+              <h5>Preencha para agendar sua consulta com o especialista selecionado:</h5>
               <div class="container">
-                  <div class="form-group">
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fas fa-user"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Nome Completo"
-                        name="name"
-                        required
-                        v-model="patient.name"
-                      />
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-user"></i>
+                      </span>
                     </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nome Completo"
+                      name="name"
+                      required
+                      v-model="patient.name"
+                    />
                   </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fas fa-envelope"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                        name="email"
-                        v-model="patient.email"
-                        required
-                      />
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-envelope"></i>
+                      </span>
                     </div>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      name="email"
+                      v-model="patient.email"
+                      required
+                    />
                   </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fas fa-phone"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control tel-ddd-mask"
-                        name="whatsapp"
-                        required
-                        v-model="patient.whatsapp"
-                      />
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-phone"></i>
+                      </span>
                     </div>
+                    <input
+                      type="text"
+                      class="form-control tel-ddd-mask"
+                      name="whatsapp"
+                      required
+                      v-model="patient.whatsapp"
+                    />
                   </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fas fa-comment-alt"></i>
-                        </span>
-                      </div>
-                      <textarea
-                        type="text"
-                        class="form-control"
-                        placeholder="Fale um pouco sobre você"
-                        name="obs"
-                        v-model="patient.obs"
-                        rows="3"
-                        style="resize: none;"
-                      ></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-comment-alt"></i>
+                      </span>
                     </div>
+                    <textarea
+                      type="text"
+                      class="form-control"
+                      placeholder="Fale um pouco sobre você"
+                      name="obs"
+                      v-model="patient.obs"
+                      rows="3"
+                      style="resize: none;"
+                    ></textarea>
                   </div>
-                  <div class="form-group">
-                    <div class="col-md-12">
-                      <button type="button" @click="$store.commit('saveScheduling')" class="btn btn-success" style="border-radius:10px;">
-                        Agendar
-                        <span class="glyphicon glyphicon-send"></span>
-                      </button>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <button
+                      type="button"
+                      @click="$store.commit('saveScheduling')"
+                      class="btn btn-success"
+                      id="btn-saveScheduling"
+                      style="border-radius:10px;"
+                    >
+                      Agendar
+                      <span class="glyphicon glyphicon-send"></span>
+                    </button>
                   </div>
+                </div>
               </div>
             </div>
           </div>
@@ -153,6 +159,14 @@ export default {
   updated() {
     $(".tel-ddd-mask").mask("(00) 000000009");
     var vue = this;
+    var submitButton = $('#btn-saveScheduling');
+
+    submitButton.click(function(){
+      console.log('clicado');
+      submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
+    submitButton.attr("disabled", "disabled");
+    });
+    
   }
 };
 </script>

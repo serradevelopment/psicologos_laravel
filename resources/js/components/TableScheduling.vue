@@ -62,20 +62,18 @@ export default {
 
         /* DELETE */ {
           mRender: function(data, type, row) {
-            if (row.status == null) {
-              var token =  $('meta[name="csrf-token"]').attr("content");
-              return (
-                '<form action="/painel/psicologo/schedules_users/' +
-                row.id +
-                '" method="POST">' +
-                '<input type="hidden" name="_method" value="DELETE"/>' +
-                '<input type="hidden" name="_token" value="'+token+'"/>' +
-                '<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>' +
-                "</form>"
-              );
-            }else{
-              return '';
-            }
+            var token = $('meta[name="csrf-token"]').attr("content");
+            return (
+              '<form action="/painel/psicologo/schedules_users/' +
+              row.id +
+              '" method="POST">' +
+              '<input type="hidden" name="_method" value="DELETE"/>' +
+              '<input type="hidden" name="_token" value="' +
+              token +
+              '"/>' +
+              '<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>' +
+              "</form>"
+            );
           }
         }
       ]

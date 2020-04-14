@@ -109,11 +109,7 @@ const store = new Vuex.Store({
 					date: date
 				},
 			).then(function (response) {
-
-
-				console.log(response.data);
 				vuex.schedules = response.data;
-
 
 			}).catch(function (error) {
 				console.log(error);

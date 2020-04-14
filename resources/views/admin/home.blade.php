@@ -49,7 +49,7 @@
         </div>
       </div>
 	</div>
-	@can('index', \App\User::class)    
+	    
 	<div class="col-sm-6 col-md-3">
 		<div class="card card-stats card-primary card-round">
 			<div class="card-body">
@@ -107,7 +107,6 @@
 			</div>
 		</div>
 	</div>
-	@endcan
 	
 	{{-- <div class="col-sm-6 col-md-3">
 		<div class="card card-stats card-primary card-round">
