@@ -27,7 +27,7 @@
 	@yield('body')
 
 
-	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="{{ asset('js/app.js') }}@php echo '?'.(random_int(100, 999))  @endphp"></script>
 	<!--   Core JS Files   -->
 
 	<script src="{{asset('js/core/popper.min.js')}}"></script>

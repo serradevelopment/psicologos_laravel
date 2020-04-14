@@ -447,7 +447,7 @@ Para conferir se um psicólogo tem registro profissional válido, basta entrar e
 
 	<!-- Vendor -->
 	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/app.js{{ "?".random_int(100,999) }}"></script>
 	<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
 	<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
 	<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
