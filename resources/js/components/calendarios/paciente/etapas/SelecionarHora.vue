@@ -13,8 +13,8 @@
             v-for="s in schedules"
             :key="s.id"
             @click="$store.commit('setSchedule',s)"
-            class="btn"
-            style="margin: 10px; background-color:#5cb8ff!important; color:white"
+            class="btn btn-sm"
+            style="margin: 3px; background-color:#5cb8ff!important; color:white"
           >{{s.hour_start}} | {{s.hour_end}}</button>
         </tbody>
 

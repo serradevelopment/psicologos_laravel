@@ -129,7 +129,7 @@
 					$("#patient_email").html(data.patient_email)
 					$("#patient_obs").html(data.patient_obs)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
-					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Me chamo "+data.name+", sou psicólogo na plataforma euteapoio e vi que você agendou uma consulta dia "+data.date+" de "+data.hour_start+" às "+data.hour_end+" comigo, poderia me confirmar, por favor?");
+					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Me chamo "+data.name+", sou psicólogo na plataforma euteapoio e vi que você agendou uma consulta dia "+data.date+" das "+data.hour_start+" às "+data.hour_end+" comigo, poderia me confirmar, por favor?");
 					$(".footer-modal-schedule").html('<a  class="btn btn-secondary" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Marcar como finalizado</a>')
 					
 

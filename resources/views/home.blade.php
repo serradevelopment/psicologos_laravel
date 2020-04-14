@@ -250,26 +250,78 @@
 								<div>
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
-											<img src="img/clients/client-1.jpg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+											<img src="img/depo1.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
 										</div>
 										<blockquote>
-											<p class="text-color-dark opacity-7 mb-0">Na minha profissão a dias em que me sentia muito desmotivado e na correria do dia a dia não possuia tempo para ir a um consultorio. Quando conheci a plataforma me encontrei. Hoje em dia sou muito mais equilibrado e organizado, além de ser emocionalmente muito mais feliz. Recomendo demais !!!</p>
+											<p class="text-color-dark opacity-7 mb-0">A plataforma de acolhimento psicológico EuTeApoio.com vem para conectar pessoas nesse momento de pandemia. Sabemos das dificuldades causadas por esse momento. Junto com uma equipe de profissionais incríveis de Engenharia de Software e Psicologia criamos esse canal para você! Precisa de apoio? Vem, eu te apoio!</p>
 										</blockquote>
 										<div class="testimonial-author mb-3">
-											<p><strong class="font-weight-bold">Ronaldo Roberto Filho</strong><span class="font-weight-normal">Professor</span></p>
+											<p><strong class="font-weight-bold">Anrã Fernandes</strong><span class="font-weight-normal">MSc. Computer Science (Software Engineering) <br>Coordenador Engenharia de Software - Universidade de Vassouras</span></p>
 										</div>
 									</div>
 								</div>
 								<div>
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
-											<img src="img/clients/client-2.jpg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+											<img src="img/depo3.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
 										</div>
 										<blockquote>
-											<p class="text-color-dark opacity-7 mb-0">Depois que comecei a usar a plataforma, minha vida começou a tomar um rumo muito melhor. Ter consultas com psicólogos online inicialmente pareceu uma ideia estranha mas me motivou a querer mudar e de fato eles me ajudaram. Agora 3 vezes na semana tenho consultas da minha casa.</p>
+											<p class="text-color-dark opacity-7 mb-0">Assim como nos  comprometemos ao fazer o nosso juramento que nos torna  psicólogos, este projeto vem para corroborar o compromisso social do Curso de Psicologia da Universidade de Vassouras com a qualidade de vida de todos os sujeitos, cidadãos e Instituições. Nasce nesse momento em que tantas pessoas encontram-se em vulnerabilidades emocionais, necessitando de escuta e cuidados. Por esta razão, estamos aqui e te apoioamos. </p>
 										</blockquote>
 										<div class="testimonial-author">
-											<p><strong class="font-weight-bold">Alice Fernandes</strong><span class="font-weight-normal">Estudante</span></p>
+											<p><strong class="font-weight-bold">Prof.Dra. Adriana Vasconcelos Bernardino</strong><span class="font-weight-normal">Psicóloga - Coordenadora do Curso de Psicologia da Universidade de Vassouras</span></p>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/depo5.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">Fazer parte desse projeto foi super enriquecedor. O EuTeApoio.com vem para ajudar pessoas reais, com dificuldades reais e ser uma ferramenta inovadora no mercado. A palavra de ordem é 'Conexão'. Somos apaixonados por pessoas. Venha com a gente! Eu te apoio.</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">Vinicius Almeida</strong><span class="font-weight-normal">CEO at Serra Development</span></p>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/depo2.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">Sabemos que a pandemia covid - 19 vem trazendo inúmeras repercussões psíquicas para a população de um modo geral. Essa realidade pode estar ainda mais presente nos profissionais da saúde e da segurañca, que lidam com a realidade do cuidado no dia-a- dia. Diante dessa realidade, entendemos que o acolhimento psicológico tem lugar fundamental na importância de mantermos nossos profissionais preservados em sua saúde mental. Dessa forma este projeto destina-se, prioritariamente, ao acolhimento aos profissionais da área da saúde e da segurança da cidade de Vassouras.</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">Prof.Mestre Juliana Fernandes de Souza Ribeiro</strong><span class="font-weight-normal">Psicóloga especialista em Psicologia hospitalar</span></p>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/depo6.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">A plataforma, eu te apoio, é um novo meio de acolher as pessoas durante essa pandemia. Pois sabemos que este momento nos torna mais vulneráveis. Então, nosso objetivo é criar esta alternativa de atendimento online para pessoas como você, como nós, que anseiam o bem ao próximo. Sendo assim, não se sinta sozinho(a), conheça nossa plataforma e aproveite essa experiência. Para que juntos possamos apoiar uns aos outros.</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">Matheus Telles</strong><span class="font-weight-normal">Founder at Serra Development</span></p>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										<div class="testimonial-author mb-0">
+											<img src="img/depo4.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+										</div>
+										<blockquote>
+											<p class="text-color-dark opacity-7 mb-0">A arte de conectar pessoas, é isso que esperamos através da plataforma EuTeApoio.com. Utilizar a tecnologia para apoiar e criar um sentimento de cuidado é o motivo principal do desenvolvimento desse projeto. Muito mais que pensar somente em tecnologias, linguagens e códigos, pensamos nas pessoas que estão por trás desse ambiente. Queremos vê-las felizes, realizadas, cuidadas.</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p><strong class="font-weight-bold">Lindomar Silva</strong><span class="font-weight-normal">CTO at Serra Development</span></p>
 										</div>
 									</div>
 								</div>
