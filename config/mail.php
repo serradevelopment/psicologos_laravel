@@ -39,8 +39,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.hostinger.com.br'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME','contato@euteapoio.com'),
+            'password' => env('MAIL_PASSWORD','ETA@2020'),
             'timeout' => null,
         ],
 

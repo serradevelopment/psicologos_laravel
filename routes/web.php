@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/mailable', function () {
-	$user = App\User::find(1);
-	echo $user->email;
-	$result = Mail::to($user->email)->send(new App\Mail\SendMailUser($user));
-});
-
-
-
 Route::get('/', function () {
 	return view('home');
 })->name('home');

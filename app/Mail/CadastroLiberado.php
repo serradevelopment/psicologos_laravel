@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\User;
 
-class SendMailUser extends Mailable implements ShouldQueue
+class CadastroLiberado extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -31,8 +31,7 @@ class SendMailUser extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from($this->user->email)
-                ->view('emails.test')
+        return $this->view('emails.test')
                 ->with([
                     'user' => $this->user,
                 ]);
