@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/mailable', function () {
+	$user = App\User::find(1);
+	echo $user->email;
+	$result = Mail::to($user->email)->send(new App\Mail\SendMailUser($user));
+});
+
+
+
 Route::get('/', function () {
 	return view('home');
 })->name('home');
@@ -31,26 +40,25 @@ Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
-Route::namespace('Admin')->prefix('painel')->group(function(){
+Route::namespace('Admin')->prefix('painel')->group(function () {
 
-	Route::post('/cadastrar','UsersController@register')->name('users.cadastrar');
-	Route::get('/cadastrar','UsersController@registerForm')->name('users.cadastrar.create');
-	Route::prefix('psicologo')->group(function(){
-		Route::get('/','HomeController@index')->name('home');
+	Route::post('/cadastrar', 'UsersController@register')->name('users.cadastrar');
+	Route::get('/cadastrar', 'UsersController@registerForm')->name('users.cadastrar.create');
+	Route::prefix('psicologo')->group(function () {
+		Route::get('/', 'HomeController@index')->name('home');
 		\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
 		// schedules
-		Route::post('/schedules/allAvailable','SchedulesController@allAvailable');
-		Route::post('/schedules/all','SchedulesController@all');
-		Route::resource('/schedules','SchedulesController');
-		Route::get('/mySchedules','SchedulesUsersController@getMySchedules');
-		
-		Route::delete('/schedules_users/{schedule}','SchedulesUsersController@destroy')->name('schedules_users.destroy');
-		Route::post('/schedules_users/all_in_date_selected','SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
-		Route::post('/schedules_users/savePatient','SchedulesUsersController@savePatient');
-		Route::post('/schedules_users/getScheduleUser','SchedulesUsersController@getScheduleUser');
-		Route::post('/schedules_users/endSchedule','SchedulesUsersController@endSchedule');
-		
+		Route::post('/schedules/allAvailable', 'SchedulesController@allAvailable');
+		Route::post('/schedules/all', 'SchedulesController@all');
+		Route::resource('/schedules', 'SchedulesController');
+		Route::get('/mySchedules', 'SchedulesUsersController@getMySchedules');
+
+		Route::delete('/schedules_users/{schedule}', 'SchedulesUsersController@destroy')->name('schedules_users.destroy');
+		Route::post('/schedules_users/all_in_date_selected', 'SchedulesUsersController@allInDateSelected')->name('schedules_users.all_in_date_selected');
+		Route::post('/schedules_users/savePatient', 'SchedulesUsersController@savePatient');
+		Route::post('/schedules_users/getScheduleUser', 'SchedulesUsersController@getScheduleUser');
+		Route::post('/schedules_users/endSchedule', 'SchedulesUsersController@endSchedule');
+
 		// Route::post('/schedules/all','SchedulesController@all');
 	});
-	
 });

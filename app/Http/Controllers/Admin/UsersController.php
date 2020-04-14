@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Notifications\CreatedUser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+
 class UsersController extends Controller
 {
     public function __construct()
@@ -204,6 +206,7 @@ class UsersController extends Controller
     }
 
     public function unblock(User $user) {
+
         $this->authorize('unblock', $user);
 
         $user->locked = false;
