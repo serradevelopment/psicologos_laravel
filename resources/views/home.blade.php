@@ -6,15 +6,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-	<title>euteapoio - Consultas online</title>	
+	<title>euteapoio - Acolhimento online</title>	
 
-	<meta name="keywords" content="Consultas online, euteapoio, Eu te Apoio, Consunta com psicologos online" />
-	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Consultas online, com psicólogos especialistas dispostos a te acolher.">
+	<meta name="keywords" content="Acolhimento online, euteapoio, Eu te Apoio, Acolhimento com psicologos online" />
+	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Acolhimento online, com psicólogos especialistas dispostos a te acolher.">
 	<meta name="author" content="Serra Development - http://serradev.com.br">
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="img/eu-te-apoio-logo.png" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="img/eu-te-apoio-logo.png">
+	<link rel="shortcut icon" href="/img/eu-te-apoio-logo.png" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="/img/eu-te-apoio-logo.png">
 
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
