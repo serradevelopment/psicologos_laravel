@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Patient;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
+use Illuminate\Support\Facades\Mail;
+
 
 class SchedulesUsersController extends Controller
 {
@@ -35,9 +37,14 @@ class SchedulesUsersController extends Controller
     {
         $data = $request->all();
 
+        $user = \App\User::find($data['user']['id']);
+        $schedule = \App\Schedule::find($data['schedule']['id']);
+
         $patient = new Patient;
         $patient->fill($data['patient']);
         $patient->save();
+
+        Mail::to($user->email)->send(new \App\Mail\ConsultaAgendada($user,$patient,$schedule,$data['date']));
 
         $save = DB::insert('UPDATE schedules_has_users SET patients_id = ?, status = "SCHEDULED" WHERE schedules_id = ? and date = ? and users_id = ?', [
             $patient->id, $data['schedule']['id'], $data['date'],$data['user']['id']
