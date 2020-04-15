@@ -4,7 +4,7 @@ return [
     'name' => 'Eu Te Apoio',
     'manifest' => [
         'name' => env('APP_NAME', 'Eu Te Apoio'),
-        'short_name' => 'EuTeApoio',
+        'short_name' => 'Eu Te Apoio',
         'start_url' => '/painel/psicologo',
         'background_color' => '#e5f6fb',
         'theme_color' => '#e5f6fb',
