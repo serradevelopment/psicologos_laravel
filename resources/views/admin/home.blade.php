@@ -40,11 +40,18 @@
           <div class="modal-body">Data: <span id="date"></span> </div>
           <div class="modal-body">Horário: <span id="hours"></span> </div>
           <div class="modal-body">Mensagem: <span id="patient_obs"></span> </div>
-          <div class="modal-footer ">
-			<a  class="btn btn-success" id="call_whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chamar no Whatsapp</a>
-			<div class="footer-modal-schedule">
+          <div class="modal-footer">
+			  <div class="row col-12">
+			<div class="col-md-4 col-4">
+				<a  class="btn btn-success btn-block" id="call_whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+			</div>
+			<div class="col-md-4 col-4 footer-modal-schedule-finish">
 
 			</div>
+			<div class="col-md-4 col-4 footer-modal-schedule-ausent">
+
+			</div>
+			  </div>
           </div>
         </div>
       </div>
@@ -168,7 +175,8 @@
 					$("#patient_obs").html(data.patient_obs)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
 					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Me chamo "+data.name+", sou psicólogo na plataforma euteapoio e vi que você agendou uma consulta dia "+data.date+" das "+data.hour_start+" às "+data.hour_end+" comigo, poderia me confirmar, por favor?");
-					$(".footer-modal-schedule").html('<a  class="btn btn-secondary" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Marcar como finalizado</a>')
+					$(".footer-modal-schedule-finish").html('<a  class="btn btn-secondary btn-block" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Finalizado<br></a>')
+					$(".footer-modal-schedule-ausent").html('<a  class="btn btn-danger btn-block" id="call_whatsapp" onclick="setAusent('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-times-circle"></i> Ausente</a>')
 					
 
 				}
@@ -178,6 +186,18 @@
 	function endSchedule(sh_id){
 		$.post(
 				"/painel/psicologo/schedules_users/endSchedule",
+				{
+					_token: $('meta[name="csrf-token"]').attr("content"),
+					sh_id: sh_id,
+				},
+				function (data, status) {
+					window.location.href = '/painel/psicologo';
+				}
+			);
+	}
+	function setAusent(sh_id){
+		$.post(
+				"/painel/psicologo/schedules_users/setAusent",
 				{
 					_token: $('meta[name="csrf-token"]').attr("content"),
 					sh_id: sh_id,

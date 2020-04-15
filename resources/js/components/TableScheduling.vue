@@ -56,6 +56,10 @@ export default {
               return '<div class="badge badge-success">Finalizado</div>';
             } else if (row.status == null) {
               return '<div class="badge badge-info" style="color:white">Disponível</div>';
+            } else if(row.status == "AUSENT"){
+              return '<div class="badge badge-danger" style="color:white">Não compareceu</div>';
+            }else{
+              return '';
             }
           }
         },

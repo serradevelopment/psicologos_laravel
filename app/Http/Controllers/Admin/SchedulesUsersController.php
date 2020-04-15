@@ -112,4 +112,15 @@ class SchedulesUsersController extends Controller
 
         return response()->json($update);
     }
+
+    public function setAusent(Request $request)
+    {
+        $data = $request->all();
+
+        $update = DB::table('schedules_has_users', 'sh')
+        ->where('id', $data['sh_id'])
+        ->update(['status' => 'AUSENT']);
+
+        return response()->json($update);
+    }
 }

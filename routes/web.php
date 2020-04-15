@@ -49,6 +49,7 @@ Route::namespace('Admin')->prefix('painel')->group(function () {
 		Route::post('/schedules_users/savePatient', 'SchedulesUsersController@savePatient');
 		Route::post('/schedules_users/getScheduleUser', 'SchedulesUsersController@getScheduleUser');
 		Route::post('/schedules_users/endSchedule', 'SchedulesUsersController@endSchedule');
+		Route::post('/schedules_users/setAusent', 'SchedulesUsersController@setAusent');
 
 		// Route::post('/schedules/all','SchedulesController@all');
 	});
