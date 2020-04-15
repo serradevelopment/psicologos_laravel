@@ -95,6 +95,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-sm-6 col-md-3">
 		<div class="card card-stats card-primary card-round">
 			<div class="card-body">
@@ -108,6 +109,26 @@
 						<div class="numbers">
 							<p class="card-category">Pacientes Acolhidos</p>
 							<h4 class="card-title">{{DB::table('schedules_has_users')->where('status','FINISHED')->count()}}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-6 col-md-3">
+		<div class="card card-stats card-primary card-round">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<i class="fas fa-frown"></i>
+						</div>
+					</div>
+					<div class="col col-stats">
+						<div class="numbers">
+							<p class="card-category">Não compareceram</p>
+							<h4 class="card-title">{{DB::table('schedules_has_users')->where('status','AUSENT')->count()}}</h4>
 						</div>
 					</div>
 				</div>
