@@ -20,14 +20,16 @@
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
+	<link rel="manifest" href="https://euteapoio.com/manifest.json">
+	@laravelPWA
 	@yield('adminlte_css')
 </head>
 
 <body class="hold-transition sidebar-mini @yield('body_class')">
+
 	@yield('body')
 
-
-	<script src="{{ asset('js/app.js') }}@php echo '?'.(random_int(100, 999))  @endphp"></script>
+	<script src="{{ asset('js/app.js'.'?'.(random_int(100, 999))) }}"></script>
 	<!--   Core JS Files   -->
 
 	<script src="{{asset('js/core/popper.min.js')}}"></script>
