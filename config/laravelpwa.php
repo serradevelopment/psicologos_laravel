@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'name' => 'EuTeApoio',
+    'name' => 'Eu Te Apoio',
     'manifest' => [
         'name' => env('APP_NAME', 'Eu Te Apoio'),
         'short_name' => 'EuTeApoio',
-        'start_url' => '/',
+        'start_url' => '/painel/psicologo',
         'background_color' => '#e5f6fb',
         'theme_color' => '#e5f6fb',
         'display' => 'standalone',
