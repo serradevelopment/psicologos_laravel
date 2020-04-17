@@ -14,7 +14,7 @@ class RatingsController extends Controller
     }
     
     public function index(){
-        $ratings = Rating::all();
+        $ratings = Rating::orderBy('created_at','desc');
         return view('admin.ratings.index')->with(['ratings'=>$ratings]);
     }
 
