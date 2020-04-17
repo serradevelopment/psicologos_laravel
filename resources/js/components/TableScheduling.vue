@@ -18,7 +18,7 @@
     </table>
   </div>
 </template>
-
+<script src="http://cdn.datatables.net/plug-ins/1.10.20/sorting/date-eu.js"></script>
 <script>
 export default {
   data() {
@@ -31,12 +31,42 @@ export default {
   },
   methods: {},
   mounted() {
+    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+      "date-br-pre": function(a) {
+        if (a == null || a == "") {
+          return 0;
+        }
+        var brDatea = a.split("/");
+        return (brDatea[2] + brDatea[1] + brDatea[0]) * 1;
+      },
+
+      "date-br-asc": function(a, b) {
+        return a < b ? -1 : a > b ? 1 : 0;
+      },
+
+      "date-br-desc": function(a, b) {
+        return a < b ? 1 : a > b ? -1 : 0;
+      }
+    });
+
     $("#table-scheduling").DataTable({
       ajax: {
         url: "/painel/psicologo/mySchedules",
         method: "GET",
         dataSrc: "data"
       },
+      order: [
+        [2, "asc"],
+        [1, "asc"]
+      ],
+      columnDefs: [
+        {
+          type: "date-br",
+          targets: 2
+        },
+        { type: "time", targets: 0 },
+        { type: "time", targets: 1 },
+      ],
       columns: [
         { data: "hour_start" },
         { data: "hour_end" },
@@ -56,10 +86,10 @@ export default {
               return '<div class="badge badge-success">Finalizado</div>';
             } else if (row.status == null) {
               return '<div class="badge badge-info" style="color:white">Disponível</div>';
-            } else if(row.status == "AUSENT"){
+            } else if (row.status == "AUSENT") {
               return '<div class="badge badge-danger" style="color:white">Não compareceu</div>';
-            }else{
-              return '';
+            } else {
+              return "";
             }
           }
         },

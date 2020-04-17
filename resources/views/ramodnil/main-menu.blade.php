@@ -33,15 +33,13 @@ $class = 'collapsed';
 if ($controller == 'RatingsController') {
 $class = 'active show';
 }
-@endphp
-@can('index', \App\User::class)    
+@endphp   
 <li class="nav-item {{ $class }}">
     <a href="{{ route('ratings.index') }}" class="nav-link ">
         <i class="fas fa-star"></i>
         <p>Avaliações</p>
     </a>
 </li>
-@endcan
 @php
 $class = 'collapsed';
 

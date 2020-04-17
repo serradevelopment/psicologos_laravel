@@ -68,7 +68,7 @@ class SchedulesController extends Controller
 
      
 
-            $insert = DB::insert('insert into schedules_has_users (users_id, schedules_id, date) values (?, ?, ?)', 
+            $insert = DB::insert('insert into schedules_has_users (users_id, schedules_id, date,created_at,updated_at) values (?, ?, ?,NOW(),NOW())', 
                 [$user->id, $schedule->id, $data['date'] ]);
 
             $response = ['success'=>$insert];

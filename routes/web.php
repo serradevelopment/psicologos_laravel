@@ -25,8 +25,8 @@ Route::get('/calendario', function () {
 	return view('calendario');
 });
 
-Route::prefix('avalie')->group(function(){
-	Route::get('/','RatingsController@index');
+Route::prefix('avalie')->group(function () {
+	Route::get('/', 'RatingsController@index');
 	Route::post('/', 'RatingsController@store');
 });
 
@@ -38,13 +38,15 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::namespace('Admin')->prefix('painel')->group(function () {
 
-	Route::middleware('can:isAdmin')->prefix('ratings')->group(function(){
-		Route::get('/','RatingsController@index')->name('ratings.index');
-		Route::get('/ratings/unblock/{rating}', 'RatingsController@unblock')->name('ratings.unblock');
-		Route::get('/ratings/block/{rating}', 'RatingsController@block')->name('ratings.block');
-		Route::delete('/ratings/{rating}', 'RatingsController@destroy')->name('ratings.destroy');
+	Route::prefix('ratings')->group(function () {
+		Route::get('/', 'RatingsController@index')->name('ratings.index');
+		Route::group(['middleware' => 'can:isAdmin'], function () {
+			Route::get('/ratings/unblock/{rating}', 'RatingsController@unblock')->name('ratings.unblock');
+			Route::get('/ratings/block/{rating}', 'RatingsController@block')->name('ratings.block');
+			Route::delete('/ratings/{rating}', 'RatingsController@destroy')->name('ratings.destroy');
+		});
 	});
-	
+
 
 	Route::post('/cadastrar', 'UsersController@register')->name('users.cadastrar');
 	Route::get('/cadastrar', 'UsersController@registerForm')->name('users.cadastrar.create');

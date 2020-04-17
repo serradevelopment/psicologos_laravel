@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class RatingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['storeFirstUser','register','registerForm']]);
+    }
+    
     public function index(){
         $ratings = Rating::all();
         return view('admin.ratings.index')->with(['ratings'=>$ratings]);
@@ -36,7 +41,7 @@ class RatingsController extends Controller
     }
 
     public function destroy(Rating $rating) {
-        
+
         Rating::where('id',$rating->id)->delete();
 
         return redirect()->route('ratings.index')->with('flash.success', 'Avaliação deletada com sucesso');
