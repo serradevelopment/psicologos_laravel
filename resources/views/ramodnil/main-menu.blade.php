@@ -40,6 +40,18 @@ $class = 'active show';
         <p>Avaliações</p>
     </a>
 </li>
+<li class="nav-item {{ $class }}">
+    <a href="https://chat.whatsapp.com/DtIhEprrTzn8FGsDXBUrpc" target="_blank" class="nav-link ">
+        <i class="fab fa-whatsapp-square"></i>
+        <p>Grupo Whatsapp</p>
+    </a>
+</li>
+<li class="nav-item {{ $class }}">
+    <a href="http://www.ccs.saude.gov.br/saudemental/capsriodejaneiro.php" target="_blank" class="nav-link ">
+        <i class="fas fa-info-circle"></i>
+        <p>Lista de CAPS</p>
+    </a>
+</li>
 @php
 $class = 'collapsed';
 
