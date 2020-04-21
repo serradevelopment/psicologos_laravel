@@ -18,9 +18,14 @@
           >{{s.hour_start}} | {{s.hour_end}}</button>
         </tbody>
 
-        <tbody v-if="schedules == null || schedules.length == 0">
+        <tbody v-if="(schedules == null || schedules.length == 0) && isLoading == false">
           <div class="alert alert-info">Nenhum especialista disponível para a data selecionada.</div>
         </tbody>
+
+        <tbody v-if="isLoading == true">
+          <div class="alert alert-warning">Carregando horários...</div>
+        </tbody>
+
       </table>
     </div>
 </template>
@@ -42,6 +47,9 @@ export default {
     },
     schedules: function() {
       return this.$store.state.schedules;
+    },
+    isLoading: function(){
+      return this.$store.state.isLoading;
     }
   },
   mounted() {

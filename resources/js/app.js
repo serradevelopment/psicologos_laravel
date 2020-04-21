@@ -39,6 +39,7 @@ Vue.component('table-scheduling', require('./components/TableScheduling.vue').de
 
 const store = new Vuex.Store({
 	state: {
+		isLoading: false,
 		day: null,
 		month: null,
 		year: null,
@@ -73,6 +74,9 @@ const store = new Vuex.Store({
 		}
 	},
 	mutations: {
+		loading(state, isLoading) {
+			state.isLoading = true;
+		},
 		getDataFromTableScheduling(state, url = '/painel/psicologo/mySchedules') {
 			axios
 				.get(url)
@@ -101,6 +105,7 @@ const store = new Vuex.Store({
 		},
 		getSchedules() {
 			var vuex = this.state;
+			vuex.isLoading = true;
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 
 			axios.post("/painel/psicologo/schedules/all",
@@ -110,9 +115,10 @@ const store = new Vuex.Store({
 				},
 			).then(function (response) {
 				vuex.schedules = response.data;
-
 			}).catch(function (error) {
 				console.log(error);
+			}).finally(function(){
+				vuex.isLoading = false;
 			});
 		},
 		confirmDisponibility() {
