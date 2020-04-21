@@ -7,7 +7,7 @@
 
 @section('content')
 
-@if(!auth()->user()->crp_image_extension || !auth()->user()->e_psi_image_extension)
+@if((!auth()->user()->crp_image_extension || !auth()->user()->e_psi_image_extension) && auth()->user()->role == 1 )
 <div class="row">
 	<div class="alert alert-danger">
 		<div class="alert-heading"><h1>Atenção:</h1><h3> Para segurança de todos usuários da plataforma, estamos solicitando aos
