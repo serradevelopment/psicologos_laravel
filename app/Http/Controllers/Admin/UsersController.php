@@ -49,7 +49,23 @@ class UsersController extends Controller
 
         $user->locked = 1;
 
+        if ($request->hasFile('crp_scan')) {
+            $extension_crp = $request->file('crp_scan')->getClientOriginalExtension();
+            $user->crp_image_extension = $extension_crp;
+        }
+        if ($request->hasFile('e_psi')) {
+            $e_psi_image_extension = $request->file('e_psi')->getClientOriginalExtension();
+            $user->e_psi_image_extension = $e_psi_image_extension;
+        }
+
         $user->save();
+
+        if ($request->hasFile('crp_scan')) {
+            $request->file('crp_scan')->move(base_path('/public_html/files/users/crp'), sprintf('%s.%s', $user->id, $extension_crp));
+        }
+        if ($request->hasFile('e_psi')) {
+            $request->file('e_psi')->move(base_path('/public_html/files/users/epsi'), sprintf('%s.%s', $user->id, $e_psi_image_extension));
+        }
 
         return redirect()->route('login')->with('flash.success','Usuário cadastrado com sucesso. Seus dados serão validados e assim que confimados, você reberá um email informando que seu acesso foi liberado. Não esqueça de verificar a caixa de spam do seu email.');
     }
@@ -84,7 +100,23 @@ class UsersController extends Controller
 
         $user->password = Hash::make($request->password);
 
+        if ($request->hasFile('crp_scan')) {
+            $extension_crp = $request->file('crp_scan')->getClientOriginalExtension();
+            $user->crp_image_extension = $extension_crp;
+        }
+        if ($request->hasFile('e_psi')) {
+            $e_psi_image_extension = $request->file('e_psi')->getClientOriginalExtension();
+            $user->e_psi_image_extension = $e_psi_image_extension;
+        }
+
         $user->save();
+
+        if ($request->hasFile('crp_scan')) {
+            $request->file('crp_scan')->move(base_path('/public_html/files/users/crp'), sprintf('%s.%s', $user->id, $extension_crp));
+        }
+        if ($request->hasFile('e_psi')) {
+            $request->file('e_psi')->move(base_path('/public_html/files/users/epsi'), sprintf('%s.%s', $user->id, $e_psi_image_extension));
+        }
 
 
         $allAdmins = User::all()->where('role',0);
@@ -92,7 +124,6 @@ class UsersController extends Controller
         foreach ($allAdmins as $user) {
             $user->notify(new CreatedUser($user,auth()->user()));
         }
-
 
         return redirect()->route('users.index')->with('flash.success', 'Usuário salvo com sucesso');
     }
@@ -116,7 +147,23 @@ class UsersController extends Controller
             $user->password = Hash::make($request->new_password);
         }
 
+        if ($request->hasFile('crp_scan')) {
+            $extension_crp = $request->file('crp_scan')->getClientOriginalExtension();
+            $user->crp_image_extension = $extension_crp;
+        }
+        if ($request->hasFile('e_psi')) {
+            $e_psi_image_extension = $request->file('e_psi')->getClientOriginalExtension();
+            $user->e_psi_image_extension = $e_psi_image_extension;
+        }
+
         $user->save();
+
+        if ($request->hasFile('crp_scan')) {
+            $request->file('crp_scan')->move(base_path('/public_html/files/users/crp'), sprintf('%s.%s', $user->id, $extension_crp));
+        }
+        if ($request->hasFile('e_psi')) {
+            $request->file('e_psi')->move(base_path('/public_html/files/users/epsi'), sprintf('%s.%s', $user->id, $e_psi_image_extension));
+        }
 
         return redirect()->route('users.index')->with('flash.success', 'Usuário salvo com sucesso');
     }
@@ -139,6 +186,9 @@ class UsersController extends Controller
         ]);
     }
 
+    public function show(User $user){
+        return view('admin.users.show')->with(['user'=>$user]);
+    }
     public function updateProfile(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -154,13 +204,26 @@ class UsersController extends Controller
 
             $user->avatar_extension = $extension;
         }
+        if ($request->hasFile('crp_scan')) {
+            $extension_crp = $request->file('crp_scan')->getClientOriginalExtension();
+            $user->crp_image_extension = $extension_crp;
+        }
+        if ($request->hasFile('e_psi')) {
+            $e_psi_image_extension = $request->file('e_psi')->getClientOriginalExtension();
+            $user->e_psi_image_extension = $e_psi_image_extension;
+        }
 
         $user->save();
 
         if ($request->hasFile('imagem')) {
             $request->file('imagem')->move(base_path('/public_html/files/users'), sprintf('%s.%s', $user->id, $extension));
         }
-
+        if ($request->hasFile('crp_scan')) {
+            $request->file('crp_scan')->move(base_path('/public_html/files/users/crp'), sprintf('%s.%s', $user->id, $extension_crp));
+        }
+        if ($request->hasFile('e_psi')) {
+            $request->file('e_psi')->move(base_path('/public_html/files/users/epsi'), sprintf('%s.%s', $user->id, $e_psi_image_extension));
+        }
         return redirect()->route('users.profile')->with('flash.success', 'Perfil salvo com sucesso');
     }
 

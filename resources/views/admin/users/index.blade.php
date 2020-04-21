@@ -27,6 +27,8 @@
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Perfil</th>
+                        <th>Status</th>
+                        <th>CRP | E-Psi</th>
                         <th data-orderable="false"></th>
                     </tr>
                 </thead>
@@ -44,34 +46,12 @@
                     <td>{{ $u->name }}</td>
                     <td>{{ $u->email }}</td>
                     <td>{{ $u->role_string }}</td>
+                    <td><span class="badge badge-{{ ($u->locked == 1)?'danger':'success' }}">{{ ($u->locked == 1)?'Bloqueado':'Desbloqueado' }}</span></td>
+                    <td><span class="badge badge-{{ ($u->crp_image_extension || $u->e_psi_image_extension)?'success':'danger' }}">{{ ($u->crp_image_extension || $u->e_psi_image_extension)?'Enviado':'Não Enviado' }}</span></td>
                     <td>
                         <div class="table-actions">
                             @can('edit', $u)
-                            <a href="{{ route('users.edit', ['user' => $u]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil-alt"></i> Editar</a>
-                            @endcan
-
-                            @if (!$u->locked)
-                            @can('block', $u)
-                            @if ($u->id != Auth::user()->id)
-                            <a href="{{ route('users.block', ['user' => $u]) }}" class="btn btn-default btn-sm confirmable"><i class="fa fa-lock"></i> Bloquear</a>
-                            @endif
-                            @endcan
-                            @else
-                            @can('unblock', $u)
-                            @if ($u->id != Auth::user()->id)
-                            <a href="{{ route('users.unblock', ['user' => $u]) }}" class="btn btn-default btn-sm confirmable"><i class="fa fa-lock-open"></i> Desbloquear</a>
-                            @endif
-                            @endcan
-                            @endif
-
-                            @can('destroy', $u)
-                            @if ($u->id != Auth::user()->id)
-                            <form method="POST" action="{{ route('users.destroy', ['user' => $u]) }}">
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-danger btn-sm confirmable"><i class="fa fa-trash"></i></button>
-                            </form>
-                            @endif
+                            <a href="{{ route('users.show', ['user' => $u]) }}" class="btn btn-default btn-sm"><i class="fas fa-info"></i></a>
                             @endcan
                         </div>
                     </td>

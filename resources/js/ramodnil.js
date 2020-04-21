@@ -21,15 +21,15 @@ $('form').each((index, form) => {
         $(form).submit(() => {
             if ($(form).valid()) {
                 var submitButton = $(form).find('[type=submit]');
-    
-                submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');            
+
+                submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
                 submitButton.attr('disabled', 'disabled');
             }
         });
     }
 });
 
-$('.confirmable').click(function() {
+$('.confirmable').click(function () {
     if (!confirm('Tem certeza que deseja executar essa ação?')) {
         return false;
     }
@@ -44,16 +44,28 @@ $('.cep-mask').mask('00000-000');
 $('.time-mask').mask('00:00');
 $('.date-mask').mask('99/99/9999');
 
+
 var CpfCnpjMaskBehavior = function (val) {
     return val.replace(/\D/g, '').length <= 11 ? '000.000.000-009' : '00.000.000/0000-00';
 },
-cpfCnpjOptions = {
-    onKeyPress: function (val, e, field, options) {
-        field.mask(CpfCnpjMaskBehavior.apply({}, arguments), options);
-    }
-};
+    cpfCnpjOptions = {
+        onKeyPress: function (val, e, field, options) {
+            field.mask(CpfCnpjMaskBehavior.apply({}, arguments), options);
+        }
+    };
 
 $('.cpf-cnpj-mask').mask(CpfCnpjMaskBehavior, cpfCnpjOptions);
+
+$('.crp-mask').mask('00/00000', {'translation': {0: {pattern: /[0-9*]/}}})
+// $('.crp-mask').keypress(function(v){
+//     console.log(v)
+
+//     var r = v.replace(/\D/, "");
+
+//     r = r.replace(/^(\d\d)(\d{5})/, "$1/$2");
+
+//     // this.value = r
+// });
 
 $('.datepicker').datepicker();
 $('.select-2').select2({
@@ -153,7 +165,7 @@ $.validator.setDefaults({
             $(element).removeClass(errorClass);
         }
     },
-    errorPlacement: function(error, element) {
+    errorPlacement: function (error, element) {
         if (element.hasClass('select-2')) {
             error.insertAfter(element.next('.select2'));
         } else if (element.hasClass('editor')) {
@@ -170,81 +182,81 @@ function validateCpf(value) {
     Soma = 0;
 
     if (value) {
-        value = value.replace(/[^\d]+/g,'');
-    
+        value = value.replace(/[^\d]+/g, '');
+
         if (value == "00000000000") return false;
-         
-        for (i=1; i<=9; i++) Soma = Soma + parseInt(value.substring(i-1, i)) * (11 - i);
+
+        for (i = 1; i <= 9; i++) Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
         Resto = (Soma * 10) % 11;
-       
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(value.substring(9, 10)) ) return false;
-       
+
+        if ((Resto == 10) || (Resto == 11)) Resto = 0;
+        if (Resto != parseInt(value.substring(9, 10))) return false;
+
         Soma = 0;
-        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(value.substring(i-1, i)) * (12 - i);
+        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(value.substring(i - 1, i)) * (12 - i);
         Resto = (Soma * 10) % 11;
-       
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(value.substring(10, 11) ) ) return false;
-    
+
+        if ((Resto == 10) || (Resto == 11)) Resto = 0;
+        if (Resto != parseInt(value.substring(10, 11))) return false;
+
         return true;
     }
 }
 
 function validateCnpj(cnpj) {
     if (cnpj) {
-        cnpj = cnpj.replace(/[^\d]+/g,'');
-     
-        if(cnpj == '') return false;
-         
+        cnpj = cnpj.replace(/[^\d]+/g, '');
+
+        if (cnpj == '') return false;
+
         if (cnpj.length != 14)
             return false;
-     
-        if (cnpj == "00000000000000" || 
-            cnpj == "11111111111111" || 
-            cnpj == "22222222222222" || 
-            cnpj == "33333333333333" || 
-            cnpj == "44444444444444" || 
-            cnpj == "55555555555555" || 
-            cnpj == "66666666666666" || 
-            cnpj == "77777777777777" || 
-            cnpj == "88888888888888" || 
+
+        if (cnpj == "00000000000000" ||
+            cnpj == "11111111111111" ||
+            cnpj == "22222222222222" ||
+            cnpj == "33333333333333" ||
+            cnpj == "44444444444444" ||
+            cnpj == "55555555555555" ||
+            cnpj == "66666666666666" ||
+            cnpj == "77777777777777" ||
+            cnpj == "88888888888888" ||
             cnpj == "99999999999999")
             return false;
-             
+
         tamanho = cnpj.length - 2
-        numeros = cnpj.substring(0,tamanho);
+        numeros = cnpj.substring(0, tamanho);
         digitos = cnpj.substring(tamanho);
         soma = 0;
         pos = tamanho - 7;
         for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
-          if (pos < 2)
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
                 pos = 9;
         }
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
         if (resultado != digitos.charAt(0))
             return false;
-             
+
         tamanho = tamanho + 1;
-        numeros = cnpj.substring(0,tamanho);
+        numeros = cnpj.substring(0, tamanho);
         soma = 0;
         pos = tamanho - 7;
         for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
-          if (pos < 2)
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
                 pos = 9;
         }
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
         if (resultado != digitos.charAt(1))
-              return false;
-               
+            return false;
+
         return true;
     }
 }
 
-$(function(){
-    $('#markAsRead').click(function(){
+$(function () {
+    $('#markAsRead').click(function () {
         $.get('/markAsRead');
     });
 })

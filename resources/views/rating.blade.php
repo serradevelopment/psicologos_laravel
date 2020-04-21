@@ -19,8 +19,7 @@
 
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-  <meta name="csrf-token" content="{{ csrf_token() }}"
-  <!-- Web Fonts  -->
+  <meta name="csrf-token" content="{{ csrf_token() }}" <!-- Web Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light"
     rel="stylesheet" type="text/css">
 
@@ -151,14 +150,15 @@
             speed="1" style="width: 100%; height: 100%; margin:auto;max-height: 300px;" loop autoplay></lottie-player>
         </div>
         <div class="col-md-6 col-xl-5 mb-4" id="card-form">
-          <div class="card" >
+          <div class="card">
             <div class="card-body">
               <!-- avaliação -->
               <p class="h4 text-center mb-4">Avaliação</p>
               <div class="md-form">
                 <label for="importance">Qual a importância do acolhimento que recebeu nesse momento da
                   sua vida?</label>
-                <textarea rows="2" type="text" id="importance" maxlength="250" name="importance" required class="form-control"></textarea>
+                <textarea rows="2" type="text" id="importance" maxlength="250" name="importance" required
+                  class="form-control"></textarea>
               </div>
               <div class="md-form">
                 <label for="relevance">
@@ -285,5 +285,15 @@
     }
 
   </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164116962-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164116962-1');
+  </script>
 </body>
+
 </html>

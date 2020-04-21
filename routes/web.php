@@ -25,6 +25,13 @@ Route::get('/calendario', function () {
 	return view('calendario');
 });
 
+Route::get('/termos', function () {
+	return view('terms');
+});
+Route::get('/politica_de_privacidade', function () {
+	return view('policy');
+});
+
 Route::prefix('avalie')->group(function () {
 	Route::get('/', 'RatingsController@index');
 	Route::post('/', 'RatingsController@store');
@@ -50,9 +57,12 @@ Route::namespace('Admin')->prefix('painel')->group(function () {
 
 	Route::post('/cadastrar', 'UsersController@register')->name('users.cadastrar');
 	Route::get('/cadastrar', 'UsersController@registerForm')->name('users.cadastrar.create');
-	Route::prefix('psicologo')->group(function () {
-		Route::get('/', 'HomeController@index')->name('home');
+	Route::prefix('/psicologo')->group(function () {
 		\BeautifulSea\LaravelRamodnil\LaravelRamodnilServiceProvider::routes();
+
+		Route::get('/', 'HomeController@index')->name('home');
+		Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+
 		// schedules
 		Route::post('/schedules/allAvailable', 'SchedulesController@allAvailable');
 		Route::post('/schedules/all', 'SchedulesController@all');

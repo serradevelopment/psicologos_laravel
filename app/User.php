@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role','crp','whatsapp','specialty','locked'
+        'name', 'email', 'password', 'role', 'crp', 'whatsapp', 'specialty', 'locked', 'crp_image_extension', 'e_psi_image_extension'
     ];
 
     /**
@@ -32,7 +32,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getAvatarAttribute() {
+    public function getAvatarAttribute()
+    {
         if ($this->avatar_extension) {
             $image = sprintf('/files/users/%s.%s', $this->id, $this->avatar_extension);
 
@@ -40,9 +41,9 @@ class User extends Authenticatable
         } else {
             $buffer = explode(' ', $this->name);
             $initials = '';
-    
+
             if (!empty($buffer[1])) {
-                $initials = strtoupper($buffer[0][0].$buffer[1][0]);
+                $initials = strtoupper($buffer[0][0] . $buffer[1][0]);
             } else {
                 $initials = strtoupper($buffer[0][0]);
             }
@@ -51,19 +52,42 @@ class User extends Authenticatable
         }
     }
 
-    public static function roles() {
+    public function getCrpImage()
+    {
+        if ($this->crp_image_extension) {
+            $image = sprintf('/files/users/crp/%s.%s', $this->id, $this->crp_image_extension);
+
+            return '<img src="' . $image . '" class="avatar-img float-left mr-2 elevation-5 crp-image">';
+        } else {
+            return 'Não cadastrado';
+        }
+    }
+    public function getEpsiImage()
+    {
+        if ($this->e_psi_image_extension) {
+            $image = sprintf('/files/users/epsi/%s.%s', $this->id, $this->e_psi_image_extension);
+
+            return '<img src="' . $image . '" class="avatar-img float-left mr-2 elevation-5 epsi-image">';
+        } else {
+            return 'Não cadastrado';
+        }
+    }
+
+    public static function roles()
+    {
         return [
             self::ROLE_ADMIN => 'Administrador',
             self::ROLE_COMMON => 'Psicólogo',
         ];
     }
 
-    public function getRoleStringAttribute() {
+    public function getRoleStringAttribute()
+    {
         return self::roles()[$this->role];
     }
 
     public function schedules()
     {
-        return $this->belongsToMany('App\Schedule','schedules_has_users','users_id','schedules_id');
+        return $this->belongsToMany('App\Schedule', 'schedules_has_users', 'users_id', 'schedules_id');
     }
 }

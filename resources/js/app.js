@@ -162,7 +162,6 @@ const store = new Vuex.Store({
 				schedule: vuex.schedule
 			})
 				.then(function (response) {
-					console.log(response)
 					vuex.users = response.data;
 				})
 				.catch(function (error) {

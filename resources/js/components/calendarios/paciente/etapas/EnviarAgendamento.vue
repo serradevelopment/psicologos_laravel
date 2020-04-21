@@ -44,7 +44,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Nome Completo"
+                      placeholder="Nome Completo *"
                       name="name"
                       required
                       v-model="patient.name"
@@ -61,7 +61,7 @@
                     <input
                       type="email"
                       class="form-control"
-                      placeholder="Email"
+                      placeholder="Email *"
                       name="email"
                       v-model="patient.email"
                       required
@@ -81,6 +81,7 @@
                       name="whatsapp"
                       required
                       v-model="patient.whatsapp"
+                      placeholder="Whatsapp *"
                     />
                   </div>
                 </div>
@@ -97,17 +98,39 @@
                       placeholder="Fale um pouco sobre você"
                       name="obs"
                       v-model="patient.obs"
-                      rows="3"
+                      rows="2"
                       style="resize: none;"
                     ></textarea>
                   </div>
                 </div>
-                <small>Se possível, tenha um lugar reservado para a chamada em vídeo.</small>
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="checkbox"
+                      class="form-control"
+                      name="terms"
+                      style="margin:auto"
+                      required
+                      v-model="terms"
+                      value="true"
+                      id="terms"
+                    />
+                    <label for="terms"
+                      style="font-size:11px; margin:auto"
+                    >Concordo com os Termos e Política de Privacidade.</label>
+                  </div>
+                </div>
+                <a href="/termos" target="_blank">Termos</a> | <a href="/politica_de_privacidade" target="_blank">Política de Privacidade</a>
+                <div class="form-group">
+                  <div
+                    v-if="allFilled == false"
+                    class="alert alert-danger"
+                  >Preencha os campos obrigatórios.</div>
+                </div>
                 <div class="form-group">
                   <div class="col-md-12">
                     <button
                       type="button"
-                      @click="$store.commit('saveScheduling')"
                       class="btn btn-success"
                       id="btn-saveScheduling"
                       style="border-radius:10px;"
@@ -134,6 +157,13 @@
 
 <script>
 export default {
+  data: function() {
+    return {
+      terms: false,
+      allFilled: true,
+      submited: false
+    };
+  },
   computed: {
     day: function() {
       return this.$store.state.day;
@@ -163,9 +193,20 @@ export default {
     var submitButton = $("#btn-saveScheduling");
 
     submitButton.click(function() {
-      console.log("clicado");
-      submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
-      submitButton.attr("disabled", "disabled");
+      if (
+        vue.terms &&
+        vue.patient.name != '' &&
+        vue.patient.whatsapp != '' &&
+        vue.patient.email != '' &&
+        vue.submited == false
+      ) {
+        vue.submited = true;
+        vue.$store.commit("saveScheduling");
+        submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
+        submitButton.attr("disabled", "disabled");
+      } else {
+        vue.allFilled = false;
+      }
     });
   }
 };
