@@ -19,11 +19,11 @@
         </tbody>
 
         <tbody v-if="(schedules == null || schedules.length == 0) && isLoading == false">
-          <div class="alert alert-info">Nenhum especialista disponível para a data selecionada.</div>
+          <div class="alert alert-info " style="width: 100%; margin-bottom: 0px!important;border-radius: 20px!important;">Nenhum especialista disponível para a data selecionada.</div>
         </tbody>
 
         <tbody v-if="isLoading == true">
-          <div class="alert alert-warning">Carregando horários...</div>
+          <div class="alert alert-warning" style="width: 100%; margin-bottom: 0px!important;border-radius: 20px!important;">Carregando horários...</div>
         </tbody>
 
       </table>

@@ -39,7 +39,11 @@ Vue.component('table-scheduling', require('./components/TableScheduling.vue').de
 
 const store = new Vuex.Store({
 	state: {
+		terms: false,
+		allFilled: true,
+		submited: false,
 		isLoading: false,
+		alreadyScheduled: false,
 		day: null,
 		month: null,
 		year: null,
@@ -102,6 +106,13 @@ const store = new Vuex.Store({
 			vuex.schedules = null;
 			vuex.user = null;
 			vuex.schedulingStatus = false;
+			vuex.patient.name = '';
+			vuex.patient.email = '';
+			vuex.patient.whatsapp = '';
+			vuex.patient.obs = '';
+			vuex.terms = false;
+			vuex.allFilled = true;
+			vuex.submited = false;
 		},
 		getSchedules() {
 			var vuex = this.state;
@@ -117,7 +128,7 @@ const store = new Vuex.Store({
 				vuex.schedules = response.data;
 			}).catch(function (error) {
 				console.log(error);
-			}).finally(function(){
+			}).finally(function () {
 				vuex.isLoading = false;
 			});
 		},
@@ -160,6 +171,7 @@ const store = new Vuex.Store({
 		},
 		setSchedule(state, s) {
 			var vuex = this.state;
+			vuex.isLoading = true;
 			vuex.schedule = s;
 			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 			axios.post("/painel/psicologo/schedules_users/all_in_date_selected", {
@@ -169,6 +181,7 @@ const store = new Vuex.Store({
 			})
 				.then(function (response) {
 					vuex.users = response.data;
+					vuex.isLoading = false;
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -179,9 +192,10 @@ const store = new Vuex.Store({
 			vuex.user = user;
 		},
 		saveScheduling() {
-			var vuex = this.state;
-			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 
+			var vuex = this.state;
+			vuex.alreadyScheduled = false;
+			var date = vuex.day + '/' + vuex.month + '/' + vuex.year;
 			axios.post("/painel/psicologo/schedules_users/savePatient", {
 				_token: $('meta[name="csrf-token"]').attr('content'),
 				date: date,
@@ -192,6 +206,9 @@ const store = new Vuex.Store({
 				.then(function (response) {
 					if (response.status == 200) {
 						vuex.schedulingStatus = true;
+					} else if (response.status == 202) {
+						vuex.schedulingStatus = true;
+						vuex.alreadyScheduled = true;
 					}
 				})
 				.catch(function (error) {

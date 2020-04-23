@@ -9,9 +9,11 @@ use App\Patient;
 use Exception;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
 
 
-class SchedulesUsersController extends Controller
+class SchedulesUsersController extends Controller implements ShouldQueue
 {
     public function destroy($id)
     {
@@ -39,9 +41,15 @@ class SchedulesUsersController extends Controller
         try{
             $data = $request->all();
 
+            $alreadyScheduled = DB::select("SELECT * FROM schedules_has_users WHERE status IS not NULL and schedules_id = ? and date = ? and users_id = ?", [$data['schedule']['id'], $data['date'],$data['user']['id']]);
+            
+            if(count($alreadyScheduled) >= 1){
+                return response('Ops... Parece que o horário foi selecionado por outro paciente antes de você. Por favor, tente outro horário.',202);
+            }
+
             $user = \App\User::find($data['user']['id']);
             $schedule = \App\Schedule::find($data['schedule']['id']);
-    
+            
             $patient = new Patient;
             $patient->fill($data['patient']);
             $patient->save();

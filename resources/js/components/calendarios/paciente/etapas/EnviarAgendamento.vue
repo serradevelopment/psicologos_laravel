@@ -14,15 +14,8 @@
             <button
               class="btn btn-outline-info"
               style="width: 90%;margin-top:50px;margin-bottom: 5px;"
-            >Dia selecionado: {{day}}</button>
-            <button
-              class="btn btn-outline-info"
-              style="width: 90%;margin-bottom: 5px;"
-            >Horário selecionado: {{schedule.hour_start}} às {{schedule.hour_end}}</button>
-            <button
-              class="btn btn-outline-info"
-              style="width: 90%"
-            >Psicólogo selecionado: {{user.name}}</button>
+            >Agendamento: {{$store.state.day}}/{{$store.state.month}}/{{$store.state.year}} das {{schedule.hour_start}} às {{schedule.hour_end}}</button>
+            <button class="btn btn-outline-info" style="width: 90%">Psicólogo: {{user.name}}</button>
           </div>
         </div>
       </div>
@@ -98,12 +91,12 @@
                       placeholder="Fale um pouco sobre você"
                       name="obs"
                       v-model="patient.obs"
-                      rows="2"
+                      rows="1"
                       style="resize: none;"
                     ></textarea>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class>
                   <div class="input-group input-group-merge">
                     <input
                       type="checkbox"
@@ -111,25 +104,25 @@
                       name="terms"
                       style="margin:auto"
                       required
-                      v-model="terms"
+                      v-model="$store.state.terms"
                       value="true"
                       id="terms"
                     />
-                    <label for="terms"
+                    <label
+                      for="terms"
                       style="font-size:11px; margin:auto"
                     >Concordo com os Termos e Política de Privacidade.</label>
                   </div>
                 </div>
-                <a href="/termos" target="_blank">Termos</a> | <a href="/politica_de_privacidade" target="_blank">Política de Privacidade</a>
-                <div class="form-group">
-                  <div
-                    v-if="allFilled == false"
-                    class="alert alert-danger"
-                  >Preencha os campos obrigatórios.</div>
-                </div>
+                <a href="/termos" target="_blank">Termos</a> |
+                <a href="/politica_de_privacidade" target="_blank">Política de Privacidade</a>
+                <div
+                  v-show="allFilled == false"
+                  class="alert alert-danger"
+                >Preencha os campos obrigatórios.</div>
                 <div class="form-group">
                   <div class="col-md-12">
-                    <button
+                    <button @click="submitForm()"
                       type="button"
                       class="btn btn-success"
                       id="btn-saveScheduling"
@@ -145,10 +138,24 @@
           </div>
         </div>
       </tbody>
-      <tbody v-if="schedulingStatus == true">
-        <div class="alert alert-success" style="width: 100%; border-bottom: 0px!important;">
+      <!-- SE FOI AGENDADO COM SUCESSO -->
+      <tbody v-else-if="schedulingStatus == true && alreadyScheduled == false">
+        <div
+          class="alert alert-success"
+          style="width: 100%; margin-bottom: 0px!important;border-radius: 20px!important;"
+        >
           <p>Agendamento realizado com sucesso!</p>
           <h4>Em breve um especialista entrará em contato pelo número informado.</h4>
+        </div>
+      </tbody>
+      <!-- SE JÁ FOI AGENDADO ANTES -->
+      <tbody v-else-if="schedulingStatus == true && alreadyScheduled == true">
+        <div
+          class="alert alert-danger"
+          style="width: 100%; margin-bottom: 0px!important;border-radius: 20px!important;"
+        >
+          <p>Ops... Parece que o horário foi selecionado por outro paciente antes de você.</p>
+          <h4>Por favor, tente outro horário.</h4>
         </div>
       </tbody>
     </table>
@@ -157,14 +164,16 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      terms: false,
-      allFilled: true,
-      submited: false
-    };
-  },
   computed: {
+    terms: function() {
+      return this.$store.state.terms;
+    },
+    allFilled: function() {
+      return this.$store.state.allFilled;
+    },
+    submited: function() {
+      return this.$store.state.submited;
+    },
     day: function() {
       return this.$store.state.day;
     },
@@ -183,31 +192,37 @@ export default {
     schedulingStatus: function() {
       return this.$store.state.schedulingStatus;
     },
+    alreadyScheduled: function() {
+      return this.$store.state.alreadyScheduled;
+    },
     patient: function() {
       return this.$store.state.patient;
     }
   },
-  updated() {
-    $(".tel-ddd-mask").mask("(00) 000000009");
-    var vue = this;
-    var submitButton = $("#btn-saveScheduling");
-
-    submitButton.click(function() {
+  methods: {
+    submitForm: function() {
+      var vue = this;
+      var submitButton = $("#btn-saveScheduling");
+      vue.$store.state.allFilled = true;
       if (
         vue.terms &&
-        vue.patient.name != '' &&
-        vue.patient.whatsapp != '' &&
-        vue.patient.email != '' &&
-        vue.submited == false
+        vue.patient.name != "" &&
+        vue.patient.whatsapp != "" &&
+        vue.patient.email != "" &&
+        vue.$store.state.submited == false
       ) {
-        vue.submited = true;
+        vue.$store.state.submited = true;
+        vue.$store.state.allFilled = true;
         vue.$store.commit("saveScheduling");
         submitButton.html('<i class="fa fa-circle-notch fa-spin"></i>');
         submitButton.attr("disabled", "disabled");
       } else {
-        vue.allFilled = false;
+        vue.$store.state.allFilled = false;
       }
-    });
+    }
+  },
+  updated() {
+    $(".tel-ddd-mask").mask("(00) 000000009");
   }
 };
 </script>
