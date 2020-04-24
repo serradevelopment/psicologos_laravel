@@ -4,7 +4,7 @@
     v-show="day == null  && users.length == 0 && user == null"
     style=" margin: auto"
   >
-    <button class="btn btn-primary" id="reset">Limpar</button>
+    <button class="btn btn-primary" id="reset"><i class="fas fa-redo"></i></button>
     <div id="header-calendar">
       <div class="col-md-2 pre-button">
         <i class="fas fa-angle-left"></i>
