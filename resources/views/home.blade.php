@@ -41,7 +41,7 @@
 
 	<!-- Current Page CSS -->
 	<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css">
-	<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">
+	{{-- <link rel="stylesheet" href="vendor/rs-plugin/css/layers.css"> --}}
 	{{-- <link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css"> --}}
 
 	<!-- Demo CSS -->
@@ -75,7 +75,7 @@
 	<div class="body">
 		<header id="header" class="header-transparent header-effect-shrink appear-animation"
 			data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}"
-			data-appear-animation="fadeIn" data-appear-animation-delay="200">
+			data-appear-animation="fadeIn">
 			<div class="header-body border-top-0 header-body-bottom-border">
 				<div class="header-container container">
 					<div class="header-row">
@@ -154,22 +154,18 @@
 				</svg>
 				<div class="row align-items-center py-5">
 					<div class="col-lg-6 pt-4 pt-lg-0 mt-5 mt-lg-0 mb-5 mb-lg-0">
-						<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-							data-appear-animation-delay="400">
-							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element
-								data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}">
+						<div >
+							<h1 class="mb-4 mb-md-0 mb-xl-3">
 								<strong><span
 										class="d-inline-block text-primary highlighted-word highlighted-word-rotate alternative-font-3 font-weight-bold text-1 ml-2">eu
 										te apoio</span></strong>, um novo jeito de cuidar </h1>
 						</div>
-						<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-							data-appear-animation-delay="600">
-							<p class="text-4 mb-5 mb-md-2" data-plugin-float-element
-								data-plugin-options="{'startPos': 'none', 'speed': 0.5, 'transition': true, 'horizontal': false}">
+						<div>
+							<p class="text-4 mb-5 mb-md-2">
 								Acolhimento online com psicólogos especialistas dispostos a te acolher.</p>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter"
-							data-appear-animation-delay="800">
+							data-appear-animation-delay="50">
 							<a data-hash data-hash-offset="95"
 								class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2"
 								data-plugin-float-element
@@ -178,9 +174,8 @@
 						</div>
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter"
-						data-appear-animation-delay="550">
-						<img src="img/demos/seo/imagehome.png" alt="Agendar Acolhimento - Eu te apoio" class="img-fluid" data-plugin-float-element
-							data-plugin-options="{'startPos': 'none', 'speed': 15, 'transition': true, 'horizontal': true}" />
+						data-appear-animation-delay="50">
+						<img src="img/demos/seo/imagehome.png" alt="Agendar Acolhimento - Eu te apoio" class="img-fluid" />
 					</div>
 				</div>
 			</div>
