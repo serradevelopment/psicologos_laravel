@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html amp>
 
 <head>
 
 	<!-- Basic -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+	<meta http-equiv="Content-Language" content="pt-br">
 	<title>euteapoio - Acolhimento online</title>
 
 	<meta name="keywords" content="Acolhimento online, euteapoio, Eu te Apoio, Acolhimento com psicologos online" />
-	<meta name="description"
-		content="euteapoio - Um novo jeito de cuidar. Acolhimento online, com psicólogos especialistas dispostos a te ajudar.">
+	<meta name="description" content="euteapoio - Um novo jeito de cuidar. Acolhimento online, com psicólogos especialistas dispostos a te ajudar neste momento tão delicado de isolamento social. Entre e agende agora mesmo. Eu te apoio!">
 	<meta name="author" content="Serra Development - http://serradev.com.br">
 
 	<!-- Favicon -->
@@ -57,6 +56,18 @@
 	<!-- Head Libs -->
 	<script src="vendor/modernizr/modernizr.min.js"></script>
 
+	<style> 
+	.card-stats .icon-big {
+    width: 100%;
+    height: 100%;
+    font-size: 3.2em;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	color: #aee8f9 !important
+	} 
+	</style>
 </head>
 
 <body data-target="#header" data-spy="scroll" data-offset="100">
@@ -148,7 +159,7 @@
 							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element
 								data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}">
 								<strong><span
-										class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">eu
+										class="d-inline-block text-primary highlighted-word highlighted-word-rotate alternative-font-3 font-weight-bold text-1 ml-2">eu
 										te apoio</span></strong>, um novo jeito de cuidar </h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter"
@@ -168,28 +179,101 @@
 					</div>
 					<div class="col-lg-6 text-center mt-5 appear-animation" data-appear-animation="fadeInRightShorter"
 						data-appear-animation-delay="550">
-						<img src="img/demos/seo/imagehome.png" class="img-fluid" alt="" data-plugin-float-element
-							data-plugin-options="{'startPos': 'none', 'speed': 8, 'transition': true, 'horizontal': true}" />
+						<img src="img/demos/seo/imagehome.png" alt="Agendar Acolhimento - Eu te apoio" class="img-fluid" data-plugin-float-element
+							data-plugin-options="{'startPos': 'none', 'speed': 15, 'transition': true, 'horizontal': true}" />
 					</div>
 				</div>
 			</div>
 
 			<section class="section bg-secondary border-0 m-0">
 				<div class="container">
-					<div class="row align-items-center">
-						<div class="col-lg-8 ">
-							<h2 class="font-weight-semibold line-height-3 text-6 text-lg-5 text-xl-6 mb-3 mb-lg-0 appear-animation"
-								data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">Nós te
-								apoiamos! conheça nossa equipe de especialistas</h2>
+
+					<div class="row counters counters-sm pb-4 pt-3">
+						<div class="col-sm-4 col-lg-4 mb-5 mb-lg-0">
+							<div class="counter">
+								<i class="fa fa-users text-color-primary"></i>
+								<strong class="text-color-primary font-weight-extra-bold" data-to="{{ $qtd_users }}" >{{ $qtd_users }}</strong>
+								<label class="text-color-primary text-4 mt-1 ">Psicólogos Cadastrados</label>
+							</div>
 						</div>
-						<div class="col-lg-4">
-							<div class="col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter"
-								data-appear-animation-delay="1600">
-								<a class="btn btn-primary btn-outline btn-rounded font-weight-semibold text-4 btn-px-5 btn-py-2"
-									href="#agendamento">Conhecer especialistas</a>
+						<div class="col-sm-4 col-lg-4 mb-5 mb-lg-0">
+							<div class="counter">
+								<i class="fas fa-hand-holding-heart text-color-primary"></i>
+								<strong class="text-color-primary font-weight-extra-bold" data-to="{{$hours_disponibility}}">{{$hours_disponibility}} horas</strong>
+								<label class="text-4 mt-1 text-color-primary">Horas disponibilizadas</label>
+							</div>
+						</div>
+						<div class="col-sm-4 col-lg-4">
+							<div class="counter">
+								<i class="fas fa-smile-beam text-color-primary"></i>
+								<strong class="text-color-primary font-weight-extra-bold" data-to="{{$qtd_patients}}">{{$qtd_patients}}</strong>
+								<label class="text-4 mt-1 text-color-primary">Pacientes Acolhidos</label>
 							</div>
 						</div>
 					</div>
+					
+					{{-- <div class="row align-items-center">
+
+						<div class="col-sm-12 col-md-4">
+							<div class="card card-stats card-primary card-round " style="border-radius:20px!important;    margin-bottom: 10px;">
+								<div class="card-body">
+									<div class="row">
+										<div class="icon-big text-center">
+											<i class="fa fa-users"></i>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col col-stats">
+											<div class="numbers">
+												<p class="card-category font-weight-bold line-height-1 text-4" style="color:#0088cc9e !important">Psicólogos Cadastrados</p>
+												<h4 class="card-title" style="color:#0088cc9e !important">{{count(App\User::all())}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-12 col-md-4 mb-10">
+							<div class="card card-stats card-primary card-round " style="border-radius:20px!important;     margin-bottom: 10px;">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="fas fa-hand-holding-heart"></i>
+											</div>
+										</div>
+										<div class="col col-stats">
+											<div class="numbers">
+												<p class="card-category font-weight-bold line-height-1 text-4" style="color:#0088cc9e !important" >Horas disponibilizadas</p>
+												<h4 class="card-title" style="color:#0088cc9e !important">{{(DB::table('schedules_has_users')->where('status',"!=","null")->count())}} horas</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-12 col-md-4">
+							<div class="card card-stats card-primary card-round" style="border-radius:20px!important;    margin-bottom: 10px;">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="fas fa-smile-beam"></i>
+											</div>
+										</div>
+										<div class="col col-stats">
+											<div class="numbers">
+												<p class="card-category font-weight-bold line-height-1 text-4" style="color:#0088cc9e !important">Pacientes Acolhidos</p>
+												<h4 class="card-title" style="color:#0088cc9e !important">{{DB::table('schedules_has_users')->where('status','FINISHED')->count()}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> --}}
 				</div>
 			</section>
 
@@ -233,12 +317,12 @@
 						<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter"
 							data-appear-animation-delay="800">Nascemos da necessidade de ajudar as pessoas neste momento
 							tão delicado de isolamento social causado pela pandemia do Coronavírus. Nós da equipe<span
-								class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2"
+								class="d-inline-block text-primary highlighted-word highlighted-word-rotate  alternative-font-3 font-weight-bold text-1 ml-2"
 								style="font-size: 20px !important;">eu te apoio, </span></strong> estamos aqui para te
 							auxiliar, seja no trabalho, na família, nos círculos de amizade ou nos relacionamentos,
 							através de acolhimento psicológico com profissionais preparados e especialistas nas mais
 							diversas áreas. Precisa de um acolhimento profissional nesse momento? Venha,<span
-								class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2"
+								class="d-inline-block text-primary highlighted-word highlighted-word-rotate  alternative-font-3 font-weight-bold text-1 ml-2"
 								style="font-size: 20px !important;">eu te apoio!</span></strong></p>
 						<a data-hash data-hash-offset="95" href="#solutions"
 							class="btn btn-primary btn-outline btn-elegant font-weight-semibold text-3 btn-px-5 btn-py-2 appear-animation"
@@ -260,19 +344,19 @@
 				<div class="content-grid">
 					<div class="row content-grid-row text-center">
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
-							<img src="https://img.icons8.com/nolan/64/share-2.png" class="img-fluid mb-4" alt="" />
+							<img src="https://img.icons8.com/nolan/64/share-2.png" class="img-fluid mb-4" alt="Conectamos pessoas" />
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Conexão</h3>
 							<p class="mb-0">Nosso objetivo é conectar pessoas como você a profissionais especializados.
 							</p>
 						</div>
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
-							<img src="https://img.icons8.com/nolan/64/laptop.png" class="img-fluid mb-4" alt="" />
+							<img src="https://img.icons8.com/nolan/64/laptop.png" class="img-fluid mb-4" alt="Exclusivo para você" />
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Exclusividade</h3>
 							<p class="mb-0">Oferecer um momento de exclusividade e atenção de onde você estiver.</p>
 						</div>
 						<div class="col-md-6 col-lg-4 content-grid-item flex-column p-5">
 							<img src="https://img.icons8.com/nolan/64/person-female.png" class="img-fluid mb-4"
-								alt="" />
+								alt="Transformando o mundo" />
 							<h3 class="font-weight-semibold text-transform-none text-5 mb-3">Transformação</h3>
 							<p class="mb-0">Transformar o mundo em um lugar mais agradável para todos nós.</p>
 						</div>
@@ -326,10 +410,10 @@
 							<div class="owl-carousel owl-theme nav-bottom rounded-nav mb-0"
 								data-plugin-options="{'items': 1, 'loop': false}">
 								<div>
-									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0" itemscope itemtype="http://schema.org/Person">
 										<div class="testimonial-author mb-0">
-											<img src="img/depo1.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+											<img itemprop="image" src="img/depo1.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
+												alt="Anrã Fernandes">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">A plataforma de acolhimento
@@ -339,19 +423,19 @@
 												Psicologia criamos esse canal para você! Precisa de apoio? Vem, eu te
 												apoio!</p>
 										</blockquote>
-										<div class="testimonial-author mb-3">
-											<p><strong class="font-weight-bold">Anrã Fernandes</strong><span
-													class="font-weight-normal">MSc. Computer Science (Software
+										<div class="testimonial-author mb-3" >
+											<p><strong class="font-weight-bold" itemprop="additionalName">Anrã Fernandes</strong><span
+													class="font-weight-normal" itemprop="knowsAbout">MSc. Computer Science (Software
 													Engineering) <br>Coordenador Engenharia de Software - Universidade
 													de Vassouras</span></p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0" itemscope itemtype="http://schema.org/Person">
 										<div class="testimonial-author mb-0">
-											<img src="img/depo3.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+											<img src="img/depo3.jpeg" itemprop="image"  class="img-fluid rounded-circle custom-mw-1 mb-1"
+												alt="Adriana Vasconcelos">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">Assim como nos comprometemos ao
@@ -363,8 +447,8 @@
 												razão, estamos aqui e te apoioamos. </p>
 										</blockquote>
 										<div class="testimonial-author">
-											<p><strong class="font-weight-bold">Prof.Dra. Adriana Vasconcelos
-													Bernardino</strong><span class="font-weight-normal">Psicóloga -
+											<p><strong class="font-weight-bold" itemprop="additionalName">Prof.Dra. Adriana Vasconcelos
+													Bernardino</strong><span itemprop="knowsAbout" class="font-weight-normal">Psicóloga -
 													Coordenadora do Curso de Psicologia da Universidade de
 													Vassouras</span></p>
 										</div>
@@ -374,7 +458,7 @@
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
 											<img src="img/depo5.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+												alt="Vinicius Almeida">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">Fazer parte desse projeto foi
@@ -393,7 +477,8 @@
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
 											<img src="img/depo2.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+												alt="Juliana Fernandes de Souza
+												Ribeiro">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">Sabemos que a pandemia covid - 19
@@ -417,7 +502,7 @@
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
 											<img src="img/depo6.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+												alt="Matheus Telles">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">A plataforma, eu te apoio, é um
@@ -435,10 +520,10 @@
 									</div>
 								</div>
 								<div>
-									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0"  itemscope itemtype="http://schema.org/Person">
 										<div class="testimonial-author mb-0">
-											<img src="img/depo4.jpeg" class="img-fluid rounded-circle custom-mw-1 mb-1"
-												alt="">
+											<img src="img/depo4.jpeg" itemprop="image" class="img-fluid rounded-circle custom-mw-1 mb-1"
+												alt="Lindomar Silva - Serra Development">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">A arte de conectar pessoas, é isso
@@ -449,8 +534,8 @@
 												trás desse ambiente. Queremos vê-las felizes, realizadas, cuidadas.</p>
 										</blockquote>
 										<div class="testimonial-author">
-											<p><strong class="font-weight-bold">Lindomar Silva</strong><span
-													class="font-weight-normal">CTO at Serra Development</span></p>
+											<p><strong class="font-weight-bold" itemprop="additionalName">Lindomar Silva</strong><span
+													class="font-weight-normal" itemprop="knowsAbout">CTO at Serra Development</span></p>
 										</div>
 									</div>
 								</div>
@@ -458,7 +543,7 @@
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
 											<img src="img/psicologo.jpeg"
-												class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+												class="img-fluid rounded-circle custom-mw-1 mb-1" alt="Paciente anônimo">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">Posso dizer que minha vida se
@@ -477,7 +562,7 @@
 									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
 										<div class="testimonial-author mb-0">
 											<img src="img/psicologo.jpeg"
-												class="img-fluid rounded-circle custom-mw-1 mb-1" alt="">
+												class="img-fluid rounded-circle custom-mw-1 mb-1" alt="Paciente anônimo">
 										</div>
 										<blockquote>
 											<p class="text-color-dark opacity-7 mb-0">Sabe esse momento inesperado,

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +15,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-	return view('home');
+	$qtd_users = count(App\User::all());
+	$hours_disponibility = DB::table('schedules_has_users')->where('status',"!=","null")->count();
+	$qtd_patients =  DB::table('schedules_has_users')->where('status','FINISHED')->count();
+	// DESCOMENTAR PARA GERAR UM SITEMAP ATUALIZADO
+	// Sitemap::create('https://euteapoio.com')->add(Url::create('/')
+    //     ->setLastModificationDate(Carbon::yesterday())
+    //     ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+	// 	->setPriority(1.0))
+	// ->add(Url::create('/avalie')
+	// ->setLastModificationDate(Carbon::yesterday())
+	// ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+	// ->setPriority(0.5))
+	// ->writeToFile('sitemap.xml');
+
+	return view('home')->with(['qtd_users'=>$qtd_users, 'hours_disponibility'=>$hours_disponibility, 'qtd_patients'=>$qtd_patients]);
 })->name('home');
 
 Route::get('/busca', function () {

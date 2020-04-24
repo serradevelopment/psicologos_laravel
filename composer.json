@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "silviolleite/laravelpwa": "^1.0"
+        "silviolleite/laravelpwa": "^1.0",
+        "spatie/laravel-sitemap": "^5.7"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
