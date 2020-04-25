@@ -202,7 +202,7 @@
 							<div class="counter">
 								<i class="fas fa-smile-beam text-color-primary"></i>
 								<strong class="text-color-primary font-weight-extra-bold" data-to="{{$qtd_patients}}">{{$qtd_patients}}</strong>
-								<label class="text-4 mt-1 text-color-primary">Pacientes Acolhidos</label>
+								<label class="text-4 mt-1 text-color-primary">Acolhimentos</label>
 							</div>
 						</div>
 					</div>
@@ -656,9 +656,6 @@
 							<p class="text-color-dark custom-font-secondary text-4 mb-0">Sanamos suas duvidas?
 								<strong>Agende um acolhimento psicológico.</strong></p>
 							<br>
-							<a href="#agendamento"
-								class="btn btn-outline btn-primary text-color-dark custom-btn-style-2">AGENDAR
-								ACOLHIMENTO</a>
 						</div>
 					</div>
 				</div>
@@ -669,7 +666,7 @@
 
 		</div>
 
-		<footer id="footer" class="mt-0">
+		{{-- <footer id="footer" class="mt-0">
 			<div class="footer-copyright footer-copyright-style-2">
 				<div class="container py-2">
 					<div class="row justify-content-between py-4">
@@ -681,10 +678,40 @@
 						<div class="col-auto">
 							<ul
 								class="footer-social-icons social-icons social-icons-clean social-icons-icon-light ml-3">
-								{{-- <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
 								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li> --}}
+								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
 							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer> --}}
+		<footer class="footer" style="background-color:#1f1f1f !important">
+			<div class="footer-copyright footer-copyright-style-2" style="padding: 20px; ">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div>
+							<div class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
+	
+								<a href="https://www.serradev.com.br" target="blank">
+									<img src="img/serra-branca.png" height="75px" width="180px " alt="">
+								</a>
+	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr style="margin:0px!important; background: #aee8f92b">
+			<div class="copy-right_text" style="background-color:#1f1f1f;">
+				<div class="container">
+					<div class="footer_border"></div>
+					<div class="row" style="text-align: center;">
+						<div class="col-xl-8 m-auto" style="color:white;padding: 20px;">
+							<span style="font-size: 1rem">© <a href="https://serradev.com.br/" target="_blank"
+								style="color:white;"><strong>Serra Development</strong></a> Copyright 2020. Todos os
+							direitos reservados.</span>
 						</div>
 					</div>
 				</div>
