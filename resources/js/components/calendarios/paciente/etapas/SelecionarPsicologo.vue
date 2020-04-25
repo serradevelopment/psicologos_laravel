@@ -32,8 +32,9 @@
 							width: 60px;
 							height: 60px;
 							box-shadow: 1px 1px 5px 1px;
-							border-radius: 50%;"
-                :src="'/files/users/'+u.id+'.'+u.avatar_extension"
+							border-radius: 50%;
+              object-fit: cover;"
+                :src="'/files/users/'+u.id+'.'+u.avatar_extension+'?random='+new Date().getHours()"
               />
               <img
                 v-if="u.avatar_extension == null"
