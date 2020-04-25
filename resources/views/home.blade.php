@@ -362,7 +362,7 @@
 			<section class="section section-height-3 section-parallax border-0 m-0 appear-animation"
 				data-appear-animation="fadeIn" data-plugin-parallax
 				data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%'}"
-				data-image-src="img/demos/seo/backgrounds/consultas.jpg" id="agendamento">
+				data-image-src="img/demos/seo/backgrounds/consultas.jpg?random=323527528432525.24234" id="agendamento">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-xl-6 col-12 col-xs-12 col-sm-12 mb-5 mb-lg-0">
