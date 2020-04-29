@@ -185,7 +185,7 @@
 		</div>
 	</div>
 
-	@if($my_total_schedules->consultas_realizadas >= 10)
+	@if($my_total_schedules && $my_total_schedules->consultas_realizadas >= 10)
 	<div class="col-sm-12 col-md-12">
 		<div class="card card-stats card-round">
 			<div class="card-header">
