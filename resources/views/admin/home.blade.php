@@ -54,6 +54,7 @@
 				<div class="modal-body">Data: <span id="date"></span> </div>
 				<div class="modal-body">Horário: <span id="hours"></span> </div>
 				<div class="modal-body">Mensagem: <span id="patient_obs"></span> </div>
+				<div class="modal-body">Menor de idade: <span id="patient_is_minor"></span> </div>
 				<div class="modal-footer">
 					<div class="row col-12">
 						<div class="col-md-4 col-4">
@@ -185,12 +186,13 @@
 					sh_id: sh_id,
 				},
 				function (data, status) {
-					console.log(data)
+					var is_minor = (data.patient_is_minor)?"<div class='badge badge-success'>Sim</div>":"Não";
 					$("#patient_name").html(data.patient_name)
 					$("#date").html(data.date)
 					$("#patient_whatsapp").html(data.patient_whatsapp)
 					$("#patient_email").html(data.patient_email)
 					$("#patient_obs").html(data.patient_obs)
+					$("#patient_is_minor").html(is_minor)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
 					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Meu nome é "+data.name+", sou psicóloga na plataforma EuTeApoio e vi que você agendou uma consulta dia "+data.date+" das "+data.hour_start+" às "+data.hour_end+" comigo. Poderia me confirmar, por favor?");
 					$(".footer-modal-schedule-finish").html('<a  class="btn btn-secondary btn-block" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Finalizado<br></a>')

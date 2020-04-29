@@ -96,6 +96,24 @@
                     ></textarea>
                   </div>
                 </div>
+                <div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="checkbox"
+                      class="form-control"
+                      name="is_minor"
+                      style="margin:auto"
+                      required
+                      v-model="$store.state.patient.is_minor"
+                      value="true"
+                      id="is_minor"
+                    />
+                    <label
+                      for="is_minor"
+                      style="font-size:11px; margin:auto;width: 91%;"
+                    >Sou menor de idade.</label>
+                  </div>
+                </div>
                 <div class>
                   <div class="input-group input-group-merge">
                     <input
@@ -110,7 +128,7 @@
                     />
                     <label
                       for="terms"
-                      style="font-size:11px; margin:auto"
+                      style="font-size:11px; margin:auto;width: 91%;"
                     >Concordo com os Termos e Política de Privacidade.</label>
                   </div>
                 </div>
@@ -122,7 +140,8 @@
                 >Preencha os campos obrigatórios.</div>
                 <div class="form-group">
                   <div class="col-md-12">
-                    <button @click="submitForm()"
+                    <button
+                      @click="submitForm()"
                       type="button"
                       class="btn btn-success"
                       id="btn-saveScheduling"
@@ -146,6 +165,18 @@
         >
           <p>Agendamento realizado com sucesso!</p>
           <h4>Em breve um especialista entrará em contato pelo número informado.</h4>
+        </div>
+        <div
+          v-if="$store.state.patient.is_minor == true"
+          class="alert alert-warning"
+          style="width: 100%; margin-bottom: 0px!important;border-radius: 20px!important;"
+        >
+          <p>Solicite seu responsável para preencher o termo de autorização e envie-o preenchido (em foto ou escaneado) para o psicólogo no momento da consulta.</p>
+          <a
+            href="/docs/TERMODEAUTORIZACAO.pdf"
+            class="btn btn-info"
+            download="Termo de Autorização - Eu Te Apoio"
+          >Download</a>
         </div>
       </tbody>
       <!-- SE JÁ FOI AGENDADO ANTES -->
