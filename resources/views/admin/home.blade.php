@@ -184,6 +184,44 @@
 			</div>
 		</div>
 	</div>
+
+	@if($my_total_schedules->consultas_realizadas >= 10)
+	<div class="col-sm-12 col-md-12">
+		<div class="card card-stats card-round">
+			<div class="card-header">
+				@if($total_schedules_all_users[0]->id == auth()->user()->id)
+				<div class="row" style="margin:auto">
+					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) profissional que acolheu mais pessoas na
+						plataforma!</h2>
+				</div>
+				@elseif($total_schedules_all_users[1]->id == auth()->user()->id)
+				<div class="row" style="margin:auto">
+					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) segunda(o) profissional que acolheu mais pessoas na
+						plataforma!</h2>
+				</div>
+				@elseif($total_schedules_all_users[2]->id == auth()->user()->id)
+				<div class="row" style="margin:auto">
+					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) terceira(o) profissional que acolheu mais pessoas na
+						plataforma!</h2>
+				</div>
+				@else
+				<div class="row" style="margin:auto">
+					<h2>Parabéns!! {{ auth()->user()->name }},  você está se saindo muito bem!</h2>
+				</div>
+				@endif
+				<h4>Já são {{ $my_total_schedules->consultas_realizadas }} acolhimentos! Continue fazendo a diferença!</h4>
+				
+			</div>
+			<div class="card-body">
+				<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+				<lottie-player style="margin:auto;width: 300px; height: 200px;"
+					src="https://assets9.lottiefiles.com/temporary_files/N9kJ4Q.json" loop="true"
+					background="transparent" speed="1" autoplay></lottie-player>
+
+			</div>
+		</div>
+	</div>
+	@endif
 </div>
 
 
