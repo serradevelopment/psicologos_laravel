@@ -18,7 +18,7 @@ class HomeController extends Controller
 	{
 		$total_schedules_all_users = DB::select('SELECT u.name,u.id, COUNT(*) AS "consultas_realizadas" FROM schedules_has_users
 		JOIN users AS u ON(u.id = schedules_has_users.users_id)
-		 WHERE STATUS IS NOT null GROUP BY users_id ORDER BY consultas_realizadas DESC', [1]);
+		 WHERE STATUS IS NOT null GROUP BY users_id ORDER BY consultas_realizadas DESC');
 		$my_total_schedules = array_filter($total_schedules_all_users,function($obj){
 			return $obj->id ==  auth()->user()->id;
 		});
