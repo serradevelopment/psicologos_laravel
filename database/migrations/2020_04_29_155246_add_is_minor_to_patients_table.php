@@ -15,6 +15,7 @@ class AddIsMinorToPatientsTable extends Migration
     {
         Schema::table('patients', function (Blueprint $table) {
             $table->boolean('is_minor')->default(false);
+            $table->string('minor_term_extension')->nullable();
         });
     }
 

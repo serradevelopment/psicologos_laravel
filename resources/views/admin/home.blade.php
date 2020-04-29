@@ -10,13 +10,16 @@
 @if((!auth()->user()->crp_image_extension || !auth()->user()->e_psi_image_extension) && auth()->user()->role == 1 )
 <div class="row">
 	<div class="alert alert-danger">
-		<div class="alert-heading"><h1>Atenção:</h1><h3> Para segurança de todos usuários da plataforma, estamos solicitando aos
-			psicólogos cadastrados o Crp Escaneado e um print do cadastro na página do conselho E-psi.</h3> </div>
-			{{ Form::model(auth()->user(), ['id' => 'profile-form', 'url' => route('users.save-profile'), 'files' => true]) }}
-			{{ Form::bsFile('crp_scan', 'CRP Escaneado',['required'=>true]) }}
-			{{ Form::bsFile('e_psi', 'Print do Cadastro e-Psi',['required'=>true]) }}
-			<button type="submit" class="btn btn-danger btn-flat">Enviar</button>
-			{{ Form::close() }}
+		<div class="alert-heading">
+			<h1>Atenção:</h1>
+			<h3> Para segurança de todos usuários da plataforma, estamos solicitando aos
+				psicólogos cadastrados o Crp Escaneado e um print do cadastro na página do conselho E-psi.</h3>
+		</div>
+		{{ Form::model(auth()->user(), ['id' => 'profile-form', 'url' => route('users.save-profile'), 'files' => true]) }}
+		{{ Form::bsFile('crp_scan', 'CRP Escaneado',['required'=>true]) }}
+		{{ Form::bsFile('e_psi', 'Print do Cadastro e-Psi',['required'=>true]) }}
+		<button type="submit" class="btn btn-danger btn-flat">Enviar</button>
+		{{ Form::close() }}
 	</div>
 </div>
 @endif
@@ -69,6 +72,33 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal FINALIZAR DE MENOR-->
+	<div style="z-index:99999" class="modal fade" id="demenor" tabindex="-1" role="dialog"
+		aria-labelledby="demenorLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="demenorLabel">Termo de autorização</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="/painel/psicologo/schedules_users/endSchedule" method="post"
+					enctype="multipart/form-data">
+					@csrf
+					<input type="hidden" name="sh_id" id="minor_sh_id" class="form-control">
+					<input type="hidden" name="patient_id" id="minor_patient_id" class="form-control">
+					<div class="modal-body">
+						<h3>Anexe o termo de autorização enviado pelo paciente:</h3>
+						<input type="file" name="minor_term" id="minor_term" class="form-control">
+					</div>
+					<div class="modal-footer" id="footer_is_minor">
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -203,17 +233,41 @@
 			);
 	}
 
-	function endSchedule(sh_id){
+	function endScheduleToNotMinor(sh_id){
 		$.post(
-				"/painel/psicologo/schedules_users/endSchedule",
+			"/painel/psicologo/schedules_users/endSchedule",
+			{
+				_token: $('meta[name="csrf-token"]').attr("content"),
+				sh_id: sh_id,
+				minor_term: $('#patient_minor_term').get(0)
+			},
+			function (data, status) {
+				window.location.href = '/painel/psicologo';
+			}
+		);
+	}
+	function endSchedule(sh_id){
+		
+		$.post(
+				"/painel/psicologo/schedules_users/getScheduleUser",
 				{
 					_token: $('meta[name="csrf-token"]').attr("content"),
 					sh_id: sh_id,
 				},
 				function (data, status) {
-					window.location.href = '/painel/psicologo';
+					var is_minor = data.patient_is_minor;
+					if(is_minor && $('#minor_term').get(0).files.length === 0){//SE FOR DE MENOR
+						$('#exampleModal').modal('hide');
+						$('#demenor').modal('show');
+						$("#footer_is_minor").html('<button class="btn btn-success" type="submit">Enviar</button>')
+						$("#minor_sh_id").val(data.id)
+						$("#minor_patient_id").val(data.patient_id)
+					}else{//SE FOR DE MAIOR
+						endScheduleToNotMinor(data.id);
+					}
 				}
 			);
+		
 	}
 	function setAusent(sh_id){
 		$.post(
