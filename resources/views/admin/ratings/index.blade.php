@@ -5,7 +5,6 @@
     <h4 class="page-title">Avaliações</h4>
 </div>
 
-
 @can('edit',Auth::user())
 <div class="row">
     <div class="card">
@@ -23,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($ratings as $u)
+                        @foreach($allRatings as $u)
                         @php
                         $class = '';
 
