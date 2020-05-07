@@ -16,6 +16,16 @@
               style="width: 90%;margin-top:50px;margin-bottom: 5px;"
             >Agendamento: {{$store.state.day}}/{{$store.state.month}}/{{$store.state.year}} das {{schedule.hour_start}} às {{schedule.hour_end}}</button>
             <button class="btn btn-outline-info" style="width: 90%">Psicólogo: {{user.name}}</button>
+            <button v-if="schedulingStatus == false"
+              @click="submitForm()"
+              type="button"
+              class="mt-1 btn btn-success"
+              id="btn-saveScheduling"
+              style="border-radius:10px;"
+            >
+              Agendar
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -34,7 +44,7 @@
                         <span class="input-group-text">
                           <i class="fas fa-user"></i>
                         </span>
-                      </div> -->
+                      </div>-->
                       <input
                         type="text"
                         class="form-control"
@@ -85,7 +95,7 @@
                         <span class="input-group-text">
                           <i class="fas fa-comment-alt"></i>
                         </span>
-                      </div> -->
+                      </div>-->
                       <textarea
                         type="text"
                         class="form-control"
@@ -193,20 +203,6 @@
                   v-show="allFilled == false"
                   class="alert alert-danger"
                 >Preencha os campos obrigatórios.</div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <button
-                      @click="submitForm()"
-                      type="button"
-                      class="btn btn-success"
-                      id="btn-saveScheduling"
-                      style="border-radius:10px;"
-                    >
-                      Agendar
-                      <span class="glyphicon glyphicon-send"></span>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

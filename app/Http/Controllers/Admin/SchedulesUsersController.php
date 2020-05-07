@@ -17,7 +17,7 @@ class SchedulesUsersController extends Controller implements ShouldQueue
 {
     public function destroy($id)
     {
-        $delete = DB::select("DELETE FROM  schedules_has_users  WHERE schedules_has_users.id = ?", [$id]);
+        $delete = DB::select("UPDATE schedules_has_users  SET deleted_at = ".date('d/m/Y')." WHERE schedules_has_users.id = ?", [$id]);
         return redirect()->route('home')->with('flash.success', 'Agendamento apagado com sucesso');
     }
 
@@ -28,7 +28,7 @@ class SchedulesUsersController extends Controller implements ShouldQueue
         $users = DB::select('SELECT u.id,sh.date, u.name,u.whatsapp,u.crp,u.avatar_extension,s.hour_start,s.hour_end FROM schedules_has_users sh 
     	join users u on(u.id = sh.users_id)
     	join schedules s on(s.id = sh.schedules_id)
-    	where sh.schedules_id = ? and sh.date = ? and sh.status IS NULL', [
+    	where sh.schedules_id = ? and sh.date = ? and sh.status IS NULL  and deleted_at is null', [
             $data['schedule']['id'],
             $data['date']
         ]);
@@ -83,7 +83,7 @@ class SchedulesUsersController extends Controller implements ShouldQueue
                 'patients.obs as patient_obs',
                 'sh.status as status'
             )
-            ->where('sh.users_id', '=', auth()->user()->id)
+            ->where('sh.users_id', '=', auth()->user()->id)->where('sh.deleted_at','=',null)
             ->orderBy('sh.date', 'desc')->get();
         $data = ["data" => $data];
         return response()->json($data);
@@ -111,7 +111,7 @@ class SchedulesUsersController extends Controller implements ShouldQueue
                 'patients.is_security as patient_is_security',
                 'sh.status as status'
             )
-            ->where('sh.id', '=', $request->sh_id)
+            ->where('sh.id', '=', $request->sh_id)->where('sh.deleted_at','=',null)
             ->orderBy('sh.date')
             ->first();
 

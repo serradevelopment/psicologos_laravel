@@ -25,7 +25,7 @@ class SchedulesController extends Controller
 
         $schedules = DB::select("SELECT  * FROM    schedules WHERE   NOT EXISTS (  SELECT  null  FROM    
             schedules_has_users  
-            WHERE   schedules.id = schedules_has_users.schedules_id and schedules_has_users.users_id = ? and schedules_has_users.date = ?) ",[auth()->user()->id,$data['date']]);
+            WHERE   schedules.id = schedules_has_users.schedules_id and deleted_at is null and schedules_has_users.users_id = ? and schedules_has_users.date = ?) ",[auth()->user()->id,$data['date']]);
 
         return response($schedules);
     }
@@ -36,7 +36,7 @@ class SchedulesController extends Controller
 
         $schedules = DB::select("SELECT * FROM schedules WHERE EXISTS ( SELECT  null  FROM    
         schedules_has_users  
-        WHERE   schedules.id = schedules_has_users.schedules_id and schedules_has_users.date = ? and schedules_has_users.status is NULL) ",[$data['date']]);
+        WHERE   schedules.id = schedules_has_users.schedules_id and deleted_at is null and schedules_has_users.date = ? and schedules_has_users.status is NULL) ",[$data['date']]);
 
         return response($schedules);
     }
