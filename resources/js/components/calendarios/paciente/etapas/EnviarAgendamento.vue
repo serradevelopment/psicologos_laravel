@@ -27,109 +27,164 @@
             <div class="container" id="box" style="border-radius: 20px;">
               <h5>Preencha para agendar sua consulta com o especialista selecionado:</h5>
               <div class="container">
-                <div class="form-group">
-                  <div class="input-group input-group-merge">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-user"></i>
-                      </span>
+                <div class="row">
+                  <div class="form-group col-12">
+                    <div class="input-group input-group-merge">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div> -->
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nome Completo *"
+                        name="name"
+                        required
+                        v-model="patient.name"
+                      />
                     </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Nome Completo *"
-                      name="name"
-                      required
-                      v-model="patient.name"
-                    />
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-envelope"></i>
-                      </span>
+                  <div class="form-group col-6">
+                    <div class="input-group input-group-merge">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                      </div>-->
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email *"
+                        name="email"
+                        v-model="patient.email"
+                        required
+                      />
                     </div>
-                    <input
-                      type="email"
-                      class="form-control"
-                      placeholder="Email *"
-                      name="email"
-                      v-model="patient.email"
-                      required
-                    />
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-phone"></i>
-                      </span>
+                  <div class="form-group col-6">
+                    <div class="input-group input-group-merge">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fas fa-phone"></i>
+                        </span>
+                      </div>-->
+                      <input
+                        type="text"
+                        class="form-control tel-ddd-mask"
+                        name="whatsapp"
+                        required
+                        v-model="patient.whatsapp"
+                        placeholder="Whatsapp *"
+                      />
                     </div>
-                    <input
-                      type="text"
-                      class="form-control tel-ddd-mask"
-                      name="whatsapp"
-                      required
-                      v-model="patient.whatsapp"
-                      placeholder="Whatsapp *"
-                    />
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-comment-alt"></i>
-                      </span>
+                  <div class="form-group col-12">
+                    <div class="input-group input-group-merge">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fas fa-comment-alt"></i>
+                        </span>
+                      </div> -->
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        placeholder="Fale um pouco sobre você"
+                        name="obs"
+                        v-model="patient.obs"
+                        rows="1"
+                        style="resize: none;"
+                      ></textarea>
                     </div>
-                    <textarea
-                      type="text"
-                      class="form-control"
-                      placeholder="Fale um pouco sobre você"
-                      name="obs"
-                      v-model="patient.obs"
-                      rows="1"
-                      style="resize: none;"
-                    ></textarea>
+                  </div>
+                  <div class="p-0 jumbotron m-0 jumbotron-fluid col-12">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="checkbox"
+                        class="form-control"
+                        name="is_minor"
+                        style="margin:auto"
+                        required
+                        v-model="$store.state.patient.is_minor"
+                        value="true"
+                        id="is_minor"
+                      />
+                      <label
+                        for="is_minor"
+                        style="font-size:11px; margin:auto;width: 91%;"
+                      >Sou menor de idade.</label>
+                    </div>
+                    <div class="form-group" v-if="$store.state.patient.is_minor">
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="date"
+                          class="form-control"
+                          name="bird"
+                          style="margin:auto"
+                          required
+                          id="bird"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="checkbox"
-                      class="form-control"
-                      name="is_minor"
-                      style="margin:auto"
-                      required
-                      v-model="$store.state.patient.is_minor"
-                      value="true"
-                      id="is_minor"
-                    />
-                    <label
-                      for="is_minor"
-                      style="font-size:11px; margin:auto;width: 91%;"
-                    >Sou menor de idade.</label>
+
+                <div class="row">
+                  <div class="card card-info col-6">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="checkbox"
+                        class="form-control"
+                        name="is_health"
+                        style="margin:auto"
+                        required
+                        v-model="$store.state.patient.is_health"
+                        value="true"
+                        id="is_health"
+                      />
+                      <label
+                        for="is_health"
+                        style="font-size:11px; margin:auto;width: 91%;"
+                      >Sou da área de saúde do HUV ou outros.</label>
+                    </div>
+                  </div>
+                  <div class="card card-info col-6">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="checkbox"
+                        class="form-control"
+                        name="is_security"
+                        style="margin:auto"
+                        required
+                        v-model="$store.state.patient.is_security"
+                        value="true"
+                        id="is_security"
+                      />
+                      <label
+                        for="is_security"
+                        style="font-size:11px; margin:auto;width: 91%;"
+                      >Sou da área de segurança.</label>
+                    </div>
                   </div>
                 </div>
-                <div class>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="checkbox"
-                      class="form-control"
-                      name="terms"
-                      style="margin:auto"
-                      required
-                      v-model="$store.state.terms"
-                      value="true"
-                      id="terms"
-                    />
-                    <label
-                      for="terms"
-                      style="font-size:11px; margin:auto;width: 91%;"
-                    >Concordo com os Termos e Política de Privacidade.</label>
+                <div class="row">
+                  <div class="card card-info col-12">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="checkbox"
+                        class="form-control"
+                        name="terms"
+                        style="margin:auto"
+                        required
+                        v-model="$store.state.terms"
+                        value="true"
+                        id="terms"
+                      />
+                      <label
+                        for="terms"
+                        style="font-size:11px; margin:auto;width: 91%;"
+                      >Concordo com os Termos e Política de Privacidade.</label>
+                    </div>
                   </div>
                 </div>
                 <a href="/termos" target="_blank">Termos</a> |

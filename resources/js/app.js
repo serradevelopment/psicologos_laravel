@@ -56,7 +56,9 @@ const store = new Vuex.Store({
 			whatsapp: '',
 			email: '',
 			obs: '',
-			is_minor: false
+			is_minor: false,
+			is_health: false,
+			is_security: false,
 		},
 		schedulingStatus: false,
 		psico: {

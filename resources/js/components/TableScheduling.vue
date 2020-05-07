@@ -65,7 +65,7 @@ export default {
           targets: 2
         },
         { type: "time", targets: 0 },
-        { type: "time", targets: 1 },
+        { type: "time", targets: 1 }
       ],
       columns: [
         { data: "hour_start" },
@@ -105,7 +105,7 @@ export default {
               '<input type="hidden" name="_token" value="' +
               token +
               '"/>' +
-              '<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>' +
+              '<button class="btn btn-danger btn-sm confirmable"><i class="fa fa-trash"></i></button>' +
               "</form>"
             );
           }

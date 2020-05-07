@@ -51,23 +51,85 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">Paciente: <span id="patient_name"></span> </div>
-				<div class="modal-body">Whatsapp: <span id="patient_whatsapp"></span> </div>
-				<div class="modal-body">Email: <span id="patient_email"></span> </div>
-				<div class="modal-body">Data: <span id="date"></span> </div>
-				<div class="modal-body">Horário: <span id="hours"></span> </div>
-				<div class="modal-body">Mensagem: <span id="patient_obs"></span> </div>
-				<div class="modal-body">Menor de idade: <span id="patient_is_minor"></span> </div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Paciente: <span class="" id="patient_name"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Whatsapp: <span class="" id="patient_whatsapp"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Email: <span class="" id="patient_email"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Data: <span class="" id="date"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Horário: <span class="" id="hours"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Menor de idade: <span class="" id="patient_is_minor"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Área da saúde: <span class="" id="patient_is_health"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Área da segurança: <span class="" id="patient_is_security"></span>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="col-12">
+							<div class="card  mb-1">
+								<div class="card-body p-1">
+									Mensagem: <span class="" id="patient_obs"></span>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
 				<div class="modal-footer">
 					<div class="row col-12">
-						<div class="col-md-4 col-4">
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-2">
 							<a class="btn btn-success btn-block" id="call_whatsapp" target="_blank"><i
 									class="fab fa-whatsapp"></i> Whatsapp</a>
 						</div>
-						<div class="col-md-4 col-4 footer-modal-schedule-finish">
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-2 footer-modal-schedule-finish">
 
 						</div>
-						<div class="col-md-4 col-4 footer-modal-schedule-ausent">
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-2 footer-modal-schedule-ausent">
 
 						</div>
 					</div>
@@ -191,26 +253,29 @@
 			<div class="card-header">
 				@if($total_schedules_all_users[0]->id == auth()->user()->id)
 				<div class="row" style="margin:auto">
-					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) profissional que acolheu mais pessoas na
+					<h2>Parabéns!! {{ auth()->user()->name }}, você é a(o) profissional que acolheu mais pessoas na
 						plataforma!</h2>
 				</div>
 				@elseif($total_schedules_all_users[1]->id == auth()->user()->id)
 				<div class="row" style="margin:auto">
-					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) segunda(o) profissional que acolheu mais pessoas na
+					<h2>Parabéns!! {{ auth()->user()->name }}, você é a(o) segunda(o) profissional que acolheu mais
+						pessoas na
 						plataforma!</h2>
 				</div>
 				@elseif($total_schedules_all_users[2]->id == auth()->user()->id)
 				<div class="row" style="margin:auto">
-					<h2>Parabéns!! {{ auth()->user()->name }},  você é a(o) terceira(o) profissional que acolheu mais pessoas na
+					<h2>Parabéns!! {{ auth()->user()->name }}, você é a(o) terceira(o) profissional que acolheu mais
+						pessoas na
 						plataforma!</h2>
 				</div>
 				@else
 				<div class="row" style="margin:auto">
-					<h2>Parabéns!! {{ auth()->user()->name }},  você está se saindo muito bem!</h2>
+					<h2>Parabéns!! {{ auth()->user()->name }}, você está se saindo muito bem!</h2>
 				</div>
 				@endif
-				<h4>Já são {{ $my_total_schedules->consultas_realizadas }} acolhimentos! Continue fazendo a diferença!</h4>
-				
+				<h4>Já são {{ $my_total_schedules->consultas_realizadas }} acolhimentos! Continue fazendo a
+					diferença!</h4>
+
 			</div>
 			<div class="card-body">
 				<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -255,12 +320,16 @@
 				},
 				function (data, status) {
 					var is_minor = (data.patient_is_minor)?"<div class='badge badge-success'>Sim</div>":"Não";
+					var is_health = (data.patient_is_health)?"<div class='badge badge-success'>Sim</div>":"Não";
+					var is_security = (data.patient_is_security)?"<div class='badge badge-success'>Sim</div>":"Não";
 					$("#patient_name").html(data.patient_name)
 					$("#date").html(data.date)
 					$("#patient_whatsapp").html(data.patient_whatsapp)
 					$("#patient_email").html(data.patient_email)
 					$("#patient_obs").html(data.patient_obs)
 					$("#patient_is_minor").html(is_minor)
+					$("#patient_is_health").html(is_health)
+					$("#patient_is_security").html(is_security)
 					$("#hours").html(data.hour_start+' às '+data.hour_end)
 					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Meu nome é "+data.name+", sou psicóloga na plataforma EuTeApoio e vi que você agendou uma consulta dia "+data.date+" das "+data.hour_start+" às "+data.hour_end+" comigo. Poderia me confirmar, por favor?");
 					$(".footer-modal-schedule-finish").html('<a  class="btn btn-secondary btn-block" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Finalizado<br></a>')

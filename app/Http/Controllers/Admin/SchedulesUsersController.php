@@ -107,6 +107,8 @@ class SchedulesUsersController extends Controller implements ShouldQueue
                 'patients.email as patient_email',
                 'patients.obs as patient_obs',
                 'patients.is_minor as patient_is_minor',
+                'patients.is_health as patient_is_health',
+                'patients.is_security as patient_is_security',
                 'sh.status as status'
             )
             ->where('sh.id', '=', $request->sh_id)
