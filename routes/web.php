@@ -33,14 +33,6 @@ Route::get('/', function () {
 	return view('home')->with(['qtd_users'=>$qtd_users, 'hours_disponibility'=>$hours_disponibility, 'qtd_patients'=>$qtd_patients]);
 })->name('home');
 
-Route::get('/busca', function () {
-	return view('psicologos');
-});
-
-Route::get('/calendario', function () {
-	return view('calendario');
-});
-
 Route::get('/termos', function () {
 	return view('terms');
 });

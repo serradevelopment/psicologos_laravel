@@ -15,7 +15,7 @@ class RatingsController extends Controller
     
     public function index(){
         $allRatings = Rating::orderBy('created_at','desc')->get();
-        $ratings = Rating::orderBy('created_at','desc')->paginate(9);
+        $ratings = Rating::where('locked',0)->orderBy('created_at','desc')->paginate(9);
         return view('admin.ratings.index')->with(['ratings'=>$ratings,'allRatings'=>$allRatings]);
     }
 

@@ -81,7 +81,7 @@
 @endcan
 
 <div class="row">
-    @foreach($ratings as $r)
+    @foreach($ratings->all() as $r)
     @if(!$r->locked)
     <div class="col-md-4">
         <div class="card card-info" style="">
