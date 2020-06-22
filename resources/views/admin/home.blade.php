@@ -116,7 +116,7 @@
 									Mensagem: <span class="" id="patient_obs"></span>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -311,7 +311,7 @@
 @section('js')
 <script>
 	function showSh(sh_id){
-		
+
 		$.post(
 				"/painel/psicologo/schedules_users/getScheduleUser",
 				{
@@ -334,7 +334,7 @@
 					$("#call_whatsapp").attr('href',"https://api.whatsapp.com/send?phone=55"+data.patient_whatsapp+"&text=Olá "+data.patient_name+", tudo bem? Meu nome é "+data.name+", sou psicóloga na plataforma EuTeApoio e vi que você agendou uma consulta dia "+data.date+" das "+data.hour_start+" às "+data.hour_end+" comigo. Poderia me confirmar, por favor?");
 					$(".footer-modal-schedule-finish").html('<a  class="btn btn-secondary btn-block" id="call_whatsapp" onclick="endSchedule('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-check"></i> Finalizado<br></a>')
 					$(".footer-modal-schedule-ausent").html('<a  class="btn btn-danger btn-block" id="call_whatsapp" onclick="setAusent('+data.id+')" target="_blank" style="color:white 	"><i class="fas fa-times-circle"></i> Ausente</a>')
-					
+
 
 				}
 			);
@@ -354,7 +354,7 @@
 		);
 	}
 	function endSchedule(sh_id){
-		
+
 		$.post(
 				"/painel/psicologo/schedules_users/getScheduleUser",
 				{
@@ -374,7 +374,7 @@
 					}
 				}
 			);
-		
+
 	}
 	function setAusent(sh_id){
 		$.post(

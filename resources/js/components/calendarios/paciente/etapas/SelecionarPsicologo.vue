@@ -50,7 +50,8 @@
             <div class="col-md-8 col-8">
               <h5 style="margin-bottom:0px!important">{{u.name}}</h5>
               <span>
-                <span class="text-muted">CRP: {{u.crp}}</span>
+                <span v-if="u.role == 1" class="text-muted">CRP: {{u.crp}}</span>
+                <span v-else class="text-muted">Estagiário</span>
                 <br />
               </span>
               <button class="btn btn-info btn-sm" @click="$store.commit('setUser',u)">Escolher</button>

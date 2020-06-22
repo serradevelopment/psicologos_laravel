@@ -21,7 +21,7 @@
                     <i class="fa fa-bars"></i>
                 </span>
             </button>
-            
+
             {{-- <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
             <div class="navbar-minimize">
                 <button class="btn btn-minimize btn-rounded">
@@ -49,7 +49,7 @@
                             @endif
                         </a>
                         <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
-                            
+
                             <li>
                                 @if($countNotifications > 0)
                                 <div class="dropdown-title">Você tem {{$countNotifications}} {{($countNotifications > 1)?'novas notificações' : 'nova notificação'}}</div>
@@ -102,7 +102,7 @@
         </nav>
         <!-- End Navbar -->
     </div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar">
 
@@ -115,7 +115,7 @@
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                             <span>
                                 {{Auth::user()->name}}
-                                <span class="user-level badge badge-info" style="color:white">{{(Auth::user()->role == 0)?"Administrador":"Psicólogo"}}</span>
+                                <span class="user-level badge badge-info" style="color:white">{{(Auth::user()->role == 0)?"Administrador":(Auth::user()->role == 1)?"Psicólogo":"Estagiário"}}</span>
                                 <span class="caret"></span>
                             </span>
                         </a>
@@ -178,7 +178,7 @@
         </div>
 
     </div>
-    
+
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -190,7 +190,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- Footer -->

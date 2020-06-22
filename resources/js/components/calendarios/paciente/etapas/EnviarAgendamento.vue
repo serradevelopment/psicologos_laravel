@@ -15,7 +15,8 @@
               class="btn btn-outline-info"
               style="width: 90%;margin-top:50px;margin-bottom: 5px;"
             >Agendamento: {{$store.state.day}}/{{$store.state.month}}/{{$store.state.year}} das {{schedule.hour_start}} às {{schedule.hour_end}}</button>
-            <button class="btn btn-outline-info" style="width: 90%">Psicólogo: {{user.name}}</button>
+              <button class="btn btn-outline-info" v-if="user.role == 1" style="width: 90%">Psicólogo: {{user.name}}</button>
+              <button class="btn btn-outline-info" v-else style="width: 90%">Estagiário: {{user.name}}</button>
             <button v-if="schedulingStatus == false"
               @click="submitForm()"
               type="button"
@@ -35,7 +36,7 @@
         <div class="container">
           <div class="row">
             <div class="container" id="box" style="border-radius: 20px;">
-              <h5>Preencha para agendar sua consulta com o especialista selecionado:</h5>
+              <h5>Preencha para agendar sua consulta com o profissional selecionado:</h5>
               <div class="container">
                 <div class="row">
                   <div class="form-group col-12">

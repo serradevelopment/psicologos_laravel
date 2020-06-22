@@ -16,10 +16,12 @@
         <div class="card-body">
             {{ Form::bsText('name', 'Nome') }}
             @if($user->role != 0)
-            {{ Form::bsText('crp', 'CRP') }}
-            {{ Form::bsText('whatsapp', 'Whatsapp') }}
-            {{ Form::bsText('specialty', 'Especialidade') }}
-            {{ Form::bsEmail('email', 'E-mail') }}
+                @if($user->role == 1)
+                {{ Form::bsText('crp', 'CRP') }}
+                {{ Form::bsText('specialty', 'Especialidade') }}
+                @endif
+                {{ Form::bsText('whatsapp', 'Whatsapp') }}
+                {{ Form::bsEmail('email', 'E-mail') }}
             @endif
             <div class="row">
                 <div class="col-md-6">

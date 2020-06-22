@@ -47,6 +47,10 @@ class UsersController extends Controller
 
         $user->role = User::ROLE_COMMON;
 
+        if($request->is_trainee == '1'){
+            $user->role = User::ROLE_TRAINEE;
+        }
+
         $user->locked = 1;
 
         if ($request->hasFile('crp_scan')) {
@@ -98,6 +102,9 @@ class UsersController extends Controller
 
         $user->fill($request->all());
 
+        if($request->is_trainee == '1'){
+            $user->role == User::ROLE_TRAINEE;
+        }
         $user->password = Hash::make($request->password);
 
         if ($request->hasFile('crp_scan')) {
@@ -119,7 +126,7 @@ class UsersController extends Controller
         }
 
 
-        $allAdmins = User::all()->where('role',0);
+        $allAdmins = User::all()->where('role',User::ROLE_ADMIN);
 
         foreach ($allAdmins as $user) {
             $user->notify(new CreatedUser($user,auth()->user()));
@@ -270,7 +277,7 @@ class UsersController extends Controller
 
     public function unblock(User $user) {
 
-        Mail::to($user->email)->send(new \App\Mail\CadastroLiberado($user));
+//        Mail::to($user->email)->send(new \App\Mail\CadastroLiberado($user));
 
         $this->authorize('unblock', $user);
 

@@ -13,6 +13,7 @@ class User extends Authenticatable
 
     const ROLE_ADMIN = 0;
     const ROLE_COMMON = 1;
+    const ROLE_TRAINEE = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -78,6 +79,7 @@ class User extends Authenticatable
         return [
             self::ROLE_ADMIN => 'Administrador',
             self::ROLE_COMMON => 'Psicólogo',
+            self::ROLE_TRAINEE => 'Estagiário',
         ];
     }
 
