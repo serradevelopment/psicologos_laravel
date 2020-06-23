@@ -277,7 +277,7 @@ class UsersController extends Controller
 
     public function unblock(User $user) {
 
-//        Mail::to($user->email)->send(new \App\Mail\CadastroLiberado($user));
+        Mail::to($user->email)->send(new \App\Mail\CadastroLiberado($user));
 
         $this->authorize('unblock', $user);
 
