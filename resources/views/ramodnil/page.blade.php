@@ -115,7 +115,7 @@
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                             <span>
                                 {{Auth::user()->name}}
-                                <span class="user-level badge badge-info" style="color:white">{{(Auth::user()->role == 0)?"Administrador":(Auth::user()->role == 1)?"Psicólogo":"Estagiário"}}</span>
+                                <span class="user-level badge badge-info" style="color:white">{{((Auth::user()->role == 0)?"Administrador":(Auth::user()->role == 1))?"Psicólogo":"Estagiário"}}</span>
                                 <span class="caret"></span>
                             </span>
                         </a>
@@ -171,6 +171,7 @@
                         {{ Session::get('flash.error') }}
                     </div>
                     @endif
+
                 </section>
 
                 @yield('content')

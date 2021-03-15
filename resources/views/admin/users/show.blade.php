@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="col-12">
-    <div class="card" style="background-color:#86e0ff !important">
+    <div class="card">
         <div class="card-header">
             <h3 class="card-title">{{ $user->name }}</h3>
         </div>
@@ -95,35 +95,38 @@
             </div>
         </div>
         <div class="card-footer">
-            @can('edit', $user)
-            <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-default btn-sm"><i
-                    class="fa fa-pencil-alt"></i>
-                Editar</a>
-            @endcan
-            @if (!$user->locked)
-            @can('block', $user)
-            @if ($user->id != Auth::user()->id)
-            <a href="{{ route('users.block', ['user' => $user]) }}" class="btn btn-default btn-sm confirmable"><i
-                    class="fa fa-lock"></i> Bloquear</a>
-            @endif
-            @endcan
-            @else
-            @can('unblock', $user)
-            @if ($user->id != Auth::user()->id)
-            <a href="{{ route('users.unblock', ['user' => $user]) }}" class="btn btn-default btn-sm confirmable"><i
-                    class="fa fa-lock-open"></i> Desbloquear</a>
-            @endif
-            @endcan
-            @endif
-            @can('destroy', $user)
-            @if ($user->id != Auth::user()->id)
-            <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
-                @csrf
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger btn-sm confirmable"><i class="fa fa-trash"></i></button>
-            </form>
-            @endif
-            @endcan
+            <div class="row">
+                @can('edit', $user)
+                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn mx-2  btn-default btn-sm"><i
+                            class="fa fa-pencil-alt"></i>
+                        Editar</a>
+                @endcan
+                @if (!$user->locked)
+                    @can('block', $user)
+                        @if ($user->id != Auth::user()->id)
+                            <a href="{{ route('users.block', ['user' => $user]) }}" class="btn mx-2 btn-default btn-sm confirmable"><i
+                                    class="fa fa-lock"></i> Bloquear</a>
+                        @endif
+                    @endcan
+                @else
+                    @can('unblock', $user)
+                        @if ($user->id != Auth::user()->id)
+                            <a href="{{ route('users.unblock', ['user' => $user]) }}" class="btn mx-2 btn-default btn-sm confirmable"><i
+                                    class="fa fa-lock-open"></i> Desbloquear</a>
+                        @endif
+                    @endcan
+                @endif
+                @can('destroy', $user)
+                    @if ($user->id != Auth::user()->id)
+                        <form style="    display: contents;" method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-sm mx-2 confirmable"><i class="fa fa-trash"></i></button>
+                        </form>
+                    @endif
+                @endcan
+            </div>
+
         </div>
 
     </div>

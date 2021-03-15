@@ -39,6 +39,11 @@ class UsersController extends Controller
     }
 
     public function register(Request $request) {
+
+        $validated = $request->validate([
+            'email' => 'required|unique:users|max:255',
+        ]);
+
         $user = new User;
 
         $user->fill($request->all());
@@ -98,6 +103,10 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'email' => 'required|unique:users|max:255',
+        ]);
+
         $user = new User;
 
         $user->fill($request->all());
